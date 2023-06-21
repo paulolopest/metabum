@@ -1,9 +1,18 @@
 const BASE_URL = 'https://back-metabum.vercel.app';
 
-export const USER_LOGIN = (body) => {
+export const USER_SIGNUP = (body) => {
+	return {
+		url: `${BASE_URL}/signup`,
+		options: {
+			method: 'POST',
+			body,
+		},
+	};
+};
+
+export const USER_LOGIN = () => {
 	return {
 		url: `${BASE_URL}/login`,
-		body,
 	};
 };
 

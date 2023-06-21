@@ -6,31 +6,43 @@ const useAxios = () => {
 	const [error, setError] = React.useState(null);
 	const [loading, setLoading] = React.useState(null);
 
-	const request = React.useCallback(async (url, options) => {
-		let response;
+	const get = React.useCallback(async (url, options) => {
+		let res;
 		try {
 			setError(null);
 			setLoading(true);
 
-			if (options.method === 'GET') {
-				response = await axios.get(url, options);
-			} else if (options.method === 'POST') {
-				response = await axios.post(url, options);
-			}
+			res = await axios.get(url, options);
 
-			if (response.ok === false) throw new Error(response.message);
+			setData(res.data);
 		} catch (error) {
-			response = null;
-			setError(error.message);
-		} finally {
-			setData(response.data);
+			setData(null);
+			setError(error.response.data);
 			setLoading(false);
-
-			return { response };
+		} finally {
+			setLoading(false);
 		}
 	}, []);
 
-	return { data, error, loading, request };
+	const post = React.useCallback(async (url, body) => {
+		let res;
+		try {
+			setError(null);
+			setLoading(true);
+
+			res = await axios.post(url, body);
+
+			setData(res.data);
+		} catch (error) {
+			setData(null);
+			setError(error.response.data);
+			setLoading(false);
+		} finally {
+			setLoading(false);
+		}
+	}, []);
+
+	return { data, error, loading, get, post };
 };
 
 export default useAxios;

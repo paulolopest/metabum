@@ -45,10 +45,15 @@ const GlobalStorage = ({ children }) => {
 				password: password,
 			};
 
-			const { url } = USER_LOGIN(body);
+			const { url } = USER_LOGIN();
 			req = await axios.post(url, body);
 
+			console.log(email);
+			console.log(password);
+
 			window.localStorage.setItem('metabumtoken', req.data);
+
+			navigate('/');
 		} catch (error) {
 			setError(error.response.data);
 			setLoading(false);
