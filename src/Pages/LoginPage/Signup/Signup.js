@@ -5,6 +5,10 @@ import useAxios from './../../../Hooks/useAxios';
 import CustomInput from '../../../Components/Form/CustomInput/CustomInput';
 import CustomButton from '../../../Components/Form/CustomButton/CustomButton';
 import { GlobalContext } from '../../../Context/GlobalContext';
+import Loading from './../../../Components/Loading/Loading';
+import { UserRequest } from './../../../Requests/UserRequest';
+
+const userRequest = new UserRequest();
 
 const Signup = () => {
 	const name = useForm('name');
@@ -25,7 +29,7 @@ const Signup = () => {
 			cpf: cpf.value,
 		};
 
-		const { url } = USER_SIGNUP(body);
+		const { url } = userRequest.USER_SIGNUP(body);
 
 		await post(url, body);
 
@@ -34,6 +38,7 @@ const Signup = () => {
 
 	return (
 		<div>
+			{loading && <Loading />}
 			<h1>Register</h1>
 			<form onSubmit={handleSubmit}>
 				<CustomInput label="Name" name="name" type="text" {...name} />

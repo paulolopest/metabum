@@ -1,9 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GET_USER, USER_LOGIN } from '../Requests/UserRequest';
+import { UserRequest } from '../Requests/UserRequest';
 import axios from 'axios';
 
 export const GlobalContext = React.createContext();
+const userRequest = new UserRequest();
 
 const GlobalStorage = ({ children }) => {
 	const [data, setData] = React.useState(null);
@@ -22,12 +23,12 @@ const GlobalStorage = ({ children }) => {
 		window.localStorage.removeItem('metabumtoken');
 
 		navigate('/login');
-	});
+	}, [navigate]);
 
 	const getUser = async () => {
 		const token = window.localStorage.getItem('metabumtoken');
 
-		const { url, options } = GET_USER(token);
+		const { url, options } = userRequest.GET_USER(token);
 		let req = await axios.get(url, options);
 
 		setData(req.data);
@@ -45,7 +46,7 @@ const GlobalStorage = ({ children }) => {
 				password: password,
 			};
 
-			const { url } = USER_LOGIN();
+			const { url } = userRequest.USER_LOGIN();
 			req = await axios.post(url, body);
 
 			console.log(email);
@@ -74,7 +75,7 @@ const GlobalStorage = ({ children }) => {
 				} catch (error) {}
 			}
 		};
-	});
+	}, []);
 
 	return (
 		<GlobalContext.Provider

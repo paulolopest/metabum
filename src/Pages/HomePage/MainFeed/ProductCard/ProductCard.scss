@@ -1,0 +1,12 @@
+.mainFeed-productCard {
+	display: flex;
+	width: 15rem;
+	flex-direction: column;
+	border: 1px solid black;
+	margin-top: 1rem;
+
+	img {
+		height: 100px;
+		width: 100px;
+	}
+}
