@@ -14,6 +14,10 @@ const useAxios = () => {
 
 			res = await axios.get(url, options);
 
+			console.log(options);
+			console.log(url);
+			console.log(res);
+
 			setData(res.data);
 		} catch (error) {
 			setData(null);

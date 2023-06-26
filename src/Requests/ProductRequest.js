@@ -6,4 +6,10 @@ export class ProductRequest {
 			url: `${BASE_URL}/products`,
 		};
 	};
+
+	GET_PRODUCT_BY_ID = (id) => {
+		return {
+			url: `${BASE_URL}/products/${id}`,
+		};
+	};
 }

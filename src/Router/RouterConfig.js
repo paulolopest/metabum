@@ -14,7 +14,8 @@ const RouterConfig = () => {
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/login/*" element={<Authentication />} />
-					<Route path="/product" element={<ProductPage />} />
+					<Route path="/products/" element={<HomePage />} />
+					<Route path="/product/:id" element={<ProductPage />} />
 				</Routes>
 			</GlobalStorage>
 		</BrowserRouter>

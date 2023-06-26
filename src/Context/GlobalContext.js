@@ -12,6 +12,7 @@ const GlobalStorage = ({ children }) => {
 	const [error, setError] = React.useState(null);
 	const [login, setLogin] = React.useState(null);
 
+	const token = window.localStorage.getItem('metabumtoken');
 	const navigate = useNavigate();
 
 	const userLogout = React.useCallback(async () => {
@@ -26,8 +27,6 @@ const GlobalStorage = ({ children }) => {
 	}, [navigate]);
 
 	const getUser = async () => {
-		const token = window.localStorage.getItem('metabumtoken');
-
 		const { url, options } = userRequest.GET_USER(token);
 		let req = await axios.get(url, options);
 
@@ -49,9 +48,6 @@ const GlobalStorage = ({ children }) => {
 			const { url } = userRequest.USER_LOGIN();
 			req = await axios.post(url, body);
 
-			console.log(email);
-			console.log(password);
-
 			window.localStorage.setItem('metabumtoken', req.data);
 
 			navigate('/');
@@ -64,18 +60,19 @@ const GlobalStorage = ({ children }) => {
 	};
 
 	React.useEffect(() => {
-		const autoLogin = async () => {
-			const token = window.localStorage.getItem('metabumtoken');
-			if (token) {
-				try {
-					setError(null);
-					setLoading(true);
-
-					// const {url, options}
-				} catch (error) {}
-			}
-		};
-	}, []);
+		// const autoLogin = async () => {
+		// 	if (token) {
+		// 		try {
+		// 			setError(null);
+		// 			setLoading(true);
+		// 			// const {url, options}
+		// 		} catch (error) {}
+		// 	}
+		// };
+		if (token) {
+			getUser(token);
+		}
+	}, [token]);
 
 	return (
 		<GlobalContext.Provider
