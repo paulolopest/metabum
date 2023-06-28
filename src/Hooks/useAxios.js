@@ -14,10 +14,6 @@ const useAxios = () => {
 
 			res = await axios.get(url, options);
 
-			console.log(options);
-			console.log(url);
-			console.log(res);
-
 			setData(res.data);
 		} catch (error) {
 			setData(null);
@@ -28,13 +24,13 @@ const useAxios = () => {
 		}
 	}, []);
 
-	const post = React.useCallback(async (url, body) => {
+	const post = React.useCallback(async (url, body, config) => {
 		let res;
 		try {
 			setError(null);
 			setLoading(true);
 
-			res = await axios.post(url, body);
+			res = await axios.post(url, body, config);
 
 			setData(res.data);
 		} catch (error) {

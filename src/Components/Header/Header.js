@@ -3,12 +3,20 @@ import { Link } from 'react-router-dom';
 import { GlobalContext } from './../../Context/GlobalContext';
 
 const Header = () => {
-	const { data } = React.useContext(GlobalContext);
+	const { data, login, userLogout } = React.useContext(GlobalContext);
 
 	return (
 		<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 			<p>Header</p>
-			<Link to="/profile">{data ? data.name : null}</Link>
+			<div>
+				{login ? (
+					<Link to="/profile">{data?.name}</Link>
+				) : (
+					<Link to="/login">Login</Link>
+				)}
+
+				<h1 onClick={userLogout}>Log out</h1>
+			</div>
 		</div>
 	);
 };

@@ -12,7 +12,6 @@ const GlobalStorage = ({ children }) => {
 	const [error, setError] = React.useState(null);
 	const [login, setLogin] = React.useState(null);
 
-	const token = window.localStorage.getItem('metabumtoken');
 	const navigate = useNavigate();
 
 	const userLogout = React.useCallback(async () => {
@@ -26,12 +25,22 @@ const GlobalStorage = ({ children }) => {
 		navigate('/login');
 	}, [navigate]);
 
-	const getUser = async () => {
-		const { url, options } = userRequest.GET_USER(token);
-		let req = await axios.get(url, options);
+	const token = window.localStorage.getItem('metabumtoken');
 
-		setData(req.data);
-		setLogin(true);
+	const getUser = async () => {
+		try {
+			const token = window.localStorage.getItem('metabumtoken');
+			const { url, options } = userRequest.GET_USER(token);
+			let req = await axios.get(url, options);
+
+			setData(req.data);
+			setLogin(true);
+		} catch (error) {
+			setError(error.response.data);
+			setLoading(false);
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	const userLogin = async (email, password) => {
@@ -60,23 +69,42 @@ const GlobalStorage = ({ children }) => {
 	};
 
 	React.useEffect(() => {
-		// const autoLogin = async () => {
-		// 	if (token) {
-		// 		try {
-		// 			setError(null);
-		// 			setLoading(true);
-		// 			// const {url, options}
-		// 		} catch (error) {}
-		// 	}
-		// };
-		if (token) {
-			getUser(token);
-		}
-	}, [token]);
+		const autoLogin = async () => {
+			const token = window.localStorage.getItem('metabumtoken');
+			if (token) {
+				try {
+					setError(null);
+					setLoading(true);
+
+					const { url, body } = userRequest.TOKEN_VALIDATE(token);
+					const res = await axios.post(url, body, null);
+
+					if (res.status !== 200) throw new Error('Invalid credentials');
+
+					setLogin(true);
+					await getUser(token);
+				} catch (error) {
+					await userLogout();
+				} finally {
+					setLoading(false);
+				}
+			}
+		};
+		autoLogin();
+	}, [userLogout]);
 
 	return (
 		<GlobalContext.Provider
-			value={{ userLogin, userLogout, getUser, data, loading, error, login }}
+			value={{
+				userLogin,
+				userLogout,
+				getUser,
+				data,
+				loading,
+				error,
+				login,
+				token,
+			}}
 		>
 			{children}
 		</GlobalContext.Provider>

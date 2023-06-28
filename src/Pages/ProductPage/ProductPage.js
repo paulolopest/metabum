@@ -6,13 +6,13 @@ import { ProductRequest } from '../../Requests/ProductRequest';
 const ProductPage = () => {
 	const productRequest = new ProductRequest();
 	const { id } = useParams();
-	const { data, error, get } = useAxios();
+	const { data, get } = useAxios();
 
 	React.useEffect(() => {
 		const { url } = productRequest.GET_PRODUCT_BY_ID(id);
 
 		get(url);
-	}, []);
+	}, [get, id]);
 
 	if (data) return <div>{data.name}</div>;
 };

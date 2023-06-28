@@ -17,6 +17,15 @@ export class UserRequest {
 		};
 	};
 
+	TOKEN_VALIDATE = (token) => {
+		return {
+			url: `${BASE_URL}/token/validate-token`,
+			body: {
+				token: token,
+			},
+		};
+	};
+
 	GET_USER = (token) => {
 		return {
 			url: `${BASE_URL}/profile`,
