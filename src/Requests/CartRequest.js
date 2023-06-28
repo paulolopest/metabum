@@ -9,4 +9,13 @@ export class CartRequest {
 			},
 		};
 	};
+
+	GET_PRODUCTS = (token) => {
+		return {
+			url: `${BASE_URL}/cart/user`,
+			headers: {
+				Authorization: token,
+			},
+		};
+	};
 }

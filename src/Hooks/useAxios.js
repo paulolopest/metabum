@@ -6,13 +6,13 @@ const useAxios = () => {
 	const [error, setError] = React.useState(null);
 	const [loading, setLoading] = React.useState(null);
 
-	const get = React.useCallback(async (url, options) => {
+	const get = React.useCallback(async (url, config) => {
 		let res;
 		try {
 			setError(null);
 			setLoading(true);
 
-			res = await axios.get(url, options);
+			res = await axios.get(url, config);
 
 			setData(res.data);
 		} catch (error) {

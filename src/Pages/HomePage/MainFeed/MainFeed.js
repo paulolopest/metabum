@@ -2,6 +2,7 @@ import React from 'react';
 import useAxios from './../../../Hooks/useAxios';
 import { ProductRequest } from '../../../Requests/ProductRequest';
 import ProductCard from './ProductCard/ProductCard';
+import Cart from '../../../Components/Cart/Cart';
 
 const MainFeed = () => {
 	const productRequest = new ProductRequest();
@@ -19,7 +20,14 @@ const MainFeed = () => {
 		<ProductCard key={product.id} product={product} />
 	));
 
-	return <div>{productMap}</div>;
+	return (
+		<div style={{ display: 'flex' }}>
+			<div>{productMap}</div>
+			<div>
+				<Cart />
+			</div>
+		</div>
+	);
 };
 
 export default MainFeed;
