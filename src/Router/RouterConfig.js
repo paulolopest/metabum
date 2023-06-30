@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './../Pages/HomePage/HomePage';
-import ProductPage from './../Pages/ProductPage/ProductPage';
-import GlobalStorage from '../Context/GlobalContext';
-import Authentication from './../Pages/LoginPage/Authentication';
 import Header from '../Components/Header/Header';
+import HomePage from './../Pages/HomePage/HomePage';
+import GlobalStorage from '../Context/GlobalContext';
+import ProductPage from './../Pages/ProductPage/ProductPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Authentication from './../Pages/LoginPage/Authentication';
 
 const RouterConfig = () => {
 	return (

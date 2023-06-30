@@ -1,0 +1,38 @@
+.headerContainer {
+	display: grid;
+	grid-template-columns: 160px 20% 45% 30% 160px;
+	height: 7rem;
+	background-color: #0060b1;
+}
+
+.headerLinks {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	grid-column: 2/3;
+
+	img {
+		width: 12rem;
+		height: 4rem;
+	}
+}
+
+.hbg-menu {
+	svg {
+		stroke: white;
+		width: 33px;
+		height: 33px;
+	}
+}
+
+.header-rightNav {
+	background-color: red;
+	width: 22vw;
+	min-height: 100vh;
+	position: absolute;
+	z-index: 10;
+}
+
+.displayNone {
+	display: none;
+}

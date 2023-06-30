@@ -42,7 +42,25 @@ const useAxios = () => {
 		}
 	}, []);
 
-	return { data, error, loading, get, post };
+	const deleteAxios = React.useCallback(async (url, config) => {
+		let res;
+		try {
+			setError(null);
+			setLoading(true);
+
+			res = await axios.delete(url, config);
+
+			setData(res.data);
+		} catch (error) {
+			setData(null);
+			setError(error.response.data);
+			setLoading(false);
+		} finally {
+			setLoading(false);
+		}
+	}, []);
+
+	return { data, error, loading, get, post, deleteAxios };
 };
 
 export default useAxios;
