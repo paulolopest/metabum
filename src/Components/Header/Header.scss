@@ -18,6 +18,7 @@
 }
 
 .hbg-menu {
+	cursor: pointer;
 	svg {
 		stroke: white;
 		width: 33px;
@@ -25,14 +26,86 @@
 	}
 }
 
-.header-rightNav {
-	background-color: red;
+.leftNav-container {
+	width: 100vw;
+	height: 100vh;
+	backdrop-filter: brightness(0.5);
+	position: absolute;
+	z-index: 2;
+}
+.left-nav {
+	display: grid;
+	grid-template-rows: 10vh 75vh 15vh;
+	background-color: #0060b1;
 	width: 22vw;
 	min-height: 100vh;
 	position: absolute;
 	z-index: 10;
+	transition: 0.2s;
+	color: white;
 }
 
-.displayNone {
-	display: none;
+.lNav-profile {
+	display: flex;
+	justify-content: center;
+	gap: 0 1rem;
+	align-items: center;
+	grid-row: 1/2;
+
+	img {
+		width: 3rem;
+		height: 3rem;
+	}
+
+	p {
+		font-size: 2.1rem;
+		font-weight: bold;
+	}
+}
+
+.lNav-Links {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem 0;
+	margin: 0 2rem;
+	cursor: pointer;
+	grid-row: 2/3;
+}
+
+.lNav-Links-card {
+	display: flex;
+	gap: 0 0.7rem;
+	font-size: 1.7rem;
+	align-items: center;
+
+	svg {
+		stroke: white;
+		stroke-width: 2px;
+		height: 1.3rem;
+		width: 1.3rem;
+	}
+}
+
+.lNav-buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem 0;
+	align-items: center;
+
+	:nth-child(-n + 2) {
+		cursor: pointer;
+		outline: none;
+		border: none;
+		background-color: #ff6500;
+		color: white;
+		width: 20vw;
+		height: 4rem;
+		border-radius: 5px;
+		font-size: 1.7rem;
+		font-weight: bold;
+	}
+
+	:nth-child(2) {
+		background-color: transparent;
+	}
 }
