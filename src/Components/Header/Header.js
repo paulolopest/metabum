@@ -14,6 +14,7 @@ import { ReactComponent as CartIcon } from '../../Assets/icons/cart-svgrepo-com.
 import { ReactComponent as FavoritesIcon } from '../../Assets/icons/heart-svgrepo-com.svg';
 import { ReactComponent as FAQIcon } from '../../Assets/icons/contact-svgrepo-com.svg';
 import { ReactComponent as KabumIcon } from '../../Assets/icons/kabum.svg';
+import { ReactComponent as MagnifyingGlass } from '../../Assets/icons/search-svgrepo-com.svg';
 import useMedia from './../../Hooks/useMedia';
 
 const Header = () => {
@@ -60,12 +61,16 @@ const Header = () => {
 					type="text"
 					name="search"
 					className="searchInput"
-					placeHolder="Search here"
+					placeHolder="Search"
 					{...search}
 				/>
-				<div>
-					<SearchIcon />
-				</div>
+				{mobileScreen ? (
+					<MagnifyingGlass />
+				) : (
+					<div>
+						<SearchIcon />
+					</div>
+				)}
 			</div>
 			{mediumScreen ? (
 				<></>

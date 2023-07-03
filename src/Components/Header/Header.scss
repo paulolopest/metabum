@@ -278,17 +278,21 @@
 	.headerContainer {
 		display: flex;
 		justify-content: space-evenly;
+		height: 8vh;
 	}
 
 	.searchContainer {
 		svg {
-			height: 2rem;
+			height: 1rem;
 			width: 1rem;
-			right: inherit;
+			position: relative;
+			right: 1.5rem;
+			cursor: pointer;
 		}
 	}
 	.searchInput {
-		width: 15rem;
+		width: 16rem;
+		border-radius: 3px;
 	}
 
 	.header-IconsContainer {
