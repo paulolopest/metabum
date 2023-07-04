@@ -40,12 +40,15 @@ const Header = () => {
 
 	return (
 		<div className="headerContainer">
-			<div className="headerLinks">
+			<div className="headerMenu">
 				<div className="hbg-menu" onClick={activeLeftBar}>
 					<Menu />
 				</div>
+
 				{mobileScreen ? (
-					<></>
+					<div>
+						<KabumIcon />
+					</div>
 				) : (
 					<div>
 						{desktopScreen ? (
@@ -65,11 +68,13 @@ const Header = () => {
 					{...search}
 				/>
 				{mobileScreen ? (
-					<MagnifyingGlass />
+					<button>
+						<MagnifyingGlass />
+					</button>
 				) : (
-					<div>
+					<button>
 						<SearchIcon />
-					</div>
+					</button>
 				)}
 			</div>
 			{mediumScreen ? (

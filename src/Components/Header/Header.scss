@@ -12,7 +12,7 @@
 	}
 }
 
-.headerLinks {
+.headerMenu {
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
@@ -125,29 +125,41 @@
 	justify-content: center;
 	grid-column: 3/4;
 
-	svg {
-		position: relative;
-		right: 2.2rem;
+	button {
+		display: flex;
+		align-items: center;
+		border: none;
+		background-color: white;
+		border-left: none;
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+		height: 2.2rem;
+		cursor: pointer;
+
+		svg {
+			position: relative;
+			right: -2rem;
+		}
 	}
 }
 
 .searchInput {
 	height: 2.2rem;
-	width: 42rem;
+	width: 40rem;
 	font-size: 1rem;
-	border-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 	padding-left: 1rem;
 	border: none;
-	// letter-spacing: -1px;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #c7c1bc;
 }
 
 .header-LoginContainer {
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	color: white;
-	gap: 0 0.7rem;
 	line-height: 1.5rem;
 	font-size: 1rem;
 	grid-column: 4/5;
@@ -191,6 +203,7 @@
 	}
 
 	.header-LoginContainer {
+		gap: initial;
 		font-size: 0.8rem;
 	}
 
@@ -222,13 +235,13 @@
 
 @media (max-width: 1450px) {
 	.searchInput {
-		width: 39rem;
+		width: 35rem;
 	}
 }
 
 @media (max-width: 1200px) {
 	.searchInput {
-		width: 25rem;
+		width: 22rem;
 	}
 
 	.left-nav {
@@ -251,21 +264,15 @@
 		justify-content: space-around;
 	}
 
-	.headerLinks {
+	.headerMenu {
 		:nth-child(2) {
 			height: 3rem;
 			width: 3rem;
 		}
 	}
 
-	.searchContainer {
-		svg {
-			width: 3.2rem;
-			right: 1.3rem;
-		}
-	}
 	.searchInput {
-		width: 25.5rem;
+		width: 22rem;
 	}
 }
 
@@ -276,27 +283,59 @@
 }
 @media (max-width: 600px) {
 	.headerContainer {
-		display: flex;
-		justify-content: space-evenly;
+		display: grid;
+		grid-template-columns: 23vw 62vw 15vw;
 		height: 8vh;
+
+		svg {
+			width: 1.7rem;
+		}
+	}
+
+	.hbg-menu {
+		svg {
+			margin-right: initial;
+		}
+	}
+
+	.headerMenu {
+		display: flex;
+		justify-content: space-around;
+
+		grid-column: 1/2;
+
+		:nth-child(2) {
+			height: initial;
+			width: initial;
+		}
 	}
 
 	.searchContainer {
-		svg {
-			height: 1rem;
-			width: 1rem;
-			position: relative;
-			right: 1.5rem;
-			cursor: pointer;
+		grid-column: 2/3;
+		button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 2rem;
+			height: 1.8rem;
+
+			svg {
+				position: initial;
+				right: inherit;
+			}
 		}
 	}
+
 	.searchInput {
-		width: 16rem;
-		border-radius: 3px;
+		width: 11rem;
+		height: 1.8rem;
+		border-right: none;
 	}
 
 	.header-IconsContainer {
 		display: flex;
+		justify-content: center;
+		grid-column: 3/4;
 
 		svg {
 			margin-right: initial;
