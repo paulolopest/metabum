@@ -327,7 +327,7 @@
 	}
 
 	.searchInput {
-		width: 11rem;
+		width: 13rem;
 		height: 1.8rem;
 		border-right: none;
 	}
@@ -340,5 +340,13 @@
 		svg {
 			margin-right: initial;
 		}
+	}
+}
+
+@media (max-width: 400px) {
+	.searchInput {
+		width: 11rem;
+		height: 1.8rem;
+		border-right: none;
 	}
 }
