@@ -149,11 +149,15 @@ const Header = () => {
 					</div>
 					<div className="lNav-buttons">
 						{login ? (
-							<button onClick={userLogout}>LOG OUT</button>
+							<div>
+								<Link onClick={userLogout}>LOG OUT</Link>
+							</div>
 						) : (
 							<div>
-								<button>LOG IN</button>
-								<button>REGISTER</button>
+								<Link onClick={onClickOutside} to="/login">
+									LOG IN
+								</Link>
+								<Link onClick={onClickOutside}>REGISTER</Link>
 							</div>
 						)}
 					</div>

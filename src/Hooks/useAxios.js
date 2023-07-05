@@ -25,14 +25,11 @@ const useAxios = () => {
 	}, []);
 
 	const post = React.useCallback(async (url, body, config) => {
-		let res;
 		try {
 			setError(null);
 			setLoading(true);
 
-			res = await axios.post(url, body, config);
-
-			setData(res.data);
+			await axios.post(url, body, config);
 		} catch (error) {
 			setData(null);
 			setError(error.response.data);
@@ -43,14 +40,11 @@ const useAxios = () => {
 	}, []);
 
 	const deleteAxios = React.useCallback(async (url, config) => {
-		let res;
 		try {
 			setError(null);
 			setLoading(true);
 
-			res = await axios.delete(url, config);
-
-			setData(res.data);
+			await axios.delete(url, config);
 		} catch (error) {
 			setData(null);
 			setError(error.response.data);
@@ -60,7 +54,23 @@ const useAxios = () => {
 		}
 	}, []);
 
-	return { data, error, loading, get, post, deleteAxios };
+	const put = React.useCallback(async (url, data, config) => {
+		try {
+			setError(null);
+			setLoading(true);
+
+			await axios.put(url, data, config);
+		} catch (error) {
+			setData(null);
+			setError(error.response.data);
+			console.log(error.response.data);
+			setLoading(false);
+		} finally {
+			setLoading(false);
+		}
+	}, []);
+
+	return { data, error, loading, get, post, put, deleteAxios };
 };
 
 export default useAxios;

@@ -23,7 +23,9 @@ const MainFeed = () => {
 	return (
 		<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 			<div>{productMap}</div>
-			<div>{/* <Cart /> */}</div>
+			<div>
+				<Cart />
+			</div>
 		</div>
 	);
 };

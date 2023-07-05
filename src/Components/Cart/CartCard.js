@@ -1,26 +1,39 @@
 import React from 'react';
-import { CartRequest } from '../../Requests/CartRequest';
-import useAxios from '../../Hooks/useAxios';
-
-const cartRequest = new CartRequest();
+import { CartContext } from '../../Context/CartContext';
 
 const CartCard = ({ product }) => {
-	const { deleteAxios } = useAxios();
-	const onClickRemove = React.useCallback(() => {
-		const token = window.localStorage.getItem('metabumtoken');
-		const { url, headers } = cartRequest.DELETE_PRODUCT(
-			token,
-			product.product_id
-		);
+	const { deleteProduct, editQuantity } = React.useContext(CartContext);
 
-		deleteAxios(url, { headers });
-	}, [deleteAxios]);
+	const onClickRemove = React.useCallback(() => {
+		deleteProduct(product.product_id);
+	}, [deleteProduct, product.product_id]);
+
+	const onClickAdd = React.useCallback(() => {
+		const body = {
+			quantity: product.quantity + 1,
+		};
+		editQuantity(product.product_id, body);
+	}, [editQuantity, product.product_id, product.quantity]);
+
+	const onClickDecrease = React.useCallback(() => {
+		if (product.quantity <= 1) {
+			return null;
+		}
+		const body = {
+			quantity: product.quantity - 1,
+		};
+		editQuantity(product.product_id, body);
+	}, [editQuantity, product.product_id, product.quantity]);
 
 	return (
 		<div style={{ border: '1px solid black' }}>
 			<h3>{product.product_name}</h3>
 			<p>{product.product_price}</p>
-			<p>{product.quantity}</p>
+			<div style={{ display: 'flex', gap: '0 1rem' }}>
+				<button onClick={onClickDecrease}>- 1</button>
+				<p>{product.quantity}</p>
+				<button onClick={onClickAdd}>+1</button>
+			</div>
 			<button onClick={onClickRemove}>X</button>
 		</div>
 	);

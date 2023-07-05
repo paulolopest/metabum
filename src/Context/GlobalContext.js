@@ -31,6 +31,7 @@ const GlobalStorage = ({ children }) => {
 		try {
 			const token = window.localStorage.getItem('metabumtoken');
 			const { url, options } = userRequest.GET_USER(token);
+
 			let req = await axios.get(url, options);
 
 			setData(req.data);

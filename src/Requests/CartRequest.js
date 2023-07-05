@@ -27,4 +27,13 @@ export class CartRequest {
 			},
 		};
 	};
+
+	EDIT_QUANTITY = (token, id) => {
+		return {
+			url: `${BASE_URL}/cart/edit-quantity/${id}`,
+			headers: {
+				Authorization: token,
+			},
+		};
+	};
 }

@@ -1,13 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CartRequest } from './../../../../Requests/CartRequest';
-import useAxios from '../../../../Hooks/useAxios';
-
-const cartRequest = new CartRequest();
-const token = window.localStorage.getItem('metabumtoken');
+import { CartContext } from '../../../../Context/CartContext';
 
 const ProductCard = ({ product }) => {
-	const { post } = useAxios();
+	const { addProduct } = React.useContext(CartContext);
 	const navigate = useNavigate();
 
 	const handleClick = () => {
@@ -15,10 +11,8 @@ const ProductCard = ({ product }) => {
 	};
 
 	const handleAddCart = React.useCallback(() => {
-		const { url, headers } = cartRequest.ADD_PRODUCT(product.id, token);
-
-		post(url, null, { headers });
-	}, [post, product.id]);
+		addProduct(product.id);
+	}, [addProduct, product.id]);
 
 	return (
 		<div className="mainFeed-productCard">
