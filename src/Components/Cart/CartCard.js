@@ -1,29 +1,32 @@
 import React from 'react';
 import { CartContext } from '../../Context/CartContext';
-import CustomInput from './../Form/CustomInput/CustomInput';
-import useForm from './../../Hooks/useForm';
 
 const CartCard = ({ product }) => {
 	const { deleteProduct, editQuantity } = React.useContext(CartContext);
-	const quantityInput = useForm('quantity');
+	const [quantityInput, setQuantityInput] = React.useState(1);
 
 	const onClickRemove = () => {
 		deleteProduct(product.product_id);
 	};
 
 	const onClickAdd = () => {
+		setQuantityInput(Number(quantityInput) + 1);
+
 		const body = {
-			quantity: product.quantity + 1,
+			quantity: quantityInput,
 		};
 		editQuantity(product.product_id, body);
 	};
 
 	const onClickDecrease = () => {
-		if (product.quantity <= 1) {
+		if (quantityInput <= 1) {
 			return null;
 		}
+
+		setQuantityInput(Number(quantityInput) - 1);
+
 		const body = {
-			quantity: product.quantity - 1,
+			quantity: quantityInput,
 		};
 		editQuantity(product.product_id, body);
 	};
@@ -38,20 +41,25 @@ const CartCard = ({ product }) => {
 		editQuantity(product.product_id, body);
 	};
 
+	const handleChange = ({ target }) => {
+		setQuantityInput(target.value);
+	};
+
 	return (
-		<div style={{ border: '1px solid black' }}>
+		<div className="cartCard">
 			<h3>{product.product_name}</h3>
 			<p>{product.product_price}</p>
-			<div style={{ display: 'flex', gap: '0 1rem' }}>
+			<div>
 				<button onClick={onClickDecrease}>- 1</button>
 				<input
 					type="number"
-					defaultValue={product.quantity}
+					value={quantityInput}
 					onBlur={onBlurEditQuantity}
+					onChange={handleChange}
 				/>
 				<button onClick={onClickAdd}>+1</button>
+				<button onClick={onClickRemove}>X</button>
 			</div>
-			<button onClick={onClickRemove}>X</button>
 		</div>
 	);
 };

@@ -6,6 +6,7 @@ export const CartContext = React.createContext();
 const cartRequest = new CartRequest();
 
 const CartStorage = ({ children }) => {
+	const [cartBar, setCartBar] = React.useState(false);
 	const { data, loading, error, post, get, put, deleteAxios } = useAxios();
 
 	const getCart = React.useCallback(() => {
@@ -64,6 +65,8 @@ const CartStorage = ({ children }) => {
 				deleteProduct,
 				editQuantity,
 				deleteCart,
+				setCartBar,
+				cartBar,
 				data,
 				loading,
 				error,

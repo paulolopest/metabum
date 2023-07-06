@@ -1,9 +1,12 @@
 import React from 'react';
 import CartCard from './CartCard';
 import { CartContext } from '../../Context/CartContext';
+import CustomButton from './../Form/CustomButton/CustomButton';
+import { ReactComponent as EmptyCart } from '../../Assets/icons/cart-close-svgrepo-com.svg';
 
 const Cart = () => {
-	const { getCart, data, deleteCart } = React.useContext(CartContext);
+	const { getCart, data, deleteCart, cartBar, setCartBar } =
+		React.useContext(CartContext);
 
 	React.useEffect(() => {
 		getCart();
@@ -11,6 +14,12 @@ const Cart = () => {
 
 	const cleanCart = () => {
 		deleteCart();
+	};
+
+	const onClickOutside = (event) => {
+		if (event.target === event.currentTarget) {
+			setCartBar(false);
+		}
 	};
 
 	let totalPrice = 0;
@@ -24,15 +33,26 @@ const Cart = () => {
 	));
 
 	return (
-		<div>
+		<div
+			onClick={onClickOutside}
+			className={cartBar ? 'cartContainer' : 'displayNone'}
+		>
 			{data?.length <= 0 ? (
-				<p>Empty cart</p>
-			) : (
-				<div>
-					{cartMap}
+				<div className="cartEmpty animeRight">
 					<div>
-						<p>Total Price: {totalPrice}</p>
-						<button onClick={cleanCart}>Clean Cart</button>
+						<EmptyCart />
+						<p>Your cart is empty</p>
+					</div>
+				</div>
+			) : (
+				<div className="cart animeRight">
+					<div className="cartHeader">
+						<EmptyCart onClick={deleteCart} />
+					</div>
+					<div className="cartMain">{cartMap}</div>
+					<div className="cartFooter">
+						<p>Total: R$ {totalPrice},00</p>
+						<CustomButton>Choose payment method</CustomButton>
 					</div>
 				</div>
 			)}

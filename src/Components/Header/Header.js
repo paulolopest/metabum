@@ -16,11 +16,12 @@ import { ReactComponent as FAQIcon } from '../../Assets/icons/contact-svgrepo-co
 import { ReactComponent as KabumIcon } from '../../Assets/icons/kabum.svg';
 import { ReactComponent as MagnifyingGlass } from '../../Assets/icons/search-svgrepo-com.svg';
 import useMedia from './../../Hooks/useMedia';
+import { CartContext } from '../../Context/CartContext';
 
 const Header = () => {
 	const [leftNav, setLeftNav] = React.useState(false);
 	const { data, login, userLogout } = React.useContext(GlobalContext);
-	const [mobileMenu, setMobileMenu] = React.useState(false);
+	const { cartBar, setCartBar } = React.useContext(CartContext);
 
 	const desktopScreen = useMedia('(max-width: 65rem)');
 	const mediumScreen = useMedia('(max-width: 53rem)');
@@ -28,9 +29,13 @@ const Header = () => {
 
 	const search = useForm('form');
 
-	const activeLeftBar = React.useCallback(() => {
+	const activeLeftBar = () => {
 		setLeftNav(!leftNav);
-	}, [leftNav]);
+	};
+
+	const activeCartBar = () => {
+		setCartBar(!cartBar);
+	};
 
 	const onClickOutside = (event) => {
 		if (event.target === event.currentTarget) {
@@ -104,7 +109,7 @@ const Header = () => {
 				</div>
 			)}
 			<div className="header-IconsContainer">
-				<Link>
+				<Link onClick={activeCartBar}>
 					<CartIcon />
 				</Link>
 				{mobileScreen ? (
@@ -131,7 +136,7 @@ const Header = () => {
 				<div className={leftNav ? `left-nav animeLeft` : `displayNone`}>
 					<div className="lNav-profile">
 						<img src={profileImage} alt="profile" />
-						<p>Hello. {login ? data?.name : ' Login'}</p>
+						<p>Ninja{login ? `: ${data?.name}` : ''}</p>
 					</div>
 					<div className="lNav-Links">
 						<div className="lNav-Links-card">
