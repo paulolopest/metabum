@@ -36,4 +36,13 @@ export class CartRequest {
 			},
 		};
 	};
+
+	DELETE_CART = (token) => {
+		return {
+			url: `${BASE_URL}/cart/delete`,
+			headers: {
+				Authorization: token,
+			},
+		};
+	};
 }

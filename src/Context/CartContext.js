@@ -48,6 +48,14 @@ const CartStorage = ({ children }) => {
 		[getCart, put]
 	);
 
+	const deleteCart = React.useCallback(async () => {
+		const token = window.localStorage.getItem('metabumtoken');
+		const { url, headers } = cartRequest.DELETE_CART(token);
+
+		await deleteAxios(url, { headers });
+		getCart();
+	}, [deleteAxios, getCart]);
+
 	return (
 		<CartContext.Provider
 			value={{
@@ -55,6 +63,7 @@ const CartStorage = ({ children }) => {
 				getCart,
 				deleteProduct,
 				editQuantity,
+				deleteCart,
 				data,
 				loading,
 				error,

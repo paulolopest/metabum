@@ -5,6 +5,7 @@ const CustomInput = ({
 	type,
 	name,
 	value,
+	defaultValue,
 	setValue,
 	onChange,
 	error,
@@ -21,6 +22,7 @@ const CustomInput = ({
 				name={name}
 				id={name}
 				value={value}
+				defaultValue={defaultValue}
 				onChange={onChange}
 				onBlur={onBlur}
 				placeholder={placeHolder}
