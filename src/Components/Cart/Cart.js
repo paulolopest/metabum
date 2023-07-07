@@ -27,6 +27,11 @@ const Cart = () => {
 		let item = data[i];
 		totalPrice += Number(item.product_price) * Number(item.quantity);
 	}
+	let cartQuantity = 0;
+	for (let i = 0; i < data?.length; i++) {
+		let item = data[i];
+		cartQuantity = Number(item.quantity);
+	}
 
 	const cartMap = data?.map((product) => (
 		<CartCard key={product.product_id} product={product} />
@@ -47,6 +52,7 @@ const Cart = () => {
 			) : (
 				<div className="cart animeRight">
 					<div className="cartHeader">
+						<p>Cart: {cartQuantity} products</p>
 						<EmptyCart onClick={deleteCart} />
 					</div>
 					<div className="cartMain">{cartMap}</div>
