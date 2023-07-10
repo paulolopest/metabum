@@ -11,7 +11,7 @@
 
 .cart {
 	display: grid;
-	grid-template-rows: 10% 75% 15%;
+	grid-template-rows: 10% 70% 20%;
 	background-color: #f2f3f4;
 	padding: 1rem 1.5rem;
 	width: 30vw;
@@ -68,6 +68,9 @@
 }
 
 .cartMain {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem 0;
 	// background-color: green;
 	// overflow-y: scroll;
 }
@@ -90,8 +93,22 @@
 		text-transform: uppercase;
 	}
 
-	p {
-		font-size: 1.2rem;
+	div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-direction: column;
+		height: 7rem;
+		color: #1f9050;
+		background-color: #e5fff1;
+		font-size: 2rem;
+		font-weight: bold;
+		padding: 1rem 3rem;
+
+		span {
+			font-weight: normal;
+			font-size: 0.9rem;
+		}
 	}
 }
 
@@ -100,12 +117,36 @@
 	flex-direction: column;
 	background-color: white;
 	height: auto;
-	padding: 0.7rem;
+	padding: 0.9rem;
 	border-radius: 3px;
-	gap: 1rem 0;
+	gap: 1.5rem 0;
+	transition: 0.3s ease-in-out;
 
 	p {
 		font-size: 1.3rem;
+	}
+
+	&:hover {
+		.CC-removeButton {
+			display: flex;
+			align-items: flex-end;
+			width: auto;
+			font-size: 1.1rem;
+			background-color: transparent;
+			outline: none;
+			border: none;
+			padding: 1rem 0 0 0;
+			color: #dc5e5e;
+			transition: 0.3 ease-in-out;
+
+			&:hover {
+				color: red;
+
+				svg {
+					stroke: red;
+				}
+			}
+		}
 	}
 }
 
@@ -118,6 +159,10 @@
 		align-items: center;
 		justify-content: space-between;
 		width: 8rem;
+
+		span {
+			font-size: 1.3rem;
+		}
 
 		input {
 			width: 3rem;
@@ -140,10 +185,16 @@
 		}
 	}
 
-	:nth-child(2) {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: center;
+	p {
+		color: #ff6500;
+	}
+}
+
+.CC-removeButton {
+	display: none;
+
+	svg {
+		width: 1.4rem;
+		height: 1.55rem;
 	}
 }

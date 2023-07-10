@@ -3,6 +3,7 @@ import CartCard from './CartCard';
 import { CartContext } from '../../Context/CartContext';
 import CustomButton from './../Form/CustomButton/CustomButton';
 import { ReactComponent as EmptyCart } from '../../Assets/icons/cart-close-svgrepo-com.svg';
+import { formattedPrice } from '../../Utils/Functions';
 
 const Cart = () => {
 	const { getCart, data, deleteCart, cartBar, setCartBar } =
@@ -27,11 +28,6 @@ const Cart = () => {
 		let item = data[i];
 		totalPrice += Number(item.product_price) * Number(item.quantity);
 	}
-	let cartQuantity = 0;
-	for (let i = 0; i < data?.length; i++) {
-		let item = data[i];
-		cartQuantity = Number(item.quantity);
-	}
 
 	const cartMap = data?.map((product) => (
 		<CartCard key={product.product_id} product={product} />
@@ -52,12 +48,18 @@ const Cart = () => {
 			) : (
 				<div className="cart animeRight">
 					<div className="cartHeader">
-						<p>Cart: {cartQuantity} products</p>
+						<p>Cart: {data?.length} products</p>
 						<EmptyCart onClick={deleteCart} />
 					</div>
 					<div className="cartMain">{cartMap}</div>
 					<div className="cartFooter">
-						<p>Total: R$ {totalPrice},00</p>
+						<div>
+							<span>
+								In cash via <strong>pix</strong>
+							</span>
+							<p>R$ {formattedPrice(totalPrice - totalPrice / 10)}</p>
+							<span>Save: R$ {formattedPrice(totalPrice / 10)}</span>
+						</div>
 						<CustomButton>Choose payment method</CustomButton>
 					</div>
 				</div>

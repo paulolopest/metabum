@@ -5,3 +5,12 @@ export const limitText = (text) => {
 		return text;
 	}
 };
+
+export const formattedPrice = (price) => {
+	const formatted = price.toLocaleString('pt-BR', {
+		minimumFractionDigits: 2,
+		maximumFractionDigits: 2,
+	});
+
+	return formatted.replace('00', '99');
+};

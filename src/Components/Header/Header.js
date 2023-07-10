@@ -3,7 +3,7 @@ import { GlobalContext } from './../../Context/GlobalContext';
 import CustomInput from './../Form/CustomInput/CustomInput';
 import useForm from './../../Hooks/useForm';
 import { Link } from 'react-router-dom';
-import Logo from '../../Assets/images/cabum-logo-bcfcd17b.png';
+import Logo from '../../Assets/images/metabumbanner.png';
 import profileImage from '../../Assets/images/profile_ninja-c2466b7f.png';
 import { ReactComponent as Menu } from '../../Assets/icons/menu.svg';
 import { ReactComponent as UserIcon } from '../../Assets/icons/user.svg';

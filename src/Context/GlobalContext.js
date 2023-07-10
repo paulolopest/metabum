@@ -60,6 +60,7 @@ const GlobalStorage = ({ children }) => {
 
 			window.localStorage.setItem('metabumtoken', req.data);
 
+			setLogin(true);
 			navigate('/');
 		} catch (error) {
 			setError(error.response.data);

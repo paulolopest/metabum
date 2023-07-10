@@ -1,11 +1,12 @@
 import React from 'react';
+import useForm from './../../Hooks/useForm';
 import { CartContext } from '../../Context/CartContext';
-import CustomButton from '../Form/CustomButton/CustomButton';
 import CustomInput from './../Form/CustomInput/CustomInput';
+import CustomButton from '../Form/CustomButton/CustomButton';
+import { formattedPrice, limitText } from './../../Utils/Functions';
 import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.svg';
 import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
-import useForm from './../../Hooks/useForm';
-import { limitText } from './../../Utils/Functions';
+import { ReactComponent as TrashIcon } from '../../Assets/icons/trash-3-svgrepo-com.svg';
 
 const CartCard = ({ product }) => {
 	const { deleteProduct, editQuantity } = React.useContext(CartContext);
@@ -54,8 +55,8 @@ const CartCard = ({ product }) => {
 	return (
 		<div className="cartCard">
 			<p>{limitText(product.product_name)}</p>
-			<div className="CC-Info">
-				<div>
+			<div>
+				<div className="CC-Info">
 					<div className="CC-Quantity">
 						<CustomButton onClick={onClickDecrease}>
 							<PreviousIcon />
@@ -68,18 +69,19 @@ const CartCard = ({ product }) => {
 								{...inputQuantity}
 							/>
 						) : (
-							<p onClick={switchInput}>{product.quantity}</p>
+							<span onClick={switchInput}>{product.quantity}</span>
 						)}
 						<CustomButton onClick={onClickAdd}>
 							<NextIcon />
 						</CustomButton>
 					</div>
-					<CustomButton onClick={onClickRemove}>Remove</CustomButton>
+					<p>R$: {formattedPrice(product.product_price)}</p>
 				</div>
 
-				<div>
-					<p>R$: {product.product_price}</p>
-				</div>
+				<CustomButton className="CC-removeButton" onClick={onClickRemove}>
+					<TrashIcon />
+					Remove
+				</CustomButton>
 			</div>
 		</div>
 	);

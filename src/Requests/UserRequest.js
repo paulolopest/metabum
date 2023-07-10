@@ -5,7 +5,6 @@ export class UserRequest {
 		return {
 			url: `${BASE_URL}/signup`,
 			options: {
-				method: 'POST',
 				body,
 			},
 		};
