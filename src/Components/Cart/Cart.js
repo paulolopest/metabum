@@ -41,7 +41,7 @@ const Cart = () => {
 		return () => {
 			window.removeEventListener('popstate', handlePopState);
 		};
-	}, []);
+	}, [setCartBar]);
 
 	const cleanCart = () => {
 		deleteCart();
