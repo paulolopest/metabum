@@ -1,22 +1,22 @@
 import React from 'react';
-import { GlobalContext } from './../../Context/GlobalContext';
-import CustomInput from './../Form/CustomInput/CustomInput';
-import useForm from './../../Hooks/useForm';
 import { Link } from 'react-router-dom';
-import Logo from '../../Assets/images/metabumbanner.png';
-import profileImage from '../../Assets/images/profile_ninja-c2466b7f.png';
-import { ReactComponent as Menu } from '../../Assets/icons/menu.svg';
-import { ReactComponent as UserIcon } from '../../Assets/icons/user.svg';
-import { ReactComponent as OrderIcon } from '../../Assets/icons/truck.svg';
-import { ReactComponent as SearchIcon } from '../../Assets/icons/search.svg';
-import { ReactComponent as ProfileIcon } from '../../Assets/icons/profile-circle-svgrepo-com.svg';
-import { ReactComponent as CartIcon } from '../../Assets/icons/cart-svgrepo-com.svg';
-import { ReactComponent as FavoritesIcon } from '../../Assets/icons/heart-svgrepo-com.svg';
-import { ReactComponent as FAQIcon } from '../../Assets/icons/contact-svgrepo-com.svg';
-import { ReactComponent as KabumIcon } from '../../Assets/icons/kabum.svg';
-import { ReactComponent as MagnifyingGlass } from '../../Assets/icons/search-svgrepo-com.svg';
+import useForm from './../../Hooks/useForm';
 import useMedia from './../../Hooks/useMedia';
 import { CartContext } from '../../Context/CartContext';
+import Logo from '../../Assets/images/metabumbanner.png';
+import CustomInput from './../Form/CustomInput/CustomInput';
+import { GlobalContext } from './../../Context/GlobalContext';
+import { ReactComponent as Menu } from '../../Assets/icons/menu.svg';
+import { ReactComponent as UserIcon } from '../../Assets/icons/user.svg';
+import profileImage from '../../Assets/images/profile_ninja-c2466b7f.png';
+import { ReactComponent as OrderIcon } from '../../Assets/icons/truck.svg';
+import { ReactComponent as KabumIcon } from '../../Assets/icons/kabum.svg';
+import { ReactComponent as SearchIcon } from '../../Assets/icons/search.svg';
+import { ReactComponent as CartIcon } from '../../Assets/icons/cart-svgrepo-com.svg';
+import { ReactComponent as FAQIcon } from '../../Assets/icons/contact-svgrepo-com.svg';
+import { ReactComponent as FavoritesIcon } from '../../Assets/icons/heart-svgrepo-com.svg';
+import { ReactComponent as MagnifyingGlass } from '../../Assets/icons/search-svgrepo-com.svg';
+import { ReactComponent as ProfileIcon } from '../../Assets/icons/profile-circle-svgrepo-com.svg';
 
 const Header = () => {
 	const [leftNav, setLeftNav] = React.useState(false);
@@ -31,6 +31,8 @@ const Header = () => {
 
 	const activeLeftBar = () => {
 		setLeftNav(!leftNav);
+
+		document.body.classList.add('activeBar');
 	};
 
 	const activeCartBar = () => {
@@ -41,6 +43,8 @@ const Header = () => {
 		if (event.target === event.currentTarget) {
 			setLeftNav(false);
 		}
+
+		document.body.classList.remove('activeBar');
 	};
 
 	return (

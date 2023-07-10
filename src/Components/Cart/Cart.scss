@@ -1,21 +1,20 @@
 .cartContainer {
-	position: absolute;
+	position: fixed;
 	backdrop-filter: brightness(0.5);
 	z-index: 5;
 	width: 100%;
 	height: 100vh;
 	left: 0;
 	top: 0;
-	overflow-x: hidden;
 }
 
 .cart {
 	display: grid;
-	grid-template-rows: 10% 70% 20%;
+	grid-template-rows: 10% 65% 25%;
 	background-color: #f2f3f4;
 	padding: 1rem 1.5rem;
 	width: 30vw;
-	height: calc(100vh);
+	height: 100%;
 	position: absolute;
 	z-index: 10;
 	top: 0;
@@ -30,7 +29,7 @@
 	color: white;
 	padding: 1rem;
 	width: 25vw;
-	height: calc(100vh);
+	height: 100%;
 	position: absolute;
 	z-index: 10;
 	top: 0;
@@ -53,6 +52,23 @@
 	justify-content: space-between;
 	align-items: center;
 
+	div {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+
+		span {
+			cursor: pointer;
+			padding: 0.3rem 0.5rem;
+			color: white;
+			background-color: #dc5e5e;
+
+			&:hover {
+				background-color: red;
+			}
+		}
+	}
+
 	p {
 		font-size: 1.3rem;
 		font-weight: bold;
@@ -71,8 +87,11 @@
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem 0;
-	// background-color: green;
-	// overflow-y: scroll;
+	overflow-y: scroll;
+
+	&::-webkit-scrollbar {
+		width: 0px;
+	}
 }
 
 .cartFooter {
@@ -196,5 +215,87 @@
 	svg {
 		width: 1.4rem;
 		height: 1.55rem;
+	}
+}
+
+@media (max-width: 1600px) {
+	.cart {
+		grid-template-rows: 10% 60% 30%;
+	}
+
+	.cartFooter {
+		justify-content: space-evenly;
+	}
+
+	.cartCard {
+		p {
+			font-size: 1rem;
+		}
+
+		&:hover {
+			.CC-removeButton {
+				gap: 0 0.3rem;
+				font-size: 0.9rem;
+
+				svg {
+					width: 0.8rem;
+					height: 1rem;
+				}
+			}
+		}
+	}
+
+	.CC-Info {
+		.CC-Quantity {
+			width: 5.5rem;
+		}
+	}
+}
+
+@media (max-width: 1450px) {
+	.cart {
+		width: 32vw;
+	}
+}
+
+@media (max-width: 1200px) {
+	.cart {
+		width: 40vw;
+	}
+}
+
+@media (max-width: 1025px) {
+}
+
+@media (max-width: 900px) {
+	.cart {
+		padding: 0rem 1rem;
+	}
+	.cart {
+		width: 55vw;
+	}
+}
+@media (max-width: 600px) {
+	.cart {
+		width: 80vw;
+	}
+}
+
+@media (max-width: 400px) {
+	.cart {
+		width: 100vw;
+	}
+	.cartFooter {
+		div {
+			font-size: 1.5rem;
+			padding: 0.3rem 2rem;
+			height: 5rem;
+		}
+
+		button {
+			padding: initial;
+			font-size: 1rem;
+			padding: 0.5rem 0.8rem;
+		}
 	}
 }

@@ -4,8 +4,11 @@ import { CartContext } from '../../Context/CartContext';
 import CustomButton from './../Form/CustomButton/CustomButton';
 import { ReactComponent as EmptyCart } from '../../Assets/icons/cart-close-svgrepo-com.svg';
 import { formattedPrice } from '../../Utils/Functions';
+import { ReactComponent as DotIcon } from '../../Assets/icons/menu-dots-svgrepo-com.svg';
 
 const Cart = () => {
+	const [deleteOption, setDeleteOption] = React.useState(false);
+
 	const { getCart, data, deleteCart, cartBar, setCartBar } =
 		React.useContext(CartContext);
 
@@ -20,6 +23,7 @@ const Cart = () => {
 	const onClickOutside = (event) => {
 		if (event.target === event.currentTarget) {
 			setCartBar(false);
+			setDeleteOption(false);
 		}
 	};
 
@@ -49,7 +53,15 @@ const Cart = () => {
 				<div className="cart animeRight">
 					<div className="cartHeader">
 						<p>Cart: {data?.length} products</p>
-						<EmptyCart onClick={deleteCart} />
+						<div>
+							<span
+								onClick={deleteCart}
+								className={deleteOption ? '' : 'displayNone'}
+							>
+								Delete all cart
+							</span>
+							<DotIcon onClick={() => setDeleteOption(!deleteOption)} />
+						</div>
 					</div>
 					<div className="cartMain">{cartMap}</div>
 					<div className="cartFooter">
