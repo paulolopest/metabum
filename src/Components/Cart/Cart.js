@@ -16,6 +16,33 @@ const Cart = () => {
 		getCart();
 	}, [getCart]);
 
+	React.useEffect(() => {
+		const handleKeyDown = (event) => {
+			if (event.keyCode === 27) {
+				setCartBar(false);
+				setDeleteOption(false);
+			}
+		};
+
+		document.addEventListener('keydown', handleKeyDown);
+
+		return () => {
+			document.removeEventListener('keydown', handleKeyDown);
+		};
+	}, [setCartBar]);
+
+	React.useEffect(() => {
+		const handlePopState = (event) => {
+			setCartBar(false);
+		};
+
+		window.addEventListener('popstate', handlePopState);
+
+		return () => {
+			window.removeEventListener('popstate', handlePopState);
+		};
+	}, []);
+
 	const cleanCart = () => {
 		deleteCart();
 	};
