@@ -1,3 +1,3 @@
 In development.
 
-https://vercel.com/pulotarso725-gmailcom/metabum
+https://metabum.vercel.app/
