@@ -278,6 +278,12 @@
 @media (max-width: 600px) {
 	.cart {
 		width: 100vw;
+		padding: 1rem 1.5rem 2rem 1.5rem;
+		justify-content: center;
+	}
+
+	.cartFooter {
+		align-items: center;
 	}
 }
 
