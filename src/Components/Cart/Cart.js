@@ -5,9 +5,16 @@ import CustomButton from './../Form/CustomButton/CustomButton';
 import { ReactComponent as EmptyCart } from '../../Assets/icons/cart-close-svgrepo-com.svg';
 import { formattedPrice } from '../../Utils/Functions';
 import { ReactComponent as DotIcon } from '../../Assets/icons/menu-dots-svgrepo-com.svg';
+import { GlobalContext } from '../../Context/GlobalContext';
+import useMedia from './../../Hooks/useMedia';
 
 const Cart = () => {
 	const [deleteOption, setDeleteOption] = React.useState(false);
+	const { login } = React.useContext(GlobalContext);
+
+	const mobileScreen = useMedia('(max-width: 37rem)');
+
+	console.log(login);
 
 	const { getCart, data, deleteCart, cartBar, setCartBar } =
 		React.useContext(CartContext);
@@ -80,15 +87,23 @@ const Cart = () => {
 				<div className="cart animeRight">
 					<div className="cartHeader">
 						<p>Cart: {data?.length} products</p>
-						<div>
-							<span
-								onClick={deleteCart}
-								className={deleteOption ? '' : 'displayNone'}
-							>
-								Delete all cart
-							</span>
-							<DotIcon onClick={() => setDeleteOption(!deleteOption)} />
-						</div>
+						{mobileScreen ? (
+							<CustomButton onClick={() => setCartBar(false)}>
+								X
+							</CustomButton>
+						) : (
+							<div>
+								<span
+									onClick={deleteCart}
+									className={deleteOption ? '' : 'displayNone'}
+								>
+									Delete all cart
+								</span>
+								<DotIcon
+									onClick={() => setDeleteOption(!deleteOption)}
+								/>
+							</div>
+						)}
 					</div>
 					<div className="cartMain">{cartMap}</div>
 					<div className="cartFooter">
