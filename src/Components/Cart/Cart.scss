@@ -81,6 +81,22 @@
 		outline: none;
 		cursor: pointer;
 	}
+
+	.mobileCloseIcon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 2rem;
+		height: 2rem;
+		border: none;
+		outline: none;
+		background-color: transparent;
+
+		svg {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
 }
 
 .cartMain {
@@ -286,12 +302,27 @@
 	.cartFooter {
 		align-items: center;
 	}
+
+	button {
+		padding: initial;
+		font-size: 1rem;
+	}
 }
 
 @media (max-width: 400px) {
 	.cart {
 		width: 100vw;
 	}
+
+	.CC-Info {
+		.CC-Quantity {
+			width: 5rem;
+			span {
+				font-size: 1rem;
+			}
+		}
+	}
+
 	.cartFooter {
 		div {
 			font-size: 1.5rem;
@@ -301,8 +332,8 @@
 
 		button {
 			padding: initial;
-			font-size: 1rem;
-			padding: 0.5rem 0.8rem;
+			font-size: 0.9rem;
+			padding: 1rem 0.8rem;
 		}
 	}
 }

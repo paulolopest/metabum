@@ -7,11 +7,13 @@ import { formattedPrice, limitText } from './../../Utils/Functions';
 import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.svg';
 import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 import { ReactComponent as TrashIcon } from '../../Assets/icons/trash-3-svgrepo-com.svg';
+import useMedia from './../../Hooks/useMedia';
 
 const CartCard = ({ product }) => {
 	const { deleteProduct, editQuantity } = React.useContext(CartContext);
 	const [editInput, setEditInput] = React.useState(false);
 
+	const mobileScreen = useMedia('(max-width: 37rem)');
 	const inputQuantity = useForm('');
 
 	const onClickRemove = () => {
@@ -54,7 +56,11 @@ const CartCard = ({ product }) => {
 
 	return (
 		<div className="cartCard">
-			<p>{limitText(product.product_name)}</p>
+			{mobileScreen ? (
+				<p>{limitText(product.product_name, 45)}</p>
+			) : (
+				<p>{limitText(product.product_name, 87)}</p>
+			)}
 			<div>
 				<div className="CC-Info">
 					<div className="CC-Quantity">

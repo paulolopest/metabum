@@ -3,6 +3,7 @@ import CartCard from './CartCard';
 import { CartContext } from '../../Context/CartContext';
 import CustomButton from './../Form/CustomButton/CustomButton';
 import { ReactComponent as EmptyCart } from '../../Assets/icons/cart-close-svgrepo-com.svg';
+import { ReactComponent as CloseIcon } from '../../Assets/icons/close-svgrepo-com.svg';
 import { formattedPrice } from '../../Utils/Functions';
 import { ReactComponent as DotIcon } from '../../Assets/icons/menu-dots-svgrepo-com.svg';
 import { GlobalContext } from '../../Context/GlobalContext';
@@ -88,8 +89,11 @@ const Cart = () => {
 					<div className="cartHeader">
 						<p>Cart: {data?.length} products</p>
 						{mobileScreen ? (
-							<CustomButton onClick={() => setCartBar(false)}>
-								X
+							<CustomButton
+								className="mobileCloseIcon"
+								onClick={() => setCartBar(false)}
+							>
+								<CloseIcon />
 							</CustomButton>
 						) : (
 							<div>

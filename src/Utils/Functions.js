@@ -1,6 +1,6 @@
-export const limitText = (text) => {
-	if (text.length > 50) {
-		return text.substring(0, 87) + '...';
+export const limitText = (text, stringSize) => {
+	if (text.length > 30) {
+		return text.substring(0, stringSize) + '...';
 	} else {
 		return text;
 	}
