@@ -63,7 +63,6 @@ const useAxios = () => {
 		} catch (error) {
 			setData(null);
 			setError(error.response.data);
-			console.log(error.response.data);
 			setLoading(false);
 		} finally {
 			setLoading(false);

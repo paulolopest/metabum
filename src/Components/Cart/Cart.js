@@ -15,8 +15,6 @@ const Cart = () => {
 
 	const mobileScreen = useMedia('(max-width: 37rem)');
 
-	console.log(login);
-
 	const { getCart, data, deleteCart, cartBar, setCartBar } =
 		React.useContext(CartContext);
 
