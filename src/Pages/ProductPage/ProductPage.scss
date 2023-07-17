@@ -79,10 +79,14 @@
 		align-items: center;
 		width: 10%;
 
-		p {
-			background-color: black;
-			height: 3rem;
-			width: 3rem;
+		img {
+			padding: 0.3rem 0.2rem;
+			border: 1px solid #d2d2d2;
+			border-radius: 3px;
+
+			&:active {
+				border: 1px solid black;
+			}
 		}
 	}
 
@@ -90,9 +94,14 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		overflow: hidden;
+
 		img {
 			width: 60%;
 			height: auto;
+
+			&:hover {
+			}
 		}
 	}
 }

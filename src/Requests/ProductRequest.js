@@ -9,7 +9,13 @@ export class ProductRequest {
 
 	GET_PRODUCT_BY_ID = (id) => {
 		return {
-			url: `${BASE_URL}/products/id/${id}`,
+			url: `${BASE_URL}/product/id/${id}`,
+		};
+	};
+
+	GET_PRODUCT_IMAGES = (id) => {
+		return {
+			url: `${BASE_URL}/product/images/${id}`,
 		};
 	};
 }

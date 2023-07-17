@@ -63,7 +63,9 @@ const Header = () => {
 						{desktopScreen ? (
 							<KabumIcon />
 						) : (
-							<img src={Logo} alt="logo"></img>
+							<Link to="/">
+								<img src={Logo} alt="logo"></img>
+							</Link>
 						)}
 					</div>
 				)}
