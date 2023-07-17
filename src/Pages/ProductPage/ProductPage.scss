@@ -152,28 +152,67 @@
 
 .pc-firstContainer {
 	display: flex;
-	// background-color: bisque;
+	justify-content: space-between;
 	height: 60%;
+}
+
+.pc-fc-price {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem 0;
+	color: rgb(86, 92, 105);
+	font-size: 0.9rem;
 
 	div {
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem 0;
-		color: rgb(86, 92, 105);
-		font-size: 0.9rem;
+		gap: 0.5rem 0;
 
-		div {
-			display: flex;
-			flex-direction: column;
-			gap: 0.5rem 0;
-			:nth-child(1) span {
-				color: green;
+		p {
+			:nth-child(2) {
+				color: #1f9050;
 			}
+		}
 
-			.pc-price {
-				font-size: 2.5rem;
-				font-weight: bold;
-				color: #ff6500;
+		.pc-price {
+			font-size: 2.5rem;
+			font-weight: bold;
+			color: #ff6500;
+		}
+	}
+
+	:nth-child(2) {
+		span {
+			text-decoration: underline;
+		}
+	}
+}
+
+.pc-fc-buy-button {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		background-color: #ff6500;
+		outline: none;
+		padding: 1rem 5rem;
+		border: none;
+		border-radius: 3px;
+		font-size: 1rem;
+		text-transform: uppercase;
+		font-weight: bold;
+		gap: 0 0.5rem;
+
+		svg {
+			width: 1.3rem;
+			height: 1.3rem;
+
+			path {
+				fill: white;
 			}
 		}
 	}

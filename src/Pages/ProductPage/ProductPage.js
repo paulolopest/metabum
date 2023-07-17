@@ -5,9 +5,11 @@ import { ProductRequest } from '../../Requests/ProductRequest';
 import { ReactComponent as StarIcon } from '../../Assets/icons/star-svgrepo-com.svg';
 import { ReactComponent as ShareIcon } from '../../Assets/icons/share-svgrepo-com.svg';
 import { ReactComponent as FavoriteIcon } from '../../Assets/icons/heart-svgrepo-com.svg';
+import { ReactComponent as CartIcon } from '../../Assets/icons/cart-svgrepo-com.svg';
 import CustomInput from './../../Components/Form/CustomInput/CustomInput';
 import useForm from './../../Hooks/useForm';
 import { formattedPrice } from '../../Utils/Functions';
+import CustomButton from './../../Components/Form/CustomButton/CustomButton';
 
 const ProductPage = () => {
 	const productRequest = new ProductRequest();
@@ -66,19 +68,19 @@ const ProductPage = () => {
 										<CustomInput placeholder="Insert cep" {...cep} />
 										<button>OK</button>
 										<a href="https://buscacepinter.correios.com.br/app/endereco/index.php?t">
-											Não lembro meu CEP
+											I dont't remember my zip code
 										</a>
 									</div>
 								</div>
 							</div>
 							<div className="pp-p-purchaseCallback">
 								<div className="pc-firstContainer">
-									<div>
+									<div className="pc-fc-price">
 										<div>
 											<p>
 												Sold and delivered by:{' '}
-												<strong>Metabum</strong> |{' '}
-												<span>In stock</span>
+												<strong>Metabum!</strong> |{' '}
+												<strong>In stock</strong>
 											</p>
 											<p className="pc-price">
 												R$ {formattedPrice((data.price / 10) * 9.5)}
@@ -89,7 +91,9 @@ const ProductPage = () => {
 											</span>
 										</div>
 										<div>
-											<strong>R${formattedPrice(data.price)}</strong>
+											<strong>
+												R$ {formattedPrice(data.price)}
+											</strong>
 											<p>
 												In up to 10x of <strong>$34.90</strong> with
 												no interest on the
@@ -99,7 +103,12 @@ const ProductPage = () => {
 											<span>See more options of payment</span>
 										</div>
 									</div>
-									<div>{/* <button>Comprar</button> */}</div>
+									<div className="pc-fc-buy-button">
+										<CustomButton>
+											<CartIcon />
+											Buy
+										</CustomButton>
+									</div>
 								</div>
 								<div>
 									<div>
