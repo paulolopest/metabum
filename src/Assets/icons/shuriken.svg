@@ -1,0 +1,63 @@
+<svg xml:space="preserve" viewBox="0 0 100 100" y="0" x="0" xmlns="http://www.w3.org/2000/svg" id="Layer_1"
+    version="1.1" style="height: 100%; width: 100%; background: rgb(0, 0, 0);" width="200px" height="200px">
+    <g class="ldl-scale" style="transform-origin: 50% 50%; transform: rotate(0deg) scale(0.8, 0.8);">
+        <g class="ldl-ani"
+            style="transform: rotate(0deg); transform-origin: 50px 50px; animation: 1s linear 0s infinite normal forwards running spin-01693da2-b4ea-45d1-b4a8-f7a3d6e3f877;">
+            <g class="ldl-layer">
+                <g class="ldl-ani">
+                    <path fill="#f7b26a" d="M50.5 7.5c-12.9 0-23.3 18.7-23.7 42h8.6c.3-23.3 6.9-42 15.1-42z"
+                        style="fill: rgb(255, 255, 255);"></path>
+                </g>
+            </g>
+            <g class="ldl-layer">
+                <g class="ldl-ani">
+                    <path fill="#f7b26a" d="M7.5 49.5c0 12.9 18.7 23.3 42 23.7v-8.6c-23.3-.3-42-6.9-42-15.1z"
+                        style="fill: rgb(255, 255, 255);"></path>
+                </g>
+            </g>
+            <g class="ldl-layer">
+                <g class="ldl-ani">
+                    <path fill="#f47e5f" d="M40.9 50v-.5H7.5c0 8.2 18.7 14.9 42 15.1v-5.4h.5c-4.9-.4-8.8-4.3-9.1-9.2z"
+                        style="fill: rgb(255, 101, 0);"></path>
+                </g>
+            </g>
+            <g class="ldl-layer">
+                <g class="ldl-ani">
+                    <path fill="#f7b26a" d="M64.5 50.5c-.2 23.3-6.9 42-15.1 42 12.9 0 23.3-18.7 23.7-42h-8.6z"
+                        style="fill: rgb(255, 255, 255);"></path>
+                </g>
+            </g>
+            <g class="ldl-layer">
+                <g class="ldl-ani">
+                    <path fill="#f47e5f"
+                        d="M59.1 50.5V50c-.3 4.9-4.2 8.8-9.1 9.1h-.5v33.4c8.2 0 14.9-18.7 15.1-42h-5.5z"
+                        style="fill: rgb(255, 101, 0);"></path>
+                </g>
+            </g>
+            <g class="ldl-layer">
+                <g class="ldl-ani">
+                    <path fill="#f7b26a" d="M92.5 50.5c0-12.9-18.7-23.3-42-23.7v8.6c23.3.3 42 6.9 42 15.1z"
+                        style="fill: rgb(255, 255, 255);"></path>
+                </g>
+            </g>
+            <g class="ldl-layer">
+                <g class="ldl-ani">
+                    <path fill="#f47e5f" d="M35.5 49.5h5.4v.5c.3-4.9 4.2-8.8 9.1-9.1h.5V7.5c-8.2 0-14.8 18.7-15 42z"
+                        style="fill: rgb(255, 101, 0);"></path>
+                </g>
+            </g>
+            <g class="ldl-layer">
+                <g class="ldl-ani">
+                    <path fill="#f47e5f" d="M50.5 35.5v5.4H50c4.9.3 8.8 4.2 9.1 9.1v.5h33.4c0-8.2-18.7-14.8-42-15z"
+                        style="fill: rgb(255, 101, 0);"></path>
+                </g>
+            </g>
+            <metadata xmlns:d="https://loading.io/stock/">
+                <d:name>shuriken</d:name>
+                <d:tags>weapon,kunai,ninja,samurai,soilder,attack,shuriken,spinner</d:tags>
+                <d:license>pro</d:license>
+                <d:slug>9aqt03</d:slug>
+            </metadata>
+        </g>
+    </g>
+</svg>

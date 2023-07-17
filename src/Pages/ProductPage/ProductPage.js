@@ -1,7 +1,7 @@
 import React from 'react';
 import useForm from './../../Hooks/useForm';
 import useAxios from '../../Hooks/useAxios';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { formattedPrice } from '../../Utils/Functions';
 import { ProductRequest } from '../../Requests/ProductRequest';
 import CustomInput from './../../Components/Form/CustomInput/CustomInput';
@@ -10,28 +10,38 @@ import { ReactComponent as CartIcon } from '../../Assets/icons/cart-svgrepo-com.
 import { ReactComponent as StarIcon } from '../../Assets/icons/star-svgrepo-com.svg';
 import { ReactComponent as ShareIcon } from '../../Assets/icons/share-svgrepo-com.svg';
 import { ReactComponent as FavoriteIcon } from '../../Assets/icons/heart-svgrepo-com.svg';
+import { ReactComponent as EtiquetteIcon } from '../../Assets/icons/etiquette.svg';
 
 const ProductPage = () => {
 	const productRequest = new ProductRequest();
-	const [activeImg, setActiveImg] = React.useState(null);
-
 	const { id } = useParams();
+
+	const [activeImg, setActiveImg] = React.useState(null);
+	const [productId, setProductId] = React.useState(id);
+
 	const cep = useForm('');
 
 	const product = useAxios();
 	const images = useAxios();
+	const similarP = useAxios();
 
 	React.useEffect(() => {
-		const { url } = productRequest.GET_PRODUCT_BY_ID(id);
+		const { url } = productRequest.GET_PRODUCT_BY_ID(productId);
 
 		product.get(url);
-	}, [product.get, id]);
+	}, [productId]);
 
 	React.useEffect(() => {
-		const { url } = productRequest.GET_PRODUCT_IMAGES(id);
+		const { url } = productRequest.GET_PRODUCT_IMAGES(productId);
 
 		images.get(url);
-	}, [images.get, id]);
+	}, [productId]);
+
+	React.useEffect(() => {
+		const { url } = productRequest.GET_PRODUCT_BY_BRAND(product?.data?.brand);
+
+		similarP.get(url);
+	}, [product?.data?.brand]);
 
 	const miniIcons = images.data?.map((src) => (
 		<img
@@ -40,6 +50,19 @@ const ProductPage = () => {
 			src={src.small_img}
 			alt="icon"
 		></img>
+	));
+
+	const similarProducts = similarP.data?.map((product) => (
+		<div
+			onClick={() => {
+				setProductId(product.id);
+				setActiveImg(null);
+			}}
+			key={product.id}
+		>
+			<img src={product.src} alt="similar product" />
+			<p>R$ {formattedPrice(product.price)}</p>
+		</div>
 	));
 
 	if (product?.data)
@@ -83,7 +106,7 @@ const ProductPage = () => {
 										<CustomInput placeholder="Insert cep" {...cep} />
 										<button>OK</button>
 										<a href="https://buscacepinter.correios.com.br/app/endereco/index.php?t">
-											I dont't remember my zip code
+											I don't remember my zip code
 										</a>
 									</div>
 								</div>
@@ -113,8 +136,11 @@ const ProductPage = () => {
 												R$ {formattedPrice(product.data.price)}
 											</strong>
 											<p>
-												In up to 10x of <strong>$34.90</strong> with
-												no interest on the
+												In up to 10x of{' '}
+												<strong>
+													$ {product.data?.price / 10}
+												</strong>{' '}
+												with no interest on the
 												<br /> credit card Or 1x in cart with 5%{' '}
 												<strong>OFF</strong>
 											</p>
@@ -128,17 +154,17 @@ const ProductPage = () => {
 										</CustomButton>
 									</div>
 								</div>
-								<div>
-									<div>
-										<p>Icon</p>
-										<p>Produtos similares</p>
+								<div className="pc-secondContainer">
+									<div className="pc-sc-title">
+										<EtiquetteIcon />
+										<p>Similar products</p>
 									</div>
-									<p>Fabricante: marca</p>
-									<div>
-										<div>
-											<p>Foto do produto</p>
-											<p>Preco</p>
-										</div>
+									<p>
+										Manufacturer:{' '}
+										<strong>{product.data.brand}</strong>
+									</p>
+									<div className="pc-sc-similarProducts">
+										{similarProducts}
 									</div>
 								</div>
 							</div>

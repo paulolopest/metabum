@@ -18,4 +18,10 @@ export class ProductRequest {
 			url: `${BASE_URL}/product/images/${id}`,
 		};
 	};
+
+	GET_PRODUCT_BY_BRAND = (brand) => {
+		return {
+			url: `${BASE_URL}/product/brand/${brand}`,
+		};
+	};
 }
