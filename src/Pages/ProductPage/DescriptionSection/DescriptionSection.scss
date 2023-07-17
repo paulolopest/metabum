@@ -1,0 +1,69 @@
+.descriptionSection {
+	display: flex;
+	justify-content: center;
+	background-color: white;
+	min-height: 15rem;
+	height: auto;
+}
+
+.descriptionContainer {
+	display: flex;
+	flex-direction: column;
+	padding-top: 3rem;
+	width: 81vw;
+
+	div {
+		display: flex;
+		gap: 0 0.5rem;
+		h1 {
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 1.5rem;
+			margin-bottom: 2rem;
+		}
+
+		svg {
+			width: 1.5rem;
+			height: 1.5rem;
+			fill: #ff6500;
+		}
+	}
+}
+
+.descriptionArray {
+	display: flex;
+	flex-direction: column;
+}
+
+.descriptionCard {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 2rem;
+
+	h2 {
+		margin-bottom: 0.5rem;
+	}
+}
+
+@media (max-width: 1600px) {
+	.descriptionContainer {
+		width: 95vw;
+	}
+}
+
+@media (max-width: 1450px) {
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 1025px) {
+}
+
+@media (max-width: 900px) {
+}
+@media (max-width: 600px) {
+}
+
+@media (max-width: 400px) {
+}

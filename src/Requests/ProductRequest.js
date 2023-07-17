@@ -24,4 +24,10 @@ export class ProductRequest {
 			url: `${BASE_URL}/product/brand/${brand}`,
 		};
 	};
+
+	GET_PRODUCT_DESCRIPTION = (id) => {
+		return {
+			url: `${BASE_URL}/product/description/${id}`,
+		};
+	};
 }
