@@ -1,6 +1,7 @@
 import React from 'react';
-import useAxios from '../../../Hooks/useAxios';
+import { motion } from 'framer-motion';
 import useForm from '../../../Hooks/useForm';
+import useAxios from '../../../Hooks/useAxios';
 import { formattedPrice } from '../../../Utils/Functions';
 import { ProductRequest } from '../../../Requests/ProductRequest';
 import CustomInput from '../../../Components/Form/CustomInput/CustomInput';
@@ -8,20 +9,26 @@ import CustomButton from '../../../Components/Form/CustomButton/CustomButton';
 import { ReactComponent as EtiquetteIcon } from '../../../Assets/icons/etiquette.svg';
 import { ReactComponent as CartIcon } from '../../../Assets/icons/cart-svgrepo-com.svg';
 import { ReactComponent as StarIcon } from '../../../Assets/icons/star-svgrepo-com.svg';
+import { ReactComponent as NextIcon } from '../../../Assets/icons/next-svgrepo-com.svg';
 import { ReactComponent as ShareIcon } from '../../../Assets/icons/share-svgrepo-com.svg';
 import { ReactComponent as FavoriteIcon } from '../../../Assets/icons/heart-svgrepo-com.svg';
+import { ReactComponent as PreviousIcon } from '../../../Assets/icons/previous-svgrepo-com.svg';
 
 const BuySection = ({ id }) => {
 	const productRequest = new ProductRequest();
 
-	const [activeImg, setActiveImg] = React.useState(null);
-	const [productId, setProductId] = React.useState(id);
+	const carousel = React.useRef();
 
-	const cep = useForm('');
+	const [isDragging, setIsDragging] = React.useState(false);
+	const [productId, setProductId] = React.useState(id);
+	const [activeImg, setActiveImg] = React.useState(null);
+	const [similarProductWidth, setSimilarProductWidth] = React.useState(0);
 
 	const product = useAxios();
 	const images = useAxios();
 	const similarP = useAxios();
+
+	const cep = useForm('');
 
 	React.useEffect(() => {
 		const { url } = productRequest.GET_PRODUCT_BY_ID(productId);
@@ -41,6 +48,12 @@ const BuySection = ({ id }) => {
 		similarP.get(url);
 	}, [product.data?.brand, similarP.get]);
 
+	React.useEffect(() => {
+		setSimilarProductWidth(
+			carousel?.current?.scrollWidth - carousel?.current?.offsetWidth
+		);
+	}, []);
+
 	const miniIcons = images.data?.map((src) => (
 		<img
 			onClick={() => setActiveImg(src.big_img)}
@@ -50,17 +63,27 @@ const BuySection = ({ id }) => {
 		></img>
 	));
 
+	console.log(carousel?.current?.scrollWidth);
+
 	const similarProducts = similarP.data?.map((product) => (
-		<div
-			onClick={() => {
-				setProductId(product.id);
-				setActiveImg(null);
-			}}
+		<li
+			onClick={
+				isDragging
+					? null
+					: (e) => {
+							e.stopPropagation();
+							setProductId(product.id);
+							setActiveImg(null);
+					  }
+			}
 			key={product.id}
+			className="sp-card"
 		>
-			<img src={product.src} alt="similar product" />
+			<motion.div>
+				<img src={product.src} alt="similar product" />
+			</motion.div>
 			<p>R$ {formattedPrice(product.price)}</p>
-		</div>
+		</li>
 	));
 
 	if (product?.data)
@@ -156,9 +179,31 @@ const BuySection = ({ id }) => {
 								<p>
 									Manufacturer: <strong>{product.data.brand}</strong>
 								</p>
-								<div className="pc-sc-similarProducts">
-									{similarProducts}
-								</div>
+
+								<motion.div
+									ref={carousel}
+									whileTap={{ cursor: 'grabbing' }}
+									className="sp-container"
+								>
+									<button>
+										<PreviousIcon />
+									</button>
+									<motion.ul
+										className="sp-wrapper"
+										drag="x"
+										dragConstraints={{
+											right: 0,
+											left: -730,
+										}}
+										onDrag={() => setIsDragging(true)}
+										onDragEnd={() => setIsDragging(false)}
+									>
+										{similarProducts}
+									</motion.ul>
+									<motion.button drag="x">
+										<NextIcon />
+									</motion.button>
+								</motion.div>
 							</div>
 						</div>
 					</div>
