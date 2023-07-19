@@ -13,6 +13,7 @@ import { ReactComponent as NextIcon } from '../../../Assets/icons/next-svgrepo-c
 import { ReactComponent as ShareIcon } from '../../../Assets/icons/share-svgrepo-com.svg';
 import { ReactComponent as FavoriteIcon } from '../../../Assets/icons/heart-svgrepo-com.svg';
 import { ReactComponent as PreviousIcon } from '../../../Assets/icons/previous-svgrepo-com.svg';
+import Loading from '../../../Components/Loading/Loading';
 
 const BuySection = ({ id }) => {
 	const productRequest = new ProductRequest();
@@ -46,13 +47,22 @@ const BuySection = ({ id }) => {
 		const { url } = productRequest.GET_PRODUCT_BY_BRAND(product?.data?.brand);
 
 		similarP.get(url);
-	}, [product.data?.brand, similarP.get]);
+	}, [product.data?.brand, productId]);
 
 	React.useEffect(() => {
-		setSimilarProductWidth(
-			carousel?.current?.scrollWidth - carousel?.current?.offsetWidth
-		);
-	}, []);
+		const calcWidth = () => {
+			if (carousel.current) {
+				const scrollWidth = carousel.current.scrollWidth || 0;
+				const offsetWidth = carousel.current.offsetWidth || 0;
+
+				setSimilarProductWidth(scrollWidth - offsetWidth);
+			}
+		};
+
+		const timeout = setTimeout(calcWidth, 500);
+
+		return () => clearTimeout(timeout);
+	}, [carousel, setSimilarProductWidth]);
 
 	const miniIcons = images.data?.map((src) => (
 		<img
@@ -62,8 +72,6 @@ const BuySection = ({ id }) => {
 			alt="icon"
 		></img>
 	));
-
-	console.log(carousel?.current?.scrollWidth);
 
 	const similarProducts = similarP.data?.map((product) => (
 		<li
@@ -85,6 +93,9 @@ const BuySection = ({ id }) => {
 			<p>R$ {formattedPrice(product.price)}</p>
 		</li>
 	));
+
+	if (product?.loading || images?.loading || similarP?.loading)
+		return <Loading />;
 
 	if (product?.data)
 		return (
@@ -156,9 +167,9 @@ const BuySection = ({ id }) => {
 										</strong>
 										<p>
 											In up to 10x of{' '}
-											<strong>$ {product.data?.price / 10}</strong>{' '}
-											with no interest on the
-											<br /> credit card Or 1x in cart with 5%{' '}
+											<strong>R$ {product.data?.price / 10}</strong>{' '}
+											with no interest
+											<br /> on the credit card or 1x with 5%{' '}
 											<strong>OFF</strong>
 										</p>
 										<span>See more options of payment</span>
@@ -176,14 +187,14 @@ const BuySection = ({ id }) => {
 									<EtiquetteIcon />
 									<p>Similar products</p>
 								</div>
-								<p>
+								<span>
 									Manufacturer: <strong>{product.data.brand}</strong>
-								</p>
+								</span>
 
 								<motion.div
-									ref={carousel}
 									whileTap={{ cursor: 'grabbing' }}
 									className="sp-container"
+									ref={carousel}
 								>
 									<button>
 										<PreviousIcon />
@@ -193,7 +204,9 @@ const BuySection = ({ id }) => {
 										drag="x"
 										dragConstraints={{
 											right: 0,
-											left: -730,
+											left: similarProductWidth
+												? -similarProductWidth
+												: -730,
 										}}
 										onDrag={() => setIsDragging(true)}
 										onDragEnd={() => setIsDragging(false)}

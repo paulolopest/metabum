@@ -59,15 +59,13 @@ const Header = () => {
 						<KabumIcon />
 					</div>
 				) : (
-					<div>
+					<Link to="/">
 						{desktopScreen ? (
 							<KabumIcon />
 						) : (
-							<Link to="/">
-								<img src={Logo} alt="logo"></img>
-							</Link>
+							<img src={Logo} alt="logo"></img>
 						)}
-					</div>
+					</Link>
 				)}
 			</div>
 			<div className="searchContainer">
