@@ -59,6 +59,8 @@
 		svg {
 			width: 1.5rem;
 			height: 1.5rem;
+			stroke: black;
+			fill: transparent;
 		}
 	}
 }
@@ -105,7 +107,6 @@
 	flex-direction: column;
 	justify-content: flex-end;
 	height: 20%;
-
 	gap: 0.5rem 0;
 
 	p {
@@ -169,6 +170,7 @@
 	gap: 1.5rem 0;
 	color: rgb(86, 92, 105);
 	font-size: 0.9rem;
+	width: 20rem;
 
 	div {
 		display: flex;
@@ -605,7 +607,259 @@
 	}
 }
 @media (max-width: 600px) {
+	.productPresentationContainer {
+		width: 100%;
+		height: auto;
+		padding: 0.8rem 0.8rem;
+	}
+
+	.productPresentation {
+		width: 100%;
+		height: auto;
+
+		h1 {
+			font-size: 1rem;
+		}
+	}
+
+	.pp-purchase {
+		width: auto;
+		height: auto;
+		flex-direction: column;
+	}
+
+	.pp-p-visualize {
+		width: 100%;
+	}
+
+	.pp-pv-additionalInfo {
+		height: 3.5rem;
+		width: 100%;
+
+		.ai-shareIcons {
+			gap: 0 1rem;
+			svg {
+				width: 1rem;
+				height: 1rem;
+			}
+		}
+		.ai-starIcons {
+			align-items: center;
+			justify-content: center;
+			gap: 0 0.2rem;
+			svg {
+				width: 0.8rem;
+				height: 0.8rem;
+			}
+
+			p {
+				font-size: 0.7rem;
+			}
+		}
+	}
+
+	.pp-pv-images {
+		align-items: center;
+		flex-direction: column-reverse;
+		gap: 1rem 0;
+
+		.images-miniIcons {
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			height: 3rem;
+			width: 100%;
+			gap: 0 1rem;
+
+			img {
+				width: 10%;
+				height: 70%;
+			}
+		}
+	}
+
+	.pp-p-purchaseCallback {
+		height: auto;
+		width: 100%;
+	}
+
+	.pc-firstContainer {
+		height: 100%;
+		justify-content: initial;
+		align-items: center;
+		padding: 1rem 0 0 0;
+	}
+
+	.pc-fc-price {
+		width: 100%;
+
+		.fc-p-firstDiv {
+			align-items: center;
+			align-content: center;
+
+			.fc-p-firsRow {
+				font-size: 0.8rem;
+				padding-bottom: 0.5rem;
+			}
+			.pc-price {
+				align-self: flex-start;
+			}
+
+			span {
+				align-self: flex-start;
+			}
+		}
+	}
+
+	.mobile-shipping {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		height: 20%;
+		gap: 0.5rem 0;
+		padding: 2rem 0;
+
+		p {
+			font-weight: bold;
+			font-size: 0.8rem;
+		}
+
+		div {
+			display: flex;
+			align-items: center;
+
+			input {
+				border: #d2d2d2 1px solid;
+				height: 3rem;
+				width: 19.5rem;
+				border-radius: 3px;
+				margin-right: 0.7rem;
+				padding-left: 1rem;
+			}
+
+			button {
+				height: 3rem;
+				padding: 0 0.8rem;
+				font-size: 1.1rem;
+				text-transform: uppercase;
+				font-weight: bold;
+				color: #ff6500;
+				background-color: transparent;
+				border-radius: 3px;
+				border: 1px solid #ff6500;
+				margin-right: 0.7rem;
+			}
+		}
+
+		a {
+			color: #ff6500;
+			text-decoration: underline;
+			font-weight: bold;
+			font-size: 0.7rem;
+		}
+	}
+
+	.mobile-buyButton {
+		display: flex;
+		gap: 0 0.7rem;
+
+		button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			background-color: #ff6500;
+			outline: none;
+			padding: 1rem 7.4rem;
+			border: none;
+			border-radius: 3px;
+			font-size: 1.3rem;
+			text-transform: uppercase;
+			font-weight: bold;
+			gap: 0 0.5rem;
+
+			svg {
+				width: 1.3rem;
+				height: 1.3rem;
+
+				path {
+					fill: white;
+				}
+			}
+		}
+
+		.addCartButton {
+			background-color: transparent;
+			border: 1px solid #ff6500;
+			padding: 1rem;
+
+			svg {
+				stroke: #ff6500;
+				width: 1.2rem;
+				height: 1.2rem;
+
+				path {
+					fill: #ff6500;
+				}
+			}
+		}
+	}
+
+	.pp-pv-shipping {
+		display: none;
+	}
+
+	.pc-fc-buy-button {
+		display: none;
+	}
+
+	.pc-secondContainer {
+		height: auto;
+		gap: 1.3rem 0;
+
+		.pc-sc-title {
+			align-self: flex-start;
+		}
+
+		span {
+			align-self: flex-start;
+		}
+	}
+
+	.sp-container {
+		button {
+			display: none;
+		}
+	}
 }
 
 @media (max-width: 400px) {
+	.mobile-shipping {
+		div {
+			input {
+				width: 17rem;
+			}
+		}
+	}
+
+	.mobile-buyButton {
+		button {
+			padding: 1rem 6.25rem;
+		}
+	}
+}
+@media (max-width: 360px) {
+	.mobile-shipping {
+		div {
+			input {
+				width: 16rem;
+			}
+		}
+	}
+
+	.mobile-buyButton {
+		button {
+			padding: 1rem 5.75rem;
+		}
+	}
 }

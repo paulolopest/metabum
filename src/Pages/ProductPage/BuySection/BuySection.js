@@ -13,12 +13,15 @@ import { ReactComponent as NextIcon } from '../../../Assets/icons/next-svgrepo-c
 import { ReactComponent as ShareIcon } from '../../../Assets/icons/share-svgrepo-com.svg';
 import { ReactComponent as FavoriteIcon } from '../../../Assets/icons/heart-svgrepo-com.svg';
 import { ReactComponent as PreviousIcon } from '../../../Assets/icons/previous-svgrepo-com.svg';
+import { ReactComponent as AddCartIcon } from '../../../Assets/icons/cart-add-svgrepo-com.svg';
 import Loading from '../../../Components/Loading/Loading';
+import useMedia from './../../../Hooks/useMedia';
 
 const BuySection = ({ id }) => {
 	const productRequest = new ProductRequest();
 
 	const carousel = React.useRef();
+	const mobileScreen = useMedia('(max-width: 37rem)');
 
 	const [isDragging, setIsDragging] = React.useState(false);
 	const [productId, setProductId] = React.useState(id);
@@ -109,11 +112,13 @@ const BuySection = ({ id }) => {
 									<p>{product.data.brand}</p>
 								</div>
 								<div className="ai-starIcons">
-									<StarIcon />
-									<StarIcon />
-									<StarIcon />
-									<StarIcon />
-									<StarIcon />
+									<div>
+										<StarIcon />
+										<StarIcon />
+										<StarIcon />
+										<StarIcon />
+										<StarIcon />
+									</div>
 									<p>(0)</p>
 								</div>
 								<div className="ai-shareIcons">
@@ -145,8 +150,8 @@ const BuySection = ({ id }) => {
 						<div className="pp-p-purchaseCallback">
 							<div className="pc-firstContainer">
 								<div className="pc-fc-price">
-									<div>
-										<p>
+									<div className="fc-p-firstDiv">
+										<p className="fc-p-firsRow">
 											Sold and delivered by:{' '}
 											<strong>Metabum!</strong> |{' '}
 											<strong>In stock</strong>
@@ -168,9 +173,8 @@ const BuySection = ({ id }) => {
 										<p>
 											In up to 10x of{' '}
 											<strong>R$ {product.data?.price / 10}</strong>{' '}
-											with no interest
-											<br /> on the credit card or 1x with 5%{' '}
-											<strong>OFF</strong>
+											with no interest on the credit card or 1x with
+											5% <strong>OFF</strong>
 										</p>
 										<span>See more options of payment</span>
 									</div>
@@ -182,6 +186,35 @@ const BuySection = ({ id }) => {
 									</CustomButton>
 								</div>
 							</div>
+
+							{mobileScreen ? (
+								<>
+									<div className="mobile-shipping">
+										<p>Check shipping and delivery time</p>
+										<div>
+											<CustomInput
+												placeholder="Insert cep"
+												{...cep}
+											/>
+											<button>OK</button>
+										</div>
+										<a href="https://buscacepinter.correios.com.br/app/endereco/index.php?t">
+											I don't remember my zip code
+										</a>
+									</div>
+
+									<div className="mobile-buyButton">
+										<CustomButton>
+											<CartIcon />
+											Buy
+										</CustomButton>
+										<CustomButton className="addCartButton">
+											<AddCartIcon />
+										</CustomButton>
+									</div>
+								</>
+							) : null}
+
 							<div className="pc-secondContainer">
 								<div className="pc-sc-title">
 									<EtiquetteIcon />
