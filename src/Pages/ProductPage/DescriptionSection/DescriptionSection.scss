@@ -61,8 +61,20 @@
 }
 
 @media (max-width: 900px) {
+	.descriptionContainer {
+		padding: 2rem 0.5rem 0 0.5rem;
+	}
 }
 @media (max-width: 600px) {
+	.descriptionContainer {
+		padding: 2rem 0.8rem 0 0.8rem;
+
+		div {
+			h1 {
+				font-size: 1.3rem;
+			}
+		}
+	}
 }
 
 @media (max-width: 400px) {
