@@ -3,15 +3,15 @@ import useAxios from './../../../Hooks/useAxios';
 import { ProductRequest } from './../../../Requests/ProductRequest';
 import { ReactComponent as ExclamationIcon } from '../../../Assets/icons/exclamation-mark-circle-f-svgrepo-com.svg';
 
-const TechnicalInfoSection = ({ id }) => {
+const TechnicalInfoSection = ({ productId }) => {
 	const productRequest = new ProductRequest();
 	const { data, get } = useAxios();
 
 	React.useEffect(() => {
-		const { url } = productRequest.GET_PRODUCT_TECHNICAL_INFO(id);
+		const { url } = productRequest.GET_PRODUCT_TECHNICAL_INFO(productId);
 
 		get(url);
-	}, [get, id]);
+	}, [get, productId]);
 
 	const formatTechInfo = (info) => {
 		const techInfoObj = JSON.parse(info);

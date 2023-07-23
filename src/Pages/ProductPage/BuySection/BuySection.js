@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import useForm from '../../../Hooks/useForm';
 import useAxios from '../../../Hooks/useAxios';
+import useMedia from './../../../Hooks/useMedia';
+import Loading from '../../../Components/Loading/Loading';
 import { formattedPrice } from '../../../Utils/Functions';
 import { ProductRequest } from '../../../Requests/ProductRequest';
 import CustomInput from '../../../Components/Form/CustomInput/CustomInput';
@@ -12,19 +14,16 @@ import { ReactComponent as StarIcon } from '../../../Assets/icons/star-svgrepo-c
 import { ReactComponent as NextIcon } from '../../../Assets/icons/next-svgrepo-com.svg';
 import { ReactComponent as ShareIcon } from '../../../Assets/icons/share-svgrepo-com.svg';
 import { ReactComponent as FavoriteIcon } from '../../../Assets/icons/heart-svgrepo-com.svg';
-import { ReactComponent as PreviousIcon } from '../../../Assets/icons/previous-svgrepo-com.svg';
 import { ReactComponent as AddCartIcon } from '../../../Assets/icons/cart-add-svgrepo-com.svg';
-import Loading from '../../../Components/Loading/Loading';
-import useMedia from './../../../Hooks/useMedia';
+import { ReactComponent as PreviousIcon } from '../../../Assets/icons/previous-svgrepo-com.svg';
 
-const BuySection = ({ id }) => {
+const BuySection = ({ productId, setProductId }) => {
 	const productRequest = new ProductRequest();
 
 	const carousel = React.useRef();
 	const mobileScreen = useMedia('(max-width: 37rem)');
 
 	const [isDragging, setIsDragging] = React.useState(false);
-	const [productId, setProductId] = React.useState(id);
 	const [activeImg, setActiveImg] = React.useState(null);
 	const [similarProductWidth, setSimilarProductWidth] = React.useState(0);
 
@@ -96,6 +95,8 @@ const BuySection = ({ id }) => {
 			<p>R$ {formattedPrice(product.price)}</p>
 		</li>
 	));
+
+	console.log(productId);
 
 	if (product?.loading || images?.loading || similarP?.loading)
 		return <Loading />;

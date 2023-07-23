@@ -3,16 +3,16 @@ import { ReactComponent as ArchiveIcon } from '../../../Assets/icons/description
 import { ProductRequest } from '../../../Requests/ProductRequest';
 import useAxios from './../../../Hooks/useAxios';
 
-const DescriptionSection = ({ id }) => {
+const DescriptionSection = ({ productId }) => {
 	const productRequest = new ProductRequest();
 
 	const { get, data } = useAxios();
 
 	React.useEffect(() => {
-		const { url } = productRequest.GET_PRODUCT_DESCRIPTION(id);
+		const { url } = productRequest.GET_PRODUCT_DESCRIPTION(productId);
 
 		get(url);
-	}, [id]);
+	}, [productId]);
 
 	const descriptions = data?.map((description) => (
 		<div className="descriptionCard" key={description.id}>
@@ -21,19 +21,19 @@ const DescriptionSection = ({ id }) => {
 		</div>
 	));
 
-	// if (data)
-	return (
-		<div className="descriptionSection">
-			<div className="descriptionContainer">
-				<div>
-					<ArchiveIcon />
-					<h1>Product Description</h1>
-				</div>
+	if (data)
+		return (
+			<div className="descriptionSection">
+				<div className="descriptionContainer">
+					<div>
+						<ArchiveIcon />
+						<h1>Product Description</h1>
+					</div>
 
-				<div className="descriptionArray">{descriptions}</div>
+					<div className="descriptionArray">{descriptions}</div>
+				</div>
 			</div>
-		</div>
-	);
+		);
 };
 
 export default DescriptionSection;
