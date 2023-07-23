@@ -1,21 +1,22 @@
-.descriptionSection {
+.ti-section {
 	display: flex;
 	justify-content: center;
 	background-color: white;
-	min-height: 15rem;
 	height: auto;
 	color: rgb(86, 92, 105);
 }
 
-.descriptionContainer {
+.ti-container {
 	display: flex;
 	flex-direction: column;
-	padding: 3rem 0 2.5rem 0;
+	padding: 3rem 0 3rem 0;
 	width: 81vw;
+	gap: 1rem 0;
 
 	div {
 		display: flex;
 		gap: 0 0.5rem;
+
 		h1 {
 			text-transform: uppercase;
 			font-weight: bold;
@@ -23,7 +24,6 @@
 			margin-bottom: 2rem;
 			color: initial;
 		}
-
 		svg {
 			width: 1.5rem;
 			height: 1.5rem;
@@ -32,52 +32,48 @@
 	}
 }
 
-.descriptionArray {
+.ti-card {
 	display: flex;
 	flex-direction: column;
-}
 
-.descriptionCard {
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 2rem;
-
-	h2 {
-		margin-bottom: 0.5rem;
+	h3 {
+		padding-bottom: 0.3rem;
 	}
 
 	p {
-		line-height: 1.3;
+		padding-top: 0.3rem;
 	}
 }
 
 @media (max-width: 1600px) {
-	.descriptionContainer {
+	.ti-container {
 		width: 95vw;
 	}
 }
 
-@media (max-width: 1450px) {
-}
-
-@media (max-width: 1200px) {
-}
-
-@media (max-width: 1025px) {
-}
-
 @media (max-width: 900px) {
-	.descriptionContainer {
+	.ti-container {
 		padding: 2rem 0.5rem 0 0.5rem;
+	}
+
+	.ti-card {
+		p {
+			padding-top: 0.5rem;
+		}
 	}
 }
 @media (max-width: 600px) {
-	.descriptionContainer {
+	.ti-container {
 		padding: 2rem 0.8rem 0 0.8rem;
 
 		div {
 			h1 {
-				font-size: 1.3rem;
+				font-size: 1.2rem;
+			}
+
+			svg {
+				width: 1.2rem;
+				height: 1.2rem;
 			}
 		}
 	}

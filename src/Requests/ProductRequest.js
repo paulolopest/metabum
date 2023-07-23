@@ -30,4 +30,10 @@ export class ProductRequest {
 			url: `${BASE_URL}/product/description/${id}`,
 		};
 	};
+
+	GET_PRODUCT_TECHNICAL_INFO = (id) => {
+		return {
+			url: `${BASE_URL}/product/technical-information/${id}`,
+		};
+	};
 }

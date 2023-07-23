@@ -172,7 +172,10 @@ const BuySection = ({ id }) => {
 										</strong>
 										<p>
 											In up to 10x of{' '}
-											<strong>R$ {product.data?.price / 10}</strong>{' '}
+											<strong>
+												R${' '}
+												{formattedPrice(product.data?.price / 10)}
+											</strong>{' '}
 											with no interest on the credit card or 1x with
 											5% <strong>OFF</strong>
 										</p>

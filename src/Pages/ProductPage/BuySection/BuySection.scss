@@ -233,6 +233,11 @@
 	flex-direction: column;
 	height: 40%;
 	justify-content: space-between;
+	color: rgb(86, 92, 105);
+
+	span {
+		font-size: 0.8rem;
+	}
 
 	.pc-sc-title {
 		display: flex;

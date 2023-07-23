@@ -1,5 +1,6 @@
 @import './BuySection/BuySection.scss';
 @import './DescriptionSection/DescriptionSection.scss';
+@import './TechnicalInformationSection/TechnicalInfo.scss';
 
 .productPage {
 	display: flex;
@@ -7,5 +8,5 @@
 	min-height: calc(100vh - 7rem);
 	height: auto;
 	background-color: #f2f3f4;
-	gap: 5rem 0;
+	gap: 3.5rem 0;
 }
