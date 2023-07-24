@@ -8,7 +8,6 @@
 .homePage-Container {
 	display: flex;
 	flex-direction: column;
-	min-width: 100vh;
 	width: 85%;
 	background-color: white;
 }
@@ -23,7 +22,6 @@
 
 	button {
 		display: flex;
-		justify-content: center;
 		align-items: center;
 		border-radius: 50%;
 		width: 2.5rem;
@@ -31,9 +29,12 @@
 		outline: none;
 		background-color: white;
 		border: none;
+		cursor: pointer;
 	}
 
 	.hp-bannerNext {
+		display: flex;
+		justify-content: flex-start;
 		position: relative;
 		width: 2rem;
 		left: 2%;
@@ -62,10 +63,6 @@
 	}
 }
 
-.fake-hpBanner {
-	height: 30.75rem;
-}
-
 @media (max-width: 1600px) {
 	.homePage-Container {
 		width: 95vw;
@@ -74,8 +71,51 @@
 	.hp-banners {
 		width: 95vw;
 	}
+}
+@media (max-width: 1200px) {
+	.homePage-Container {
+		width: 100%;
+	}
 
-	.fake-hpBanner {
-		height: 33.4rem;
+	.hp-banners {
+		height: 20rem;
+		background-size: cover;
+		width: 100%;
+	}
+}
+@media (max-width: 1025px) {
+	.hp-banners {
+		height: 17rem;
+	}
+}
+@media (max-width: 900px) {
+	.hp-banners {
+		height: 13.5rem;
+
+		button {
+			display: none;
+		}
+		.hp-bannerNext {
+			display: none;
+		}
+		.hp-bannerPrevious {
+			display: none;
+		}
+	}
+}
+@media (max-width: 850px) {
+	.hp-banners {
+		height: 12.5rem;
+	}
+}
+@media (max-width: 600px) {
+	.hp-banners {
+		height: 8rem;
+	}
+}
+
+@media (max-width: 420px) {
+	.hp-banners {
+		height: 6.7rem;
 	}
 }

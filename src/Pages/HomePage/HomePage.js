@@ -8,7 +8,10 @@ import useMeasure from 'react-use-measure';
 const HomePage = () => {
 	const [bannerIndex, setBannerIndex] = React.useState(0);
 	const [prev, setPrev] = React.useState(bannerIndex);
+	const [dragInitialPosition, setDragInitialPosition] = React.useState(0);
 	const [ref, { height }] = useMeasure();
+
+	let direction = bannerIndex > prev ? 'increasing' : 'decreasing';
 
 	const clickNext = () => {
 		if (bannerIndex === 4) {
@@ -21,12 +24,24 @@ const HomePage = () => {
 	};
 
 	const clickBack = () => {
-		bannerIndex === 4 ? setBannerIndex(0) : setBannerIndex(bannerIndex - 1);
+		bannerIndex === 0 ? setBannerIndex(4) : setBannerIndex(bannerIndex - 1);
 	};
 
-	let direction = bannerIndex > prev ? 'increasing' : 'decreasing';
-
-	console.log(direction);
+	const verifyDrag = (e, info) => {
+		if (info.point.x > dragInitialPosition) {
+			if (bannerIndex === 4) {
+				setBannerIndex(0);
+				setPrev(bannerIndex);
+			} else {
+				setBannerIndex(bannerIndex + 1);
+				setPrev(bannerIndex);
+			}
+		} else {
+			bannerIndex === 0
+				? setBannerIndex(4)
+				: setBannerIndex(bannerIndex - 1);
+		}
+	};
 
 	return (
 		<div
@@ -36,13 +51,18 @@ const HomePage = () => {
 			<div className="homePage-Container">
 				<motion.div
 					ref={ref}
-					className="hp-banners"
+					initial={{ x: direction === 'increasing' ? 20 : -20 }}
+					animate={{ x: 0 }}
+					onDragStart={(e, info) => setDragInitialPosition(info.point.x)}
+					onDragEnd={verifyDrag}
+					key={bannerIndex}
+					drag="x"
+					dragElastic={0.1}
+					dragConstraints={{ right: 0, left: 0 }}
 					style={{
 						backgroundImage: `url(${banners[bannerIndex].url})`,
 					}}
-					initial={{ x: direction === 'increasing' ? 20 : -20 }}
-					animate={{ x: 0 }}
-					key={bannerIndex}
+					className="hp-banners"
 				>
 					<button onClick={clickBack} className="hp-bannerNext">
 						<PreviousIcon />
