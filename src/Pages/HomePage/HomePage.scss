@@ -1,0 +1,81 @@
+.homePage-Section {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	min-height: 200vh;
+}
+
+.homePage-Container {
+	display: flex;
+	flex-direction: column;
+	min-width: 100vh;
+	width: 85%;
+	background-color: white;
+}
+
+.hp-banners {
+	height: 25rem;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: absolute;
+	width: 85%;
+
+	button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		width: 2.5rem;
+		height: 2.5rem;
+		outline: none;
+		background-color: white;
+		border: none;
+	}
+
+	.hp-bannerNext {
+		position: relative;
+		width: 2rem;
+		left: 2%;
+		height: 2rem;
+		top: 50%;
+		transform: translateY(-50%);
+
+		svg {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+
+	.hp-bannerPrevious {
+		position: relative;
+		right: -96%;
+		top: 50%;
+		transform: translateY(-150%);
+		width: 2rem;
+		height: 2rem;
+
+		svg {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+}
+
+.fake-hpBanner {
+	height: 30.75rem;
+}
+
+@media (max-width: 1600px) {
+	.homePage-Container {
+		width: 95vw;
+	}
+
+	.hp-banners {
+		width: 95vw;
+	}
+
+	.fake-hpBanner {
+		height: 33.4rem;
+	}
+}
