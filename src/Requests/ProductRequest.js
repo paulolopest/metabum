@@ -1,7 +1,7 @@
 const BASE_URL = 'https://back-metabum.vercel.app';
 
 export class ProductRequest {
-	GET_PRODUCT = () => {
+	GET_PRODUCTS = () => {
 		return {
 			url: `${BASE_URL}/products`,
 		};

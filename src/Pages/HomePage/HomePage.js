@@ -4,12 +4,13 @@ import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.
 import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 import { AnimatePresence, motion } from 'framer-motion';
 import useMeasure from 'react-use-measure';
+import MainCarousel from './MainCarousel/MainCarousel';
 
 const HomePage = () => {
+	const [ref, { height }] = useMeasure();
+	const [dragInitialPosition, setDragInitialPosition] = React.useState(0);
 	const [bannerIndex, setBannerIndex] = React.useState(0);
 	const [prev, setPrev] = React.useState(bannerIndex);
-	const [dragInitialPosition, setDragInitialPosition] = React.useState(0);
-	const [ref, { height }] = useMeasure();
 
 	let direction = bannerIndex > prev ? 'increasing' : 'decreasing';
 
@@ -29,19 +30,18 @@ const HomePage = () => {
 
 	const verifyDrag = (e, info) => {
 		if (info.point.x > dragInitialPosition) {
-			if (bannerIndex === 4) {
-				setBannerIndex(0);
-				setPrev(bannerIndex);
-			} else {
-				setBannerIndex(bannerIndex + 1);
-				setPrev(bannerIndex);
-			}
+			clickNext();
 		} else {
-			bannerIndex === 0
-				? setBannerIndex(4)
-				: setBannerIndex(bannerIndex - 1);
+			clickBack();
 		}
 	};
+
+	React.useEffect(() => {
+		if (window.scrollY < height) {
+			const timer = setInterval(clickNext, 5000);
+			return () => clearInterval(timer);
+		}
+	}, [bannerIndex]);
 
 	return (
 		<div
@@ -78,7 +78,10 @@ const HomePage = () => {
 						height: height,
 					}}
 				/>
-				<div>a</div>
+
+				<div className="homePage-content">
+					<MainCarousel />
+				</div>
 			</div>
 		</div>
 	);

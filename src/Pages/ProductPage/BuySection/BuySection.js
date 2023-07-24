@@ -96,8 +96,6 @@ const BuySection = ({ productId, setProductId }) => {
 		</li>
 	));
 
-	console.log(productId);
-
 	if (product?.loading || images?.loading || similarP?.loading)
 		return <Loading />;
 

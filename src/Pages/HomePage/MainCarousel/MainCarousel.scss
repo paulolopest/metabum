@@ -1,0 +1,198 @@
+.hp-productCard {
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+	min-width: 18rem;
+	height: auto;
+	padding: 0.8rem;
+	border: 1px solid #e9e9e9;
+	gap: 1rem 0;
+	background-color: white;
+	border-radius: 3px;
+	transition: ease-in-out 0.3s;
+	justify-content: space-between;
+
+	.hp-pc-IconsContainer {
+		display: flex;
+		justify-content: space-between;
+
+		.ic-firstBlock {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: #ff6500;
+			gap: 0.2rem 0;
+			border: 1px solid #ff6500;
+			border-radius: 3px;
+			padding: 0.2rem;
+			font-size: 0.6rem;
+			text-transform: uppercase;
+
+			span {
+				font-weight: bold;
+			}
+		}
+
+		.ic-secondBlock {
+			display: none;
+			gap: 0 0.7rem;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	img {
+		width: auto;
+		height: 10rem;
+		align-self: center;
+	}
+
+	.hp-pc-name {
+		font-weight: 500;
+		padding-bottom: 1rem;
+	}
+
+	.hp-pc-price {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem 0;
+
+		span {
+			text-decoration: line-through;
+			font-weight: 400;
+			font-size: 0.8rem;
+		}
+
+		h3 {
+			font-size: 1.5rem;
+			color: #ff6500;
+		}
+		p {
+			font-size: 0.8rem;
+		}
+	}
+
+	.hp-pc-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0 0.4rem;
+		text-transform: uppercase;
+		font-weight: 750;
+		padding: 0.6rem;
+		background-color: #ff6500;
+		outline: none;
+		border: none;
+		border-radius: 3px;
+		color: white;
+		width: 100%;
+
+		svg {
+			height: 1.2rem;
+			width: 1.2rem;
+			path {
+				stroke: white;
+				fill: white;
+			}
+		}
+	}
+
+	svg {
+		height: 1.5rem;
+		width: 1.5rem;
+
+		fill: #c1c1c1;
+		stroke: #c1c1c1;
+
+		path {
+			fill: #c1c1c1;
+			stroke: #c1c1c1;
+		}
+	}
+
+	&:hover {
+		transition: ease-in-out 0.3s;
+		box-shadow: #d2d2d2 0px 0px 15px, rgba(96, 97, 112, 0.16) 0px 0.5px 2px;
+
+		.ic-secondBlock {
+			display: flex;
+		}
+	}
+}
+
+.mc-container {
+	display: flex;
+	align-items: center;
+	padding: 3rem 0 3rem 3rem;
+	margin-right: 3rem;
+	overflow: hidden;
+
+	button {
+		display: flex;
+		align-items: center;
+		border-radius: 50%;
+		width: 2.5rem;
+		height: 2.5rem;
+		outline: none;
+		background-color: white;
+		border: none;
+		cursor: pointer;
+	}
+
+	.hp-bannerNext {
+		display: flex;
+		justify-content: flex-start;
+		position: relative;
+		width: 2rem;
+		left: 2%;
+		height: 2rem;
+		top: 50%;
+		transform: translateY(-50%);
+
+		svg {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+
+	.hp-bannerPrevious {
+		position: relative;
+		right: -96%;
+		top: 50%;
+		transform: translateY(-150%);
+		width: 2rem;
+		height: 2rem;
+
+		svg {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+}
+
+.mc-carousel {
+	display: flex;
+	gap: 0 1rem;
+}
+
+@media (max-width: 1600px) {
+	.mc-container {
+		padding: 3rem 0 2rem 3rem;
+		margin-right: 2rem;
+	}
+}
+
+@media (max-width: 420px) {
+	.mc-container {
+		padding: 2rem 0 1.5rem 2rem;
+		margin-right: 1.5rem;
+	}
+
+	.hp-productCard {
+		gap: 0.5rem;
+		.hp-pc-IconsContainer {
+			display: none;
+		}
+	}
+}
