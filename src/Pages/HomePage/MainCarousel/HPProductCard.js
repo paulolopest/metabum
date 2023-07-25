@@ -8,14 +8,17 @@ import { ReactComponent as AddCartIcon } from '../../../Assets/icons/cart-add-sv
 const HPProductCard = ({ product, isDragging }) => {
 	const navigate = useNavigate();
 
+	console.log(isDragging);
+
 	const handleClick = () => {
-		navigate(`/product/${product.id}`);
+		if (!isDragging) {
+			navigate(`/product/${product.id}`);
+		} else {
+			return null;
+		}
 	};
 	return (
-		<div
-			onClick={() => (isDragging ? null : handleClick)}
-			className="hp-productCard"
-		>
+		<div onClick={handleClick} className="hp-productCard">
 			<div className="hp-pc-IconsContainer">
 				<div className="ic-firstBlock">
 					<p>Restam</p>

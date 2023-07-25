@@ -1,4 +1,5 @@
 @import '../HomePage/MainCarousel/MainCarousel.scss';
+@import '../HomePage/DepartmentsSection/DepartmentsSection.scss';
 
 .homePage-Section {
 	display: flex;
@@ -67,6 +68,13 @@
 			height: 2rem;
 		}
 	}
+}
+
+.mini-banners {
+	display: flex;
+	justify-content: center;
+	gap: 0 2rem;
+	cursor: pointer;
 }
 
 @media (max-width: 1600px) {

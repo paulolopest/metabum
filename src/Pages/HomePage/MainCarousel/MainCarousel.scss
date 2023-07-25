@@ -11,6 +11,7 @@
 	border-radius: 3px;
 	transition: ease-in-out 0.3s;
 	justify-content: space-between;
+	transition: ease-in-out 0.2s;
 
 	.hp-pc-IconsContainer {
 		display: flex;
@@ -112,7 +113,7 @@
 	}
 
 	&:hover {
-		transition: ease-in-out 0.3s;
+		transition: ease-in-out 0.2s;
 		box-shadow: #d2d2d2 0px 0px 15px, rgba(96, 97, 112, 0.16) 0px 0.5px 2px;
 
 		.ic-secondBlock {
@@ -123,50 +124,32 @@
 
 .mc-container {
 	display: flex;
-	align-items: center;
+	flex-direction: column;
 	padding: 3rem 0 3rem 3rem;
 	margin-right: 3rem;
 	overflow: hidden;
+	gap: 1rem 0;
 
-	button {
+	.seeMore-button {
 		display: flex;
-		align-items: center;
-		border-radius: 50%;
-		width: 2.5rem;
-		height: 2.5rem;
+		justify-content: center;
+		gap: 0 0.3rem;
+		align-self: flex-end;
+		padding: 0.5rem;
+		font-size: 1rem;
+		text-transform: uppercase;
+		font-weight: bold;
+		color: #ff6500;
 		outline: none;
-		background-color: white;
 		border: none;
-		cursor: pointer;
-	}
-
-	.hp-bannerNext {
-		display: flex;
-		justify-content: flex-start;
-		position: relative;
-		width: 2rem;
-		left: 2%;
-		height: 2rem;
-		top: 50%;
-		transform: translateY(-50%);
+		background-color: transparent;
 
 		svg {
-			width: 2rem;
-			height: 2rem;
-		}
-	}
+			height: 0.8rem;
+			width: 0.8rem;
 
-	.hp-bannerPrevious {
-		position: relative;
-		right: -96%;
-		top: 50%;
-		transform: translateY(-150%);
-		width: 2rem;
-		height: 2rem;
-
-		svg {
-			width: 2rem;
-			height: 2rem;
+			stroke: #ff6500;
+			fill: #ff6500;
 		}
 	}
 }

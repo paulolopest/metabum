@@ -1,10 +1,11 @@
 import React from 'react';
-import { banners } from './../../Utils/Extra';
+import { banners, miniBanners } from './../../Utils/Extra';
 import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.svg';
 import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 import { AnimatePresence, motion } from 'framer-motion';
 import useMeasure from 'react-use-measure';
 import MainCarousel from './MainCarousel/MainCarousel';
+import DepartmentsSection from './DepartmentsSection/DepartmentsSection';
 
 const HomePage = () => {
 	const [ref, { height }] = useMeasure();
@@ -80,6 +81,38 @@ const HomePage = () => {
 				/>
 
 				<div className="homePage-content">
+					<MainCarousel />
+
+					<div className="mini-banners">
+						<img
+							alt="mini banner"
+							draggable={false}
+							src={miniBanners[0].url}
+						/>
+						<img
+							alt="mini banner"
+							draggable={false}
+							src={miniBanners[1].url}
+						/>
+					</div>
+
+					<MainCarousel />
+
+					<DepartmentsSection />
+
+					<div className="mini-banners">
+						<img
+							alt="mini banner"
+							draggable={false}
+							src={miniBanners[2].url}
+						/>
+						<img
+							alt="mini banner"
+							draggable={false}
+							src={miniBanners[3].url}
+						/>
+					</div>
+
 					<MainCarousel />
 				</div>
 			</div>

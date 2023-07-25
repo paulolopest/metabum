@@ -1,11 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import useAxios from '../../../Hooks/useAxios';
-import useMeasure from 'react-use-measure';
-import { ProductRequest } from './../../../Requests/ProductRequest';
-
-import { Navigate } from 'react-router-dom';
 import HPProductCard from './HPProductCard';
+import useAxios from '../../../Hooks/useAxios';
+import { ProductRequest } from './../../../Requests/ProductRequest';
+import { ReactComponent as NextIcon } from '../../../Assets/icons/next-svgrepo-com.svg';
 
 const MainCarousel = () => {
 	const { data, get } = useAxios();
@@ -37,6 +35,11 @@ const MainCarousel = () => {
 			>
 				{productMap}
 			</motion.div>
+
+			<button className="seeMore-button">
+				ver todos
+				<NextIcon />
+			</button>
 		</div>
 	);
 };

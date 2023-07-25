@@ -1,0 +1,36 @@
+.departments-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 1rem;
+	padding: 3rem;
+	justify-content: center;
+}
+
+.dps-card {
+	height: 15rem;
+	width: 20rem;
+	cursor: pointer;
+
+	div {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		background-color: white;
+		height: 50%;
+		z-index: 5;
+		gap: 0.7rem 0;
+	}
+
+	p,
+	img {
+		z-index: 10;
+	}
+
+	p {
+		padding-top: 1.5rem;
+		text-transform: uppercase;
+		font-weight: bold;
+		color: #ff6500;
+	}
+}
