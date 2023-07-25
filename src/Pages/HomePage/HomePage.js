@@ -2,16 +2,20 @@ import React from 'react';
 import { banners, miniBanners } from './../../Utils/Extra';
 import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.svg';
 import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
-import { AnimatePresence, motion } from 'framer-motion';
+import { ReactComponent as StarIcon } from '../../Assets/icons/star-svgrepo-com.svg';
+import { ReactComponent as ThunderIcon } from '../../Assets/icons/thunder-svgrepo-com.svg';
+import { motion } from 'framer-motion';
 import useMeasure from 'react-use-measure';
-import MainCarousel from './MainCarousel/MainCarousel';
+import MainCarousel from './CarouselProduct/CarouselProduct';
 import DepartmentsSection from './DepartmentsSection/DepartmentsSection';
+import { ProductRequest } from '../../Requests/ProductRequest';
 
 const HomePage = () => {
 	const [ref, { height }] = useMeasure();
 	const [dragInitialPosition, setDragInitialPosition] = React.useState(0);
 	const [bannerIndex, setBannerIndex] = React.useState(0);
 	const [prev, setPrev] = React.useState(bannerIndex);
+	const productRequest = new ProductRequest();
 
 	let direction = bannerIndex > prev ? 'increasing' : 'decreasing';
 
@@ -81,7 +85,7 @@ const HomePage = () => {
 				/>
 
 				<div className="homePage-content">
-					<MainCarousel />
+					<MainCarousel request={productRequest.GET_PRODUCTS().url} />
 
 					<div className="mini-banners">
 						<img
@@ -96,7 +100,11 @@ const HomePage = () => {
 						/>
 					</div>
 
-					<MainCarousel />
+					<MainCarousel
+						svgIcon={<StarIcon />}
+						title={<p>Destaques ninjas</p>}
+						request={productRequest.GET_PRODUCTS().url}
+					/>
 
 					<DepartmentsSection />
 
@@ -113,7 +121,11 @@ const HomePage = () => {
 						/>
 					</div>
 
-					<MainCarousel />
+					<MainCarousel
+						svgIcon={<ThunderIcon />}
+						title={<p>Acabaram de chegar</p>}
+						request={productRequest.GET_PRODUCTS().url}
+					/>
 				</div>
 			</div>
 		</div>

@@ -5,10 +5,8 @@ import { ReactComponent as CartIcon } from '../../../Assets/icons/cart-svgrepo-c
 import { ReactComponent as FavoriteIcon } from '../../../Assets/icons/heart-svgrepo-com.svg';
 import { ReactComponent as AddCartIcon } from '../../../Assets/icons/cart-add-svgrepo-com.svg';
 
-const HPProductCard = ({ product, isDragging }) => {
+const ProductCard = ({ product, isDragging }) => {
 	const navigate = useNavigate();
-
-	console.log(isDragging);
 
 	const handleClick = () => {
 		if (!isDragging) {
@@ -49,4 +47,4 @@ const HPProductCard = ({ product, isDragging }) => {
 	);
 };
 
-export default HPProductCard;
+export default ProductCard;
