@@ -26,6 +26,9 @@ const BuySection = ({ productId, setProductId }) => {
 	const [isDragging, setIsDragging] = React.useState(false);
 	const [activeImg, setActiveImg] = React.useState(null);
 	const [similarProductWidth, setSimilarProductWidth] = React.useState(0);
+	const [dragInitialPosition, setDragInitialPosition] = React.useState(0);
+	const [imageIndex, setImageIndex] = React.useState(0);
+	const [prev, setPrev] = React.useState(imageIndex);
 
 	const product = useAxios();
 	const images = useAxios();
@@ -65,6 +68,31 @@ const BuySection = ({ productId, setProductId }) => {
 
 		return () => clearTimeout(timeout);
 	}, [carousel, setSimilarProductWidth]);
+
+	let direction = imageIndex > prev ? 'increasing' : 'decreasing';
+	const clickNext = () => {
+		if (imageIndex === images?.data.length - 1) {
+			setImageIndex(0);
+			setPrev(imageIndex);
+		} else {
+			setImageIndex(imageIndex + 1);
+			setPrev(imageIndex);
+		}
+	};
+
+	const clickBack = () => {
+		imageIndex === 0
+			? setImageIndex(images?.data.length - 1)
+			: setImageIndex(imageIndex - 1);
+	};
+
+	const verifyDrag = (e, info) => {
+		if (info.point.x > dragInitialPosition) {
+			clickNext();
+		} else {
+			clickBack();
+		}
+	};
 
 	const miniIcons = images.data?.map((src) => (
 		<img
@@ -126,14 +154,51 @@ const BuySection = ({ productId, setProductId }) => {
 								</div>
 							</div>
 							<div className="pp-pv-images">
-								<div className="images-miniIcons">{miniIcons}</div>
-								<div className="productImg">
-									{activeImg ? (
-										<img src={activeImg} alt="product" />
-									) : (
-										<img src={product.data.src} alt="product" />
-									)}
-								</div>
+								{!mobileScreen ? (
+									<>
+										<div className="images-miniIcons">
+											{miniIcons}
+										</div>
+										<div className="productImg">
+											{activeImg ? (
+												<img src={activeImg} alt="product" />
+											) : (
+												<img src={product.data.src} alt="product" />
+											)}
+										</div>
+									</>
+								) : (
+									<>
+										<div className={`imageLength`}>
+											<div />
+											<div />
+											<div />
+											<div />
+											<div />
+										</div>
+										<motion.div
+											initial={{
+												x: direction === 'increasing' ? 20 : -20,
+											}}
+											animate={{ x: 0 }}
+											onDragStart={(e, info) =>
+												setDragInitialPosition(info.point.x)
+											}
+											onDragEnd={verifyDrag}
+											key={imageIndex}
+											drag="x"
+											dragElastic={0.1}
+											dragConstraints={{ right: 0, left: 0 }}
+											className="mobile-productImg"
+										>
+											<img
+												draggable={false}
+												src={images?.data[imageIndex]?.big_img}
+												alt="product"
+											/>
+										</motion.div>
+									</>
+								)}
 							</div>
 							<div className="pp-pv-shipping">
 								<p>Check shipping and delivery time</p>

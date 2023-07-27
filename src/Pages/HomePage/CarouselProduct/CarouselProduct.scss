@@ -322,6 +322,17 @@
 	.mc-container {
 		padding: 1rem 0 1.5rem 1rem;
 		margin-right: 1rem;
+
+		.mc-carouselTitle {
+			align-items: initial;
+			gap: 0 0.3rem;
+			font-size: 1rem;
+
+			svg {
+				height: 0.8rem;
+				width: 0.9rem;
+			}
+		}
 	}
 
 	.hp-productCard {

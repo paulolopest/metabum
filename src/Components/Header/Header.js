@@ -55,9 +55,9 @@ const Header = () => {
 				</div>
 
 				{mobileScreen ? (
-					<div>
+					<Link to="/">
 						<KabumIcon />
-					</div>
+					</Link>
 				) : (
 					<Link to="/">
 						{desktopScreen ? (

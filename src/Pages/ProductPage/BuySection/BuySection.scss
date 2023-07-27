@@ -100,6 +100,31 @@
 			height: auto;
 		}
 	}
+
+	.mobile-productImg {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		overflow: hidden;
+
+		img {
+			width: 90%;
+			height: auto;
+		}
+	}
+
+	.imageLength {
+		display: flex;
+		gap: 0 0.2rem;
+
+		div {
+			width: 10px;
+			height: 10px;
+			border: 1px solid #a1a1a1;
+			border-radius: 50%;
+		}
+	}
 }
 
 .pp-pv-shipping {
