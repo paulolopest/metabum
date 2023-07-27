@@ -16,16 +16,17 @@ import { ReactComponent as ShareIcon } from '../../../Assets/icons/share-svgrepo
 import { ReactComponent as FavoriteIcon } from '../../../Assets/icons/heart-svgrepo-com.svg';
 import { ReactComponent as AddCartIcon } from '../../../Assets/icons/cart-add-svgrepo-com.svg';
 import { ReactComponent as PreviousIcon } from '../../../Assets/icons/previous-svgrepo-com.svg';
+import useMeasure from 'react-use-measure';
 
 const BuySection = ({ productId, setProductId }) => {
 	const productRequest = new ProductRequest();
 
-	const carousel = React.useRef();
+	const [ref, { width }] = useMeasure();
 	const mobileScreen = useMedia('(max-width: 37rem)');
 
 	const [isDragging, setIsDragging] = React.useState(false);
 	const [activeImg, setActiveImg] = React.useState(null);
-	const [similarProductWidth, setSimilarProductWidth] = React.useState(0);
+
 	const [dragInitialPosition, setDragInitialPosition] = React.useState(0);
 	const [imageIndex, setImageIndex] = React.useState(0);
 	const [prev, setPrev] = React.useState(imageIndex);
@@ -54,22 +55,8 @@ const BuySection = ({ productId, setProductId }) => {
 		similarP.get(url);
 	}, [product.data?.brand, productId]);
 
-	React.useEffect(() => {
-		const calcWidth = () => {
-			if (carousel.current) {
-				const scrollWidth = carousel.current.scrollWidth || 0;
-				const offsetWidth = carousel.current.offsetWidth || 0;
-
-				setSimilarProductWidth(scrollWidth - offsetWidth);
-			}
-		};
-
-		const timeout = setTimeout(calcWidth, 500);
-
-		return () => clearTimeout(timeout);
-	}, [carousel, setSimilarProductWidth]);
-
 	let direction = imageIndex > prev ? 'increasing' : 'decreasing';
+
 	const clickNext = () => {
 		if (imageIndex === images?.data.length - 1) {
 			setImageIndex(0);
@@ -105,6 +92,7 @@ const BuySection = ({ productId, setProductId }) => {
 
 	const similarProducts = similarP.data?.map((product) => (
 		<li
+			ref={ref}
 			onClick={
 				isDragging
 					? null
@@ -294,7 +282,6 @@ const BuySection = ({ productId, setProductId }) => {
 								<motion.div
 									whileTap={{ cursor: 'grabbing' }}
 									className="sp-container"
-									ref={carousel}
 								>
 									<button>
 										<PreviousIcon />
@@ -304,9 +291,7 @@ const BuySection = ({ productId, setProductId }) => {
 										drag="x"
 										dragConstraints={{
 											right: 0,
-											left: similarProductWidth
-												? -similarProductWidth
-												: -730,
+											left: -width * 8,
 										}}
 										onDrag={() => setIsDragging(true)}
 										onDragEnd={() => setIsDragging(false)}

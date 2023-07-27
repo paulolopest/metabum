@@ -29,8 +29,6 @@ const DepartmentsSection = () => {
 		</div>
 	));
 
-	console.log(width * 12);
-
 	return (
 		<>
 			<div className="dp-title">
