@@ -36,4 +36,10 @@ export class ProductRequest {
 			url: `${BASE_URL}/product/technical-information/${id}`,
 		};
 	};
+
+	SEARCH_PRODUCTS = (word) => {
+		return {
+			url: `${BASE_URL}/products/search/${word}`,
+		};
+	};
 }

@@ -16,12 +16,19 @@
 }
 
 .hp-banners {
-	height: 25rem;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-	position: absolute;
-	width: 85%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+
+	div {
+		background-color: red;
+	}
+
+	img {
+		height: 100%;
+		width: 100%;
+		object-fit: contain;
+	}
 
 	.hp-bannerNext {
 		display: flex;
@@ -35,9 +42,9 @@
 		cursor: pointer;
 		position: relative;
 		width: 2rem;
-		left: 2%;
-		height: 2rem;
+		left: 5%;
 		top: 50%;
+		height: 2rem;
 		transform: translateY(-50%);
 
 		svg {
@@ -57,9 +64,9 @@
 		border: none;
 		cursor: pointer;
 		position: relative;
-		right: -96%;
+		left: -5%;
 		top: 50%;
-		transform: translateY(-150%);
+		transform: translateY(-50%);
 		width: 2rem;
 		height: 2rem;
 

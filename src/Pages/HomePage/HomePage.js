@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import useMeasure from 'react-use-measure';
+import { useNavigate } from 'react-router-dom';
 import { banners, miniBanners } from './../../Utils/Extra';
 import MainCarousel from './CarouselProduct/CarouselProduct';
 import { ProductRequest } from '../../Requests/ProductRequest';
@@ -11,13 +12,15 @@ import { ReactComponent as ThunderIcon } from '../../Assets/icons/thunder-svgrep
 import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 
 const HomePage = () => {
-	const [ref, { height }] = useMeasure();
 	const [dragInitialPosition, setDragInitialPosition] = React.useState(0);
 	const [bannerIndex, setBannerIndex] = React.useState(0);
 	const [prev, setPrev] = React.useState(bannerIndex);
-	const productRequest = new ProductRequest();
 
+	const navigate = useNavigate();
+	const [ref, { height }] = useMeasure();
 	let direction = bannerIndex > prev ? 'increasing' : 'decreasing';
+
+	const productRequest = new ProductRequest();
 
 	const clickNext = () => {
 		if (bannerIndex === banners.length - 1) {
@@ -62,29 +65,22 @@ const HomePage = () => {
 					animate={{ x: 0 }}
 					onDragStart={(e, info) => setDragInitialPosition(info.point.x)}
 					onDragEnd={verifyDrag}
-					key={bannerIndex}
 					drag="x"
-					dragElastic={0.1}
+					dragElastic={0}
 					dragConstraints={{ right: 0, left: 0 }}
-					style={{
-						backgroundImage: `url(${banners[bannerIndex].url})`,
-					}}
 					className="hp-banners"
+					style={{ backgroundColor: banners[bannerIndex].color }}
 				>
 					<button onClick={clickBack} className="hp-bannerNext">
 						<PreviousIcon />
 					</button>
+
+					<img draggable="false" src={banners[bannerIndex].url} alt="" />
+
 					<button onClick={clickNext} className="hp-bannerPrevious">
 						<NextIcon />
 					</button>
 				</motion.div>
-
-				<div
-					style={{
-						backgroundColor: banners[bannerIndex].color,
-						height: height,
-					}}
-				/>
 
 				<div className="homePage-content">
 					<MainCarousel request={productRequest.GET_PRODUCTS().url} />
@@ -94,6 +90,10 @@ const HomePage = () => {
 							alt="mini banner"
 							draggable={false}
 							src={miniBanners[0].url}
+							onClick={(e) => {
+								e.preventDefault();
+								navigate(`/catalog/:${miniBanners[0].word}`);
+							}}
 						/>
 						<img
 							alt="mini banner"

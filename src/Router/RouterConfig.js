@@ -6,6 +6,7 @@ import GlobalStorage from '../Context/GlobalContext';
 import ProductPage from './../Pages/ProductPage/ProductPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Authentication from './../Pages/LoginPage/Authentication';
+import ProductCatalog from './../Pages/ProductCatalog/ProductCatalog';
 
 const RouterConfig = () => {
 	return (
@@ -18,6 +19,7 @@ const RouterConfig = () => {
 						<Route path="/login/*" element={<Authentication />} />
 						<Route path="/products/" element={<HomePage />} />
 						<Route path="/product/:id" element={<ProductPage />} />
+						<Route path="/catalog/*" element={<ProductCatalog />} />
 					</Routes>
 				</CartStorage>
 			</GlobalStorage>

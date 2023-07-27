@@ -21,17 +21,19 @@ export const banners = [
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/layout/3611/banner_img.jpg&w=1920&h=400&q=100',
-		color: '#001a3d',
+		color: '#00234B',
 	},
 	{
 		url: 'https://themes.kabum.com.br/conteudo/layout/3129/banner_img.jpg',
 		color: '#00127e',
+		word: 'sony',
 	},
 ];
 
 export const miniBanners = [
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1288.jpg&w=750&h=198&q=100',
+		word: 'rosa',
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1214.jpg&w=750&h=198&q=100',
