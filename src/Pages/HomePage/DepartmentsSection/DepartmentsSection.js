@@ -3,18 +3,33 @@ import { motion } from 'framer-motion';
 import useMedia from './../../../Hooks/useMedia';
 import { departments } from '../../../Utils/Extra';
 import { ReactComponent as ListIcon } from '../../../Assets/icons/list.svg';
+import useMeasure from 'react-use-measure';
 
 const DepartmentsSection = () => {
-	const mediumScreen = useMedia('(max-width: 1025px)');
+	const [isDragging, setIsDragging] = React.useState(false);
+
+	const [ref, { width }] = useMeasure();
+	const mediumScreen = useMedia('(max-width: 600px)');
 
 	const dpsMap = departments.map((dp, index) => (
-		<div className="dps-card" key={index}>
+		<div
+			ref={ref}
+			onClick={isDragging ? null : null}
+			className="dps-card"
+			key={index}
+		>
 			<div>
 				<p>{dp.name}</p>
-				<img src={dp.src} alt={`Department ${dp.name}`} />
+				<img
+					draggable={false}
+					src={dp.image}
+					alt={`Department ${dp.name}`}
+				/>
 			</div>
 		</div>
 	));
+
+	console.log(width * 12);
 
 	return (
 		<>
@@ -25,7 +40,17 @@ const DepartmentsSection = () => {
 			{!mediumScreen ? (
 				<div className="departments-container">{dpsMap}</div>
 			) : (
-				<motion.div className="dp-mobile">{dpsMap}</motion.div>
+				<div className="mbl-dp-container">
+					<motion.div
+						drag="x"
+						dragConstraints={{ right: 0, left: -60 - width * 12 }}
+						onDrag={() => setIsDragging(true)}
+						onDragEnd={() => setIsDragging(false)}
+						className="dp-mobile"
+					>
+						{dpsMap}
+					</motion.div>
+				</div>
 			)}
 		</>
 	);
