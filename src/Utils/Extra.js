@@ -19,6 +19,10 @@ export const banners = [
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/layout/3427/banner_img.jpg&w=1920&h=400&q=100',
 		color: '#ff760d',
 	},
+	{
+		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/layout/3611/banner_img.jpg&w=1920&h=400&q=100',
+		color: '#001a3d',
+	},
 ];
 
 export const miniBanners = [

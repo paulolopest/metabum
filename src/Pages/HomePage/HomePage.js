@@ -1,14 +1,14 @@
 import React from 'react';
-import { banners, miniBanners } from './../../Utils/Extra';
-import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.svg';
-import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
-import { ReactComponent as StarIcon } from '../../Assets/icons/star-svgrepo-com.svg';
-import { ReactComponent as ThunderIcon } from '../../Assets/icons/thunder-svgrepo-com.svg';
 import { motion } from 'framer-motion';
 import useMeasure from 'react-use-measure';
+import { banners, miniBanners } from './../../Utils/Extra';
 import MainCarousel from './CarouselProduct/CarouselProduct';
-import DepartmentsSection from './DepartmentsSection/DepartmentsSection';
 import { ProductRequest } from '../../Requests/ProductRequest';
+import DepartmentsSection from './DepartmentsSection/DepartmentsSection';
+import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.svg';
+import { ReactComponent as StarIcon } from '../../Assets/icons/star-svgrepo-com.svg';
+import { ReactComponent as ThunderIcon } from '../../Assets/icons/thunder-svgrepo-com.svg';
+import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 
 const HomePage = () => {
 	const [ref, { height }] = useMeasure();
@@ -20,7 +20,7 @@ const HomePage = () => {
 	let direction = bannerIndex > prev ? 'increasing' : 'decreasing';
 
 	const clickNext = () => {
-		if (bannerIndex === 4) {
+		if (bannerIndex === banners.length - 1) {
 			setBannerIndex(0);
 			setPrev(bannerIndex);
 		} else {
@@ -30,7 +30,9 @@ const HomePage = () => {
 	};
 
 	const clickBack = () => {
-		bannerIndex === 0 ? setBannerIndex(4) : setBannerIndex(bannerIndex - 1);
+		bannerIndex === 0
+			? setBannerIndex(banners.length - 1)
+			: setBannerIndex(bannerIndex - 1);
 	};
 
 	const verifyDrag = (e, info) => {
