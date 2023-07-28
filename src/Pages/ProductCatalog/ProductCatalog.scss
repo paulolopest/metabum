@@ -1,21 +1,24 @@
 .productCatalogPage {
 	display: flex;
 	justify-content: center;
-	min-width: 100%;
+	background-color: #f2f3f4;
 	min-height: 100vh;
-	background-color: #fafafb;
 }
 
 .pCatalogContainer {
+	display: flex;
+	flex-direction: column;
 	width: 80.5vw;
-	height: 100rem;
+	padding-bottom: 10rem;
+	gap: 1.5rem 0;
 }
 
 .pCatalogHeader {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 8%;
+	min-height: 5rem;
+	margin-top: 1rem;
 	width: 100%;
 
 	.pch-search {
@@ -116,15 +119,16 @@
 }
 
 .pCatalogMain {
+	display: flex;
 	width: 100%;
-	height: 100%;
-	background-color: pink;
 }
 
 .pCatalogFilter {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem 0;
 	width: 20%;
-	height: 100%;
-	border: 1px solid black;
+	// height: 100%;
 
 	.pcf-header {
 		display: flex;
@@ -138,12 +142,12 @@
 		}
 	}
 
-	.pcf-main {
+	.pcFilter-main {
 		display: flex;
 		flex-direction: column;
-		margin: 0.5rem;
-		padding: 0.5rem;
+		padding: 1rem;
 		background-color: white;
+		border-radius: 3px;
 		gap: 1.5rem 0;
 
 		.pcf-filterCheckbox {
@@ -174,4 +178,237 @@
 			}
 		}
 	}
+}
+
+.pCatalog {
+	display: flex;
+	flex-wrap: wrap;
+	width: 80%;
+	// border: 1px solid black;
+	padding: 0 2rem;
+	gap: 1rem 1.7rem;
+}
+
+@media (max-width: 1600px) {
+	.pCatalogContainer {
+		width: 100%;
+		padding: 0 2rem;
+		// background-color: red;
+	}
+
+	.pCatalogHeader {
+		.pch-search {
+			input {
+				font-size: 1rem;
+				width: 12rem;
+			}
+
+			button {
+				font-size: 1rem;
+				width: 2rem;
+			}
+		}
+
+		.pch-order {
+			p {
+				font-size: 1rem;
+			}
+
+			select {
+				width: 13rem;
+				font-size: 1rem;
+
+				option {
+					font-size: 1rem;
+				}
+			}
+		}
+
+		.pch-view {
+			p {
+				font-size: 1rem;
+			}
+
+			select {
+				width: 13rem;
+				font-size: 1rem;
+
+				option {
+					font-size: 1rem;
+				}
+			}
+		}
+	}
+
+	.pCatalog {
+		width: 83%;
+		gap: 1rem 1.3rem;
+	}
+
+	.pCatalogFilter {
+		width: 17%;
+
+		.pcf-header {
+			font-size: 1rem;
+		}
+
+		.pcFilter-main {
+			.pcf-filterCheckbox {
+				p {
+					font-size: 1rem;
+				}
+
+				.checkboxContainer {
+					input {
+						width: 1rem;
+						height: 1rem;
+					}
+
+					label {
+						font-size: 1rem;
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 1450px) {
+	.pCatalogContainer {
+		padding: 0 1rem;
+	}
+
+	.pCatalogFilter {
+		width: 15%;
+	}
+
+	.pCatalog {
+		gap: 1rem 0.8rem;
+		width: 90%;
+	}
+}
+@media (max-width: 1200px) {
+	.pCatalogFilter {
+		width: 20%;
+	}
+
+	.pCatalog {
+		width: 80%;
+		gap: 1rem 1.3rem;
+	}
+}
+@media (max-width: 1025px) {
+	.pCatalogHeader {
+		.pch-search {
+			input {
+				height: 2.5rem;
+				width: 10rem;
+			}
+
+			button {
+				height: 2.5rem;
+				width: 2rem;
+			}
+		}
+
+		.pch-order {
+			p {
+				font-size: 0.8rem;
+			}
+			select {
+				height: 2.5rem;
+				width: 10rem;
+			}
+		}
+
+		.pch-view {
+			p {
+				font-size: 0.8rem;
+			}
+			select {
+				height: 2.5rem;
+			}
+		}
+	}
+	.pCatalogFilter {
+		width: 25%;
+
+		.pcFilter-main {
+			padding: 0.5rem;
+			font-size: 0.8rem;
+		}
+	}
+
+	.pCatalog {
+		justify-content: center;
+		padding: 0 1rem;
+		width: 75%;
+		gap: 1rem 2rem;
+	}
+}
+@media (max-width: 850px) {
+	.pCatalogHeader {
+		.pch-search {
+			input {
+				height: 2.5rem;
+				width: 8rem;
+			}
+
+			button {
+				height: 2.5rem;
+				width: 2rem;
+			}
+		}
+
+		.pch-order {
+			p {
+				font-size: 0.8rem;
+			}
+			select {
+				height: 2.5rem;
+				width: 10rem;
+			}
+		}
+
+		.pch-view {
+			p {
+				font-size: 0.8rem;
+			}
+			select {
+				width: 10rem;
+				height: 2.5rem;
+			}
+		}
+
+		.pch-orderIcon {
+			display: none;
+		}
+	}
+	.pCatalogFilter {
+		width: 20%;
+	}
+
+	.pCatalog {
+		width: 80%;
+		gap: 1rem;
+	}
+}
+@media (max-width: 770px) {
+	.pCatalogHeader {
+		.pch-search {
+		}
+
+		.pch-view {
+			display: none;
+		}
+	}
+	.pCatalogFilter {
+		width: 20%;
+	}
+
+	.pCatalog {
+		justify-content: initial;
+		gap: 1 0.1rem;
+	}
+}
+@media (max-width: 1600px) {
 }

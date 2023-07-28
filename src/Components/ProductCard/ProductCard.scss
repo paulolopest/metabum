@@ -1,0 +1,267 @@
+.productCard {
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+	min-width: 17rem;
+	max-width: 17rem;
+	max-height: 30rem;
+	height: auto;
+	padding: 0.8rem;
+	border: 1px solid #e9e9e9;
+	gap: 1rem 0;
+	background-color: white;
+	border-radius: 3px;
+	transition: ease-in-out 0.3s;
+	justify-content: space-between;
+	transition: ease-in-out 0.2s;
+
+	.pc-IconsContainer {
+		display: flex;
+		justify-content: space-between;
+
+		.ic-firstBlock {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: #ff6500;
+			gap: 0.2rem 0;
+			border: 1px solid #ff6500;
+			border-radius: 3px;
+			padding: 0.2rem;
+			font-size: 0.6rem;
+			text-transform: uppercase;
+
+			span {
+				font-weight: bold;
+			}
+		}
+
+		.ic-secondBlock {
+			display: none;
+			gap: 0 0.7rem;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	img {
+		width: auto;
+		height: 10rem;
+		align-self: center;
+	}
+
+	.pc-name {
+		font-weight: 500;
+		padding-bottom: 1rem;
+	}
+
+	.pc-price {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem 0;
+
+		span {
+			text-decoration: line-through;
+			font-weight: 400;
+			font-size: 0.8rem;
+		}
+
+		h3 {
+			font-size: 1.5rem;
+			color: #ff6500;
+		}
+		p {
+			font-size: 0.8rem;
+		}
+	}
+
+	.pc-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0 0.4rem;
+		text-transform: uppercase;
+		font-weight: 750;
+		padding: 0.6rem;
+		background-color: #ff6500;
+		outline: none;
+		border: none;
+		border-radius: 3px;
+		color: white;
+		width: 100%;
+
+		svg {
+			height: 1.2rem;
+			width: 1.2rem;
+			path {
+				stroke: white;
+				fill: white;
+			}
+		}
+	}
+
+	svg {
+		height: 1.5rem;
+		width: 1.5rem;
+
+		fill: #c1c1c1;
+		stroke: #c1c1c1;
+
+		path {
+			fill: #c1c1c1;
+			stroke: #c1c1c1;
+		}
+	}
+
+	&:hover {
+		transition: ease-in-out 0.2s;
+		box-shadow: #d2d2d2 0px 0px 15px, rgba(96, 97, 112, 0.16) 0px 0.5px 2px;
+
+		.ic-secondBlock {
+			display: flex;
+		}
+	}
+}
+
+.mobile-pCard {
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+	height: auto;
+	padding: 0.6rem;
+	min-width: 19.55rem;
+	border: 1px solid #e9e9e9;
+	background-color: white;
+	transition: ease-in-out 0.3s;
+	justify-content: space-between;
+	transition: ease-in-out 0.2s;
+	border-radius: 3px;
+	gap: 1rem 0;
+
+	.mobile-pc-icons {
+		display: flex;
+		justify-content: space-between;
+
+		.mbl-pc-iconsFirstContainer {
+			display: flex;
+			align-items: center;
+
+			p {
+				margin-left: 0.2rem;
+				font-size: 0.6rem;
+			}
+			svg {
+				height: 0.8rem;
+				width: 0.8rem;
+			}
+		}
+
+		.mbl-pc-iconsSecondContainer {
+			display: flex;
+			gap: 0 0.5rem;
+
+			svg {
+				height: 1.3rem;
+				width: 1.3rem;
+
+				fill: #c1c1c1;
+				stroke: #c1c1c1;
+
+				path {
+					fill: #c1c1c1;
+					stroke: #c1c1c1;
+				}
+			}
+		}
+	}
+
+	.mobile-pc-info {
+		display: grid;
+		grid-template-columns: 45% 55%;
+		height: 100%;
+		font-size: 0.85rem;
+		padding-bottom: 0.5rem;
+
+		.mb-pcImg {
+			display: flex;
+			align-items: center;
+		}
+
+		.mbl-pc-infoSecondContainer {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			.mbl-pc-name {
+				font-weight: bold;
+				font-size: 0.75rem;
+				line-height: 1.2;
+			}
+
+			.mbl-pc-price {
+				display: flex;
+				flex-direction: column;
+				gap: 0.2rem 0;
+
+				span {
+					text-decoration: line-through;
+					font-weight: 400;
+					font-size: 0.8rem;
+					align-self: flex-end;
+				}
+
+				h3 {
+					font-size: 1.5rem;
+					color: #ff6500;
+					align-self: flex-end;
+				}
+				p {
+					font-size: 0.8rem;
+					align-self: flex-end;
+				}
+			}
+		}
+	}
+
+	.mbl-pc-buyButton {
+		button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 0 0.4rem;
+			text-transform: uppercase;
+			font-weight: 750;
+			padding: 0.6rem 0;
+			background-color: #ff6500;
+			outline: none;
+			border: none;
+			border-radius: 3px;
+			color: white;
+			width: 100%;
+
+			svg {
+				height: 1.1rem;
+				width: 1.1rem;
+				path {
+					stroke: white;
+					fill: white;
+				}
+			}
+		}
+	}
+
+	svg {
+		width: 0.8rem;
+		height: 0.8rem;
+	}
+}
+
+@media (max-width: 420px) {
+	.productCard {
+		gap: 0.5rem;
+		.pc-IconsContainer {
+			display: none;
+		}
+	}
+}

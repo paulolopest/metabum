@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ProductCard from './ProductCard';
 import useAxios from '../../../Hooks/useAxios';
 import useMedia from './../../../Hooks/useMedia';
 import Loading from './../../../Components/Loading/Loading';
+import ProductCard from '../../../Components/ProductCard/ProductCard';
 import { ReactComponent as NextIcon } from '../../../Assets/icons/next-svgrepo-com.svg';
 
 const CarouselProduct = ({ request, title, svgIcon }) => {

@@ -2,7 +2,9 @@ import React from 'react';
 import useForm from '../../Hooks/useForm';
 import useAxios from '../../Hooks/useAxios';
 import { useParams } from 'react-router-dom';
+import Loading from './../../Components/Loading/Loading';
 import { ProductRequest } from '../../Requests/ProductRequest';
+import ProductCard from './../../Components/ProductCard/ProductCard';
 import CustomInput from './../../Components/Form/CustomInput/CustomInput';
 import { ReactComponent as OrderIcon } from '../../Assets/icons/order.svg';
 import { ReactComponent as IconList } from '../../Assets/icons/iconList.svg';
@@ -13,8 +15,10 @@ import { ReactComponent as MgfGlassIcon } from '../../Assets/icons/search-svgrep
 const ProductCatalog = () => {
 	const [activeBrand, setActiveBrand] = React.useState('');
 	const [activeDepartment, setActiveDepartment] = React.useState('');
+	const [orderBy, setOrderBy] = React.useState('asc');
+	const [pageLimit, setPageLimit] = React.useState(20);
 
-	const { data, get } = useAxios();
+	const { data, get, loading } = useAxios();
 	const search = useForm('search');
 
 	const { '*': params } = useParams();
@@ -24,10 +28,12 @@ const ProductCatalog = () => {
 		const { url } = productRequest.SEARCH_PRODUCTS(
 			params.replace(':', ''),
 			activeBrand,
-			activeDepartment
+			activeDepartment,
+			orderBy,
+			pageLimit
 		);
 		get(url);
-	}, [activeBrand, activeDepartment]);
+	}, [activeBrand, activeDepartment, orderBy, pageLimit]);
 
 	const checkboxContainer = (filter, typeState, setTypeState) => {
 		const getColumn = new Set(data?.map((product) => product[filter]));
@@ -50,8 +56,13 @@ const ProductCatalog = () => {
 		return filteredArray;
 	};
 
-	console.log(activeDepartment);
+	const productMap = data?.map((product) => (
+		<ProductCard key={product.id} product={product} />
+	));
 
+	console.log(pageLimit);
+
+	if (loading) return <Loading />;
 	return (
 		<div className="productCatalogPage">
 			<div className="pCatalogContainer">
@@ -66,7 +77,7 @@ const ProductCatalog = () => {
 						<OrderIcon />
 						<p>Ordernar:</p>
 						<select>
-							<option selected>Escolha</option>
+							<option defaultValue>Escolha</option>
 							<option>Preço Crescente</option>
 							<option>Preço Decrescente</option>
 						</select>
@@ -74,16 +85,23 @@ const ProductCatalog = () => {
 
 					<div className="pch-view">
 						<p>Exibir:</p>
-						<select>
-							<option selected>20 por página</option>
-							<option>40 por página</option>
-							<option>60 por página</option>
-							<option>80 por página</option>
-							<option>100 por página</option>
+						<select
+							value={`${pageLimit} por página`}
+							onChange={({ target }) => setPageLimit(target.value)}
+						>
+							<option value={20}>Padrão (20)</option>
+							<option defaultValue>{`${pageLimit} por página`}</option>
+
+							<option value={Number(pageLimit) + 20}>
+								{Number(pageLimit) + 20} por página
+							</option>
+							<option value={Number(pageLimit) + 40}>
+								{Number(pageLimit) + 40} por página
+							</option>
 						</select>
 					</div>
 
-					<div>100 Produtos</div>
+					<div>{data?.length} produtos</div>
 
 					<div className="pch-orderIcon">
 						<IconList />
@@ -97,7 +115,7 @@ const ProductCatalog = () => {
 							<p>Filtrar por:</p>
 						</div>
 
-						<div className="pcf-main">
+						<div className="pcFilter-main">
 							<div className="pcf-filterCheckbox">
 								<p>Marcas</p>
 								{checkboxContainer(
@@ -116,7 +134,8 @@ const ProductCatalog = () => {
 							</div>
 						</div>
 					</div>
-					<div></div>
+
+					<div className="pCatalog">{productMap}</div>
 				</div>
 			</div>
 		</div>

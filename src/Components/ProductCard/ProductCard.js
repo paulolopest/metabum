@@ -1,11 +1,11 @@
 import React from 'react';
+import useMedia from '../../Hooks/useMedia';
 import { useNavigate } from 'react-router-dom';
-import useMedia from './../../../Hooks/useMedia';
-import { formattedPrice, limitText } from '../../../Utils/Functions';
-import { ReactComponent as StarIcon } from '../../../Assets/icons/star-svgrepo-com.svg';
-import { ReactComponent as CartIcon } from '../../../Assets/icons/cart-svgrepo-com.svg';
-import { ReactComponent as FavoriteIcon } from '../../../Assets/icons/heart-svgrepo-com.svg';
-import { ReactComponent as AddCartIcon } from '../../../Assets/icons/cart-add-svgrepo-com.svg';
+import { formattedPrice, limitText } from '../../Utils/Functions';
+import { ReactComponent as StarIcon } from '../../Assets/icons/star-svgrepo-com.svg';
+import { ReactComponent as CartIcon } from '../../Assets/icons/cart-svgrepo-com.svg';
+import { ReactComponent as FavoriteIcon } from '../../Assets/icons/heart-svgrepo-com.svg';
+import { ReactComponent as AddCartIcon } from '../../Assets/icons/cart-add-svgrepo-com.svg';
 
 const ProductCard = ({ product, isDragging }) => {
 	const navigate = useNavigate();
@@ -21,8 +21,8 @@ const ProductCard = ({ product, isDragging }) => {
 	return (
 		<>
 			{!mobileScreen ? (
-				<div onClick={handleClick} className="hp-productCard">
-					<div className="hp-pc-IconsContainer">
+				<div onClick={handleClick} className="productCard">
+					<div className="pc-IconsContainer">
 						<div className="ic-firstBlock">
 							<p>Restam</p>
 							<span>{product.quantity}</span>
@@ -36,15 +36,15 @@ const ProductCard = ({ product, isDragging }) => {
 
 					<img draggable={false} src={product.src} alt="product" />
 
-					<p className="hp-pc-name">{limitText(product.name, 90)}</p>
+					<p className="pc-name">{limitText(product.name, 90)}</p>
 
-					<div className="hp-pc-price">
+					<div className="pc-price">
 						<span>R$ {formattedPrice((product.price / 10) * 12)}</span>
 						<h3>R$ {formattedPrice(product.price)}</h3>
 						<p>A vista no pix</p>
 					</div>
 
-					<button className="hp-pc-button">
+					<button className="pc-button">
 						<CartIcon />
 						Comprar
 					</button>
