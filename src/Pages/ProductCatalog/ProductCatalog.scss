@@ -124,5 +124,54 @@
 .pCatalogFilter {
 	width: 20%;
 	height: 100%;
-	background-color: darkblue;
+	border: 1px solid black;
+
+	.pcf-header {
+		display: flex;
+		gap: 0 0.5rem;
+		font-weight: bold;
+		font-size: 1.1rem;
+
+		svg {
+			width: 1.1rem;
+			height: 1.1rem;
+		}
+	}
+
+	.pcf-main {
+		display: flex;
+		flex-direction: column;
+		margin: 0.5rem;
+		padding: 0.5rem;
+		background-color: white;
+		gap: 1.5rem 0;
+
+		.pcf-filterCheckbox {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem 0;
+
+			p {
+				font-size: 1.1rem;
+				font-weight: bold;
+			}
+
+			.checkboxContainer {
+				display: flex;
+				align-items: center;
+				gap: 0 0.3rem;
+
+				input {
+					width: 1.3rem;
+					height: 1.3rem;
+					cursor: pointer;
+				}
+
+				label {
+					font-size: 1.2rem;
+					cursor: pointer;
+				}
+			}
+		}
+	}
 }
