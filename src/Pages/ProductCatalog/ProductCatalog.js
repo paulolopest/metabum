@@ -17,6 +17,7 @@ const ProductCatalog = () => {
 	const [orderBy, setOrderBy] = React.useState('asc');
 	const [pageLimit, setPageLimit] = React.useState(20);
 	const [activeBrand, setActiveBrand] = React.useState('');
+	const [filterSideBar, setFilterSideBar] = React.useState(false);
 	const [activeDepartment, setActiveDepartment] = React.useState('');
 
 	const { data, get, loading } = useAxios();
@@ -37,6 +38,12 @@ const ProductCatalog = () => {
 		);
 		get(url);
 	}, [activeBrand, activeDepartment, orderBy, pageLimit]);
+
+	const onClickOutside = (event) => {
+		if (event.target === event.currentTarget) {
+			setFilterSideBar(false);
+		}
+	};
 
 	const checkboxContainer = (filter, typeState, setTypeState) => {
 		const getColumn = new Set(data?.map((product) => product[filter]));
@@ -78,10 +85,14 @@ const ProductCatalog = () => {
 						<div className="pch-order">
 							<OrderIcon />
 							<p>Ordernar:</p>
-							<select>
-								<option defaultValue>Escolha</option>
-								<option>Preço Crescente</option>
-								<option>Preço Decrescente</option>
+							<select
+								onChange={({ target }) => setOrderBy(target.value)}
+							>
+								<option value={'asc'} defaultValue>
+									Escolha
+								</option>
+								<option value={'asc'}>Preço Crescente</option>
+								<option value={'desc'}>Preço Decrescente</option>
 							</select>
 						</div>
 
@@ -126,15 +137,12 @@ const ProductCatalog = () => {
 						</div>
 
 						<div className="pchm-secondContainer">
-							<button>
+							<button onClick={() => setFilterSideBar(!filterSideBar)}>
 								<FilterIcon />
 								Filtrar por
 							</button>
 
 							<select>
-								{/* <option defaultValue>
-									<OrderIcon /> Ordernar:
-								</option> */}
 								<option>Preço Crescente</option>
 								<option>Preço Decrescente</option>
 							</select>
@@ -150,7 +158,50 @@ const ProductCatalog = () => {
 				)}
 				<div className="pCatalogMain">
 					{mobileScreen ? (
-						<></>
+						<>
+							{filterSideBar ? (
+								<div
+									onClick={onClickOutside}
+									className="filterSBContainer"
+								>
+									<div className="filterSideBar animeLeft">
+										<div className="pcf-header">
+											<div>
+												<FilterIcon />
+												<p>Filtrar por:</p>
+											</div>
+
+											<button
+												onClick={() => setFilterSideBar(false)}
+											>
+												X
+											</button>
+										</div>
+
+										<div className="pcFilter-main">
+											<div className="pcf-filterCheckbox">
+												<p>Marcas</p>
+												{checkboxContainer(
+													'brand',
+													activeBrand,
+													setActiveBrand
+												)}
+											</div>
+											<div className="pcf-filterCheckbox">
+												<p>Departamentos</p>
+												{checkboxContainer(
+													'department',
+													activeDepartment,
+													setActiveDepartment
+												)}
+											</div>
+										</div>
+									</div>
+								</div>
+							) : (
+								<></>
+							)}
+						</>
 					) : (
 						<div className="pCatalogFilter">
 							<div className="pcf-header">

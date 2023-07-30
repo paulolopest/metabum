@@ -1,14 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useForm from './../../../Hooks/useForm';
-import CustomInput from './../../../Components/Form/CustomInput/CustomInput';
-import CustomButton from './../../../Components/Form/CustomButton/CustomButton';
 import { GlobalContext } from '../../../Context/GlobalContext';
+import CustomInput from './../../../Components/Form/CustomInput/CustomInput';
+import { ReactComponent as LoginIcon } from '../../../Assets/icons/loginIcon.svg';
+import { ReactComponent as FacebookIcon } from '../../../Assets/icons/facebook-svgrepo-com.svg';
+import { ReactComponent as GoogleIcon } from '../../../Assets/icons/google-178-svgrepo-com.svg';
+import Loading from './../../../Components/Loading/Loading';
 
 const Login = () => {
 	const email = useForm('email');
 	const password = useForm('password');
 
-	const { userLogin } = React.useContext(GlobalContext);
+	const { userLogin, error, loading } = React.useContext(GlobalContext);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -17,19 +21,57 @@ const Login = () => {
 	};
 
 	return (
-		<div>
-			<h1>Login</h1>
-			<form onSubmit={handleSubmit}>
-				<CustomInput label="Email" name="email" type="text" {...email} />
-				<CustomInput
-					label="Password"
-					name="password"
-					type="password"
-					{...password}
-				/>
+		<div className="loginContainer">
+			<div className="loginBox">
+				<h1>Fazer Login</h1>
+				<div className="loginForm">
+					<form onSubmit={handleSubmit}>
+						<CustomInput
+							placeHolder="E-mail ou CPF"
+							name="email"
+							type="text"
+							{...email}
+						/>
+						<CustomInput
+							placeHolder="Senha"
+							name="password"
+							type="password"
+							{...password}
+						/>
 
-				<CustomButton>Send</CustomButton>
-			</form>
+						<button>
+							<LoginIcon />
+							Entrar
+						</button>
+					</form>
+					<span>Esqueceu a senha?</span>
+
+					{error ? (
+						<div className="loginError">
+							<p>{error}</p>
+						</div>
+					) : null}
+				</div>
+				<div className="loginOther">
+					<p>Quero acessar com minhas redes sociais</p>
+					<div>
+						<button>
+							<FacebookIcon />
+							Facebook
+						</button>
+						<button className="googleButton">
+							<GoogleIcon />
+							Google
+						</button>
+					</div>
+				</div>
+				<p>
+					Novo no MetaBum!?{' '}
+					<Link to="signup">
+						<span>Cadastre-se</span>
+					</Link>
+				</p>
+			</div>
 		</div>
 	);
 };
