@@ -94,19 +94,18 @@ const Header = () => {
 						<>
 							<img src={profileImage} alt="profile" />
 							<p>
-								Hello, {data?.name}
+								Olá, {data?.name}
 								<br />
-								<Link>My account</Link> |{' '}
-								<Link onClick={userLogout}>Log out</Link>
+								<Link to="/my-profile">Minha Conta</Link> |{' '}
+								<Link onClick={userLogout}>Sair</Link>
 							</p>
 						</>
 					) : (
 						<>
 							<ProfileIcon />
 							<p>
-								<Link to="/login">Login</Link> or <Link>create</Link>
-								<br />
-								your account
+								Faça <Link to="/login">Login</Link> ou <br /> crie seu{' '}
+								<Link to="/login/signup">Cadastro</Link>
 							</p>
 						</>
 					)}
@@ -143,10 +142,12 @@ const Header = () => {
 						<p>Ninja{login ? `: ${data?.name}` : ''}</p>
 					</div>
 					<div className="lNav-Links">
-						<div className="lNav-Links-card">
-							<UserIcon />
-							<p>Profile</p>
-						</div>
+						<Link onClick={() => setLeftNav(false)} to="/my-profile">
+							<div className="lNav-Links-card">
+								<UserIcon />
+								<p>Profile</p>
+							</div>
+						</Link>
 						<div className="lNav-Links-card">
 							<OrderIcon />
 							<p>Orders</p>
