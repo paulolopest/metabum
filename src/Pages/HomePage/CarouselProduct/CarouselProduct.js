@@ -33,7 +33,7 @@ const CarouselProduct = ({ request, title, svgIcon }) => {
 					drag="x"
 					dragConstraints={{
 						right: 0,
-						left: !mobileScreen ? -10 * 165 : -10 * 289,
+						left: !mobileScreen ? -20 * 165 : -20 * 289,
 					}}
 					onDrag={() => setIsDragging(true)}
 					onDragEnd={() => setIsDragging(false)}

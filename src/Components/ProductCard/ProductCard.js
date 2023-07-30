@@ -36,7 +36,7 @@ const ProductCard = ({ product, isDragging }) => {
 
 					<img draggable={false} src={product.src} alt="product" />
 
-					<p className="pc-name">{limitText(product.name, 90)}</p>
+					<p className="pc-name">{limitText(product.name, 75)}</p>
 
 					<div className="pc-price">
 						<span>R$ {formattedPrice((product.price / 10) * 12)}</span>
