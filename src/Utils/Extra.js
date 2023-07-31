@@ -2,26 +2,32 @@ export const banners = [
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/layout/3591/banner_img.jpg&w=1920&h=400&q=100',
 		color: '#001a3d',
+		word: 'ofertas-dia',
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/layout/3548/banner_img.jpg&w=1920&h=400&q=100',
 		color: '#f4f4f4',
+		word: 'apple',
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/layout/3600/banner_img.jpg&w=1920&h=400&q=100',
 		color: '#300201',
+		word: 'homem-aranha',
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/layout/3592/banner_img.jpg&w=1920&h=400&q=100',
 		color: '#001a3d',
+		word: 'cadeira',
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/layout/3427/banner_img.jpg&w=1920&h=400&q=100',
 		color: '#ff760d',
+		word: 'perifericos',
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/layout/3611/banner_img.jpg&w=1920&h=400&q=100',
 		color: '#00234B',
+		word: 'dia-dos-pais',
 	},
 	{
 		url: 'https://themes.kabum.com.br/conteudo/layout/3129/banner_img.jpg',
@@ -37,12 +43,15 @@ export const miniBanners = [
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1214.jpg&w=750&h=198&q=100',
+		word: 'monitores',
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1106.jpg&w=750&h=198&q=100',
+		word: 'ssd',
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1105.jpg&w=750&h=198&q=100',
+		word: 'placa-de-video',
 	},
 ];
 

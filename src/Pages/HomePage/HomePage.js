@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import useMeasure from 'react-use-measure';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Loading from './../../Components/Loading/Loading';
 import { banners, miniBanners } from './../../Utils/Extra';
@@ -10,9 +11,11 @@ import DepartmentsSection from './DepartmentsSection/DepartmentsSection';
 import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.svg';
 import { ReactComponent as StarIcon } from '../../Assets/icons/star-svgrepo-com.svg';
 import { ReactComponent as ThunderIcon } from '../../Assets/icons/thunder-svgrepo-com.svg';
+
 import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 
 const HomePage = () => {
+	const [isDragging, setIsDragging] = React.useState(false);
 	const [dragInitialPosition, setDragInitialPosition] = React.useState(0);
 	const [loading, setLoading] = React.useState(true);
 	const [bannerIndex, setBannerIndex] = React.useState(0);
@@ -24,7 +27,7 @@ const HomePage = () => {
 
 	const productRequest = new ProductRequest();
 
-	const clickNext = () => {
+	const clickNext = (e) => {
 		if (bannerIndex === banners.length - 1) {
 			setBannerIndex(0);
 			setPrev(bannerIndex);
@@ -40,6 +43,11 @@ const HomePage = () => {
 			: setBannerIndex(bannerIndex - 1);
 	};
 
+	const handleDragStart = (e, info) => {
+		setDragInitialPosition(info.point.x);
+		setIsDragging(true);
+	};
+
 	const verifyDrag = (e, info) => {
 		if (info.point.x > dragInitialPosition) {
 			clickNext();
@@ -48,9 +56,21 @@ const HomePage = () => {
 		}
 	};
 
+	const handleDragEnd = (e, info) => {
+		setIsDragging(false);
+		verifyDrag(e, info);
+	};
+
 	React.useEffect(() => {
+		if (loading) {
+			document.body.classList.add('loading');
+			window.scrollTo(0, 0);
+		} else {
+			document.body.classList.remove('loading');
+		}
+		window.scrollTo(0, 0);
 		setTimeout(() => setLoading(false), 1000);
-	}, []);
+	}, [loading]);
 
 	React.useEffect(() => {
 		if (window.scrollY < height) {
@@ -59,10 +79,14 @@ const HomePage = () => {
 		}
 	}, [bannerIndex]);
 
+	console.log(isDragging);
+
 	return (
 		<div
 			className="homePage-Section"
-			style={{ backgroundColor: banners[bannerIndex].color }}
+			style={{
+				backgroundColor: banners[bannerIndex].color,
+			}}
 		>
 			{loading && <Loading />}
 			<div className="homePage-Container">
@@ -70,10 +94,11 @@ const HomePage = () => {
 					ref={ref}
 					initial={{ x: direction === 'increasing' ? 20 : -20 }}
 					animate={{ x: 0 }}
-					onDragStart={(e, info) => setDragInitialPosition(info.point.x)}
-					onDragEnd={verifyDrag}
+					onDragStart={handleDragStart}
+					onDrag={() => setIsDragging(true)}
+					onDragEnd={handleDragEnd}
 					drag="x"
-					dragElastic={0.1}
+					dragElastic={0}
 					dragConstraints={{ right: 0, left: 0 }}
 					className="hp-banners"
 					style={{ backgroundColor: banners[bannerIndex].color }}
@@ -82,7 +107,22 @@ const HomePage = () => {
 						<PreviousIcon />
 					</button>
 
-					<img draggable="false" src={banners[bannerIndex].url} alt="" />
+					<motion.img
+						onDrag={() => setIsDragging(true)}
+						onDragEnd={() => setIsDragging(false)}
+						draggable="false"
+						src={banners[bannerIndex].url}
+						alt=""
+						onClick={
+							!isDragging
+								? (e) => {
+										navigate(
+											`/catalog/:${banners[bannerIndex].word}`
+										);
+								  }
+								: null
+						}
+					/>
 
 					<button onClick={clickNext} className="hp-bannerPrevious">
 						<NextIcon />
@@ -106,6 +146,10 @@ const HomePage = () => {
 							alt="mini banner"
 							draggable={false}
 							src={miniBanners[1].url}
+							onClick={(e) => {
+								e.preventDefault();
+								navigate(`/catalog/:${miniBanners[1].word}`);
+							}}
 						/>
 					</div>
 
@@ -122,11 +166,19 @@ const HomePage = () => {
 							alt="mini banner"
 							draggable={false}
 							src={miniBanners[2].url}
+							onClick={(e) => {
+								e.preventDefault();
+								navigate(`/catalog/:${miniBanners[2].word}`);
+							}}
 						/>
 						<img
 							alt="mini banner"
 							draggable={false}
 							src={miniBanners[3].url}
+							onClick={(e) => {
+								e.preventDefault();
+								navigate(`/catalog/:${miniBanners[3].word}`);
+							}}
 						/>
 					</div>
 

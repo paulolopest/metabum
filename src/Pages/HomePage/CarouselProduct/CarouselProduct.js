@@ -20,8 +20,6 @@ const CarouselProduct = ({ request, title, svgIcon }) => {
 		<ProductCard key={product.id} product={product} isDragging={isDragging} />
 	));
 
-	console.log(data);
-
 	if (data)
 		return (
 			<div className="mc-container animeLeft">

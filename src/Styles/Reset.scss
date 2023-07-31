@@ -115,3 +115,7 @@ button,
 select {
 	font-family: 'Poppins';
 }
+
+body.loading {
+	overflow-y: hidden;
+}
