@@ -145,29 +145,29 @@ const Header = () => {
 						<Link onClick={() => setLeftNav(false)} to="/my-profile">
 							<div className="lNav-Links-card">
 								<UserIcon />
-								<p>Profile</p>
+								<p>Minha conta</p>
 							</div>
 						</Link>
 						<div className="lNav-Links-card">
 							<OrderIcon />
-							<p>Orders</p>
+							<p>Meus pedidos</p>
 						</div>
 						<div className="lNav-Links-card">
 							<FavoritesIcon />
-							<p>Favorites</p>
+							<p>Favoritos</p>
 						</div>
 					</div>
 					<div className="lNav-buttons">
 						{login ? (
 							<div>
-								<Link onClick={userLogout}>LOG OUT</Link>
+								<Link onClick={userLogout}>SAIR</Link>
 							</div>
 						) : (
 							<div>
 								<Link onClick={onClickOutside} to="/login">
-									LOG IN
+									ENTRAR
 								</Link>
-								<Link onClick={onClickOutside}>REGISTER</Link>
+								<Link onClick={onClickOutside}>CADASTRE-SE</Link>
 							</div>
 						)}
 					</div>

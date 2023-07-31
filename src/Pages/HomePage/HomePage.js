@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import useMeasure from 'react-use-measure';
 import { useNavigate } from 'react-router-dom';
+import Loading from './../../Components/Loading/Loading';
 import { banners, miniBanners } from './../../Utils/Extra';
 import MainCarousel from './CarouselProduct/CarouselProduct';
 import { ProductRequest } from '../../Requests/ProductRequest';
@@ -13,6 +14,7 @@ import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgr
 
 const HomePage = () => {
 	const [dragInitialPosition, setDragInitialPosition] = React.useState(0);
+	const [loading, setLoading] = React.useState(true);
 	const [bannerIndex, setBannerIndex] = React.useState(0);
 	const [prev, setPrev] = React.useState(bannerIndex);
 
@@ -47,6 +49,10 @@ const HomePage = () => {
 	};
 
 	React.useEffect(() => {
+		setTimeout(() => setLoading(false), 500);
+	}, []);
+
+	React.useEffect(() => {
 		if (window.scrollY < height) {
 			const timer = setInterval(clickNext, 5000);
 			return () => clearInterval(timer);
@@ -58,6 +64,7 @@ const HomePage = () => {
 			className="homePage-Section"
 			style={{ backgroundColor: banners[bannerIndex].color }}
 		>
+			{loading && <Loading />}
 			<div className="homePage-Container">
 				<motion.div
 					ref={ref}
@@ -66,7 +73,7 @@ const HomePage = () => {
 					onDragStart={(e, info) => setDragInitialPosition(info.point.x)}
 					onDragEnd={verifyDrag}
 					drag="x"
-					dragElastic={0}
+					dragElastic={0.1}
 					dragConstraints={{ right: 0, left: 0 }}
 					className="hp-banners"
 					style={{ backgroundColor: banners[bannerIndex].color }}

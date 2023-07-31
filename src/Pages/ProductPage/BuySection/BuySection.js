@@ -283,9 +283,6 @@ const BuySection = ({ productId, setProductId }) => {
 									whileTap={{ cursor: 'grabbing' }}
 									className="sp-container"
 								>
-									<button>
-										<PreviousIcon />
-									</button>
 									<motion.ul
 										className="sp-wrapper"
 										drag="x"
@@ -298,9 +295,6 @@ const BuySection = ({ productId, setProductId }) => {
 									>
 										{similarProducts}
 									</motion.ul>
-									<motion.button drag="x">
-										<NextIcon />
-									</motion.button>
 								</motion.div>
 							</div>
 						</div>
