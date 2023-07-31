@@ -39,10 +39,17 @@ const Login = () => {
 							{...password}
 						/>
 
-						<button>
-							<LoginIcon />
-							Entrar
-						</button>
+						{!loading ? (
+							<button>
+								<LoginIcon />
+								Entrar
+							</button>
+						) : (
+							<button disabled>
+								<LoginIcon />
+								Entrando...
+							</button>
+						)}
 					</form>
 					<span>Esqueceu a senha?</span>
 

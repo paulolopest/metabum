@@ -68,7 +68,11 @@ const Signup = () => {
 							type="text"
 							{...cpf}
 						/>
-						<CustomButton>Continuar</CustomButton>
+						{!loading ? (
+							<CustomButton>Continuar</CustomButton>
+						) : (
+							<CustomButton>Cadastrando...</CustomButton>
+						)}
 
 						{error ? (
 							<div className="signupError">
