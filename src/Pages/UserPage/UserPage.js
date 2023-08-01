@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { formattedPrice } from '../../Utils/Functions';
 import { GlobalContext } from '../../Context/GlobalContext';
 import { ReactComponent as BagIcon } from '../../Assets/icons/bag.svg';
@@ -10,6 +11,12 @@ import { ReactComponent as HeartIcon } from '../../Assets/icons/heart-svgrepo-co
 
 const UserPage = () => {
 	const { data } = React.useContext(GlobalContext);
+
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		navigate('/my-profile/my-data');
+	};
 
 	if (data)
 		return (
@@ -28,7 +35,9 @@ const UserPage = () => {
 									<p>{data.email}</p>
 								</div>
 							</div>
-							<ConfigIcon className="configIcon" />
+							<div onClick={handleClick}>
+								<ConfigIcon className="configIcon" />
+							</div>
 						</div>
 
 						<div className="ufc-AccountMoneyCard">

@@ -9,6 +9,7 @@ import ProductPage from './../Pages/ProductPage/ProductPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Authentication from './../Pages/LoginPage/Authentication';
 import ProductCatalog from './../Pages/ProductCatalog/ProductCatalog';
+import UserRoutes from '../Pages/UserPage/UserRoutes';
 
 const RouterConfig = () => {
 	return (
@@ -26,7 +27,7 @@ const RouterConfig = () => {
 							path="/my-profile/*"
 							element={
 								<ProtectedRoute>
-									<UserPage />
+									<UserRoutes />
 								</ProtectedRoute>
 							}
 						/>

@@ -35,4 +35,13 @@ export class UserRequest {
 			},
 		};
 	};
+
+	GET_USER_ADDRESS = (token) => {
+		return {
+			url: `${BASE_URL}/user/address/`,
+			headers: {
+				Authorization: token,
+			},
+		};
+	};
 }

@@ -12,6 +12,7 @@ const CustomInput = ({
 	onBlur,
 	className,
 	placeHolder,
+	disabled,
 }) => {
 	return (
 		<div>
@@ -26,6 +27,7 @@ const CustomInput = ({
 				onChange={onChange}
 				onBlur={onBlur}
 				placeholder={placeHolder}
+				disabled={disabled}
 			/>
 
 			{error && <p>{error}</p>}
