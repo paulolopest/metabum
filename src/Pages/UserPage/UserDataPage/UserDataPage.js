@@ -27,6 +27,14 @@ const UserDataPage = () => {
 
 	let { data, put, error, loading } = useAxios();
 
+	const deleteAddress = (id) => {
+		const token = window.localStorage.getItem('metabumtoken');
+
+		const { url, headers } = userRequest.DELETE_USER_ADDRESS(token, id);
+
+		address.deleteAxios(url, { headers });
+	};
+
 	React.useEffect(() => {
 		const token = window.localStorage.getItem('metabumtoken');
 		const { url, headers } = userRequest.GET_USER_ADDRESS(token);
@@ -83,13 +91,39 @@ const UserDataPage = () => {
 	};
 
 	const addressCard = address.data?.map((card) => (
-		<div className="addressCard" key={card.id}>
-			<strong>{card.identification}</strong>
-			<p>{card.street}</p>
-			<p>{card.complement}</p>
-			<p>
-				CEP: {card.zip_code} - {card.city}, {card.uf}
-			</p>
+		<div
+			className={
+				user?.data.default_address === card.zip_code
+					? 'addressCardDefault'
+					: 'addressCard'
+			}
+			key={card.id}
+		>
+			<div className="ad-fc">
+				<div className="ad-fc-title">
+					<strong>{card.identification}</strong>
+					{user?.data.default_address === card.zip_code ? (
+						<p>Padrão</p>
+					) : null}
+				</div>
+				<p>{card.street}</p>
+				<p>{card.complement}</p>
+				<p>
+					CEP: {card.zip_code} - {card.city}, {card.uf}
+				</p>
+			</div>
+			<div>
+				<button
+					onClick={() => deleteAddress(card.id)}
+					style={{ color: '#b2b2b2' }}
+				>
+					Excluir
+				</button>
+
+				{user?.data.default_address !== card.zip_code && (
+					<button style={{ color: '#ff6500' }}>Deixar como padrão</button>
+				)}
+			</div>
 		</div>
 	));
 

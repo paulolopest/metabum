@@ -45,6 +45,15 @@ export class UserRequest {
 		};
 	};
 
+	DELETE_USER_ADDRESS = (token, id) => {
+		return {
+			url: `${BASE_URL}/user/address/delete/${id}`,
+			headers: {
+				Authorization: token,
+			},
+		};
+	};
+
 	UPDATE_USER_EMAIL = (token) => {
 		return {
 			url: `${BASE_URL}/profile/update-email`,
