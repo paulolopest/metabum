@@ -44,4 +44,13 @@ export class UserRequest {
 			},
 		};
 	};
+
+	UPDATE_USER_EMAIL = (token) => {
+		return {
+			url: `${BASE_URL}/profile/update-email`,
+			headers: {
+				Authorization: token,
+			},
+		};
+	};
 }

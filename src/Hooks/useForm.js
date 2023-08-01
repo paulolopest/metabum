@@ -1,19 +1,6 @@
 import React from 'react';
 
-const types = {
-	email: {
-		regex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-		message: 'Enter a valid email',
-	},
-	password: {
-		regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
-		message: 'Enter a valid password',
-	},
-	number: {
-		regex: /^\d+$/,
-		message: 'Use only numbers',
-	},
-};
+const types = {};
 
 const useForm = (type) => {
 	const [value, setValue] = React.useState('');

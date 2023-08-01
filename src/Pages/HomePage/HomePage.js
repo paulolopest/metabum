@@ -79,8 +79,6 @@ const HomePage = () => {
 		}
 	}, [bannerIndex]);
 
-	console.log(isDragging);
-
 	return (
 		<div
 			className="homePage-Section"
