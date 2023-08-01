@@ -59,7 +59,9 @@ const useAxios = () => {
 			setError(null);
 			setLoading(true);
 
-			await axios.put(url, data, config);
+			let res = await axios.put(url, data, config);
+
+			setData(res.data);
 		} catch (error) {
 			setData(null);
 			setError(error.response.data);

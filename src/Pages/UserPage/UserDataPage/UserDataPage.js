@@ -25,7 +25,7 @@ const UserDataPage = () => {
 
 	const address = useAxios();
 
-	const { data, get, put, error, loading } = useAxios();
+	let { data, put, error, loading } = useAxios();
 
 	React.useEffect(() => {
 		const token = window.localStorage.getItem('metabumtoken');
@@ -34,16 +34,23 @@ const UserDataPage = () => {
 		address.get(url, { headers });
 	}, []);
 
-	const updateEmail = () => {
+	React.useEffect(() => {
+		if (modal) {
+			document.body.classList.add('loading');
+		} else {
+			document.body.classList.remove('loading');
+		}
+	}, [modal]);
+
+	const updateEmail = async () => {
 		const token = window.localStorage.getItem('metabumtoken');
 		const body = {
 			currentEmail: email.value,
 			newEmail: newEmail.value,
 			password: password.value,
 		};
-		const { url, headers } = userRequest.UPDATE_USER_EMAIL(token);
 
-		console.log({ headers });
+		const { url, headers } = userRequest.UPDATE_USER_EMAIL(token);
 
 		put(url, body, { headers });
 	};
@@ -53,7 +60,8 @@ const UserDataPage = () => {
 			currentPassword: password.value,
 			newPassword: newPassword.value,
 		};
-		const { url, headers } = userRequest.UPDATE_USER_EMAIL(token);
+
+		const { url, headers } = userRequest.UPDATE_USER_PASSWORD(token);
 
 		put(url, body, { headers });
 	};
@@ -172,12 +180,6 @@ const UserDataPage = () => {
 											placeHolder="Digite sua nova senha"
 											{...newPassword}
 										/>
-										<CustomInput
-											type="password"
-											name="newPassword"
-											placeHolder="Repita a nova senha"
-											{...newPassword}
-										/>
 									</>
 								) : (
 									<>
@@ -213,6 +215,7 @@ const UserDataPage = () => {
 							</div>
 
 							<button
+								disabled={loading ? true : false}
 								onClick={
 									inputUpdate === 'Senha'
 										? updatePassword

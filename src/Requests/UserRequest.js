@@ -53,4 +53,12 @@ export class UserRequest {
 			},
 		};
 	};
+	UPDATE_USER_PASSWORD = (token) => {
+		return {
+			url: `${BASE_URL}/profile/change-password`,
+			headers: {
+				Authorization: token,
+			},
+		};
+	};
 }

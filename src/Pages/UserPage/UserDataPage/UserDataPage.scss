@@ -264,3 +264,52 @@
 		height: 3rem;
 	}
 }
+
+@media (max-width: 1600px) {
+	.userDataContainer {
+		width: 95vw;
+	}
+}
+@media (max-width: 1025px) {
+	.userDataContainer {
+		width: 93vw;
+	}
+}
+@media (max-width: 900px) {
+	.userDataContainer {
+		width: 90vw;
+	}
+
+	.ud-data {
+		flex-direction: column;
+		gap: 1.5rem 0;
+
+		.udd-info {
+			width: 100%;
+		}
+
+		.udd-address {
+			width: 100%;
+		}
+	}
+}
+
+@media (max-width: 450px) {
+	.ud-data {
+		.udd-info {
+			.uddi-buttons {
+				button {
+					font-size: 0.9rem;
+				}
+			}
+		}
+
+		.udd-address {
+			.udda-addressContainer {
+				.addressCard {
+					padding: 1rem 1rem 2rem 1rem;
+				}
+			}
+		}
+	}
+}
