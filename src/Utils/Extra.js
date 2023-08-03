@@ -39,7 +39,7 @@ export const banners = [
 export const miniBanners = [
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1288.jpg&w=750&h=198&q=100',
-		word: 'rosa',
+		word: 'branco',
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1214.jpg&w=750&h=198&q=100',

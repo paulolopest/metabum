@@ -86,7 +86,7 @@ const GlobalStorage = ({ children }) => {
 					setLogin(true);
 					await getUser(token);
 				} catch (error) {
-					await userLogout();
+					// await userLogout();
 				} finally {
 					setLoading(false);
 				}

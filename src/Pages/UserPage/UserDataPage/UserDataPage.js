@@ -10,6 +10,7 @@ import { ReactComponent as LockIcon } from '../../../Assets/icons/lockIcon.svg';
 import { ReactComponent as AddressIcon } from '../../../Assets/icons/address.svg';
 import { ReactComponent as DescriptionIcon } from '../../../Assets/icons/description-svgrepo-com.svg';
 import useForm from './../../../Hooks/useForm';
+import AddressCard from './AddressCard';
 
 const UserDataPage = () => {
 	const user = React.useContext(GlobalContext);
@@ -26,14 +27,6 @@ const UserDataPage = () => {
 	const address = useAxios();
 
 	let { data, put, error, loading } = useAxios();
-
-	const deleteAddress = (id) => {
-		const token = window.localStorage.getItem('metabumtoken');
-
-		const { url, headers } = userRequest.DELETE_USER_ADDRESS(token, id);
-
-		address.deleteAxios(url, { headers });
-	};
 
 	React.useEffect(() => {
 		const token = window.localStorage.getItem('metabumtoken');
@@ -90,41 +83,23 @@ const UserDataPage = () => {
 		}
 	};
 
-	const addressCard = address.data?.map((card) => (
-		<div
-			className={
-				user?.data.default_address === card.zip_code
-					? 'addressCardDefault'
-					: 'addressCard'
-			}
-			key={card.id}
-		>
-			<div className="ad-fc">
-				<div className="ad-fc-title">
-					<strong>{card.identification}</strong>
-					{user?.data.default_address === card.zip_code ? (
-						<p>Padrão</p>
-					) : null}
-				</div>
-				<p>{card.street}</p>
-				<p>{card.complement}</p>
-				<p>
-					CEP: {card.zip_code} - {card.city}, {card.uf}
-				</p>
-			</div>
-			<div>
-				<button
-					onClick={() => deleteAddress(card.id)}
-					style={{ color: '#b2b2b2' }}
-				>
-					Excluir
-				</button>
+	const deleteAddress = async (id) => {
+		const token = window.localStorage.getItem('metabumtoken');
 
-				{user?.data.default_address !== card.zip_code && (
-					<button style={{ color: '#ff6500' }}>Deixar como padrão</button>
-				)}
-			</div>
-		</div>
+		const { url, headers } = userRequest.DELETE_USER_ADDRESS(token, id);
+
+		await address.deleteAxios(url, { headers });
+
+		window.location.reload();
+	};
+
+	const addressCard = address.data?.map((card) => (
+		<AddressCard
+			key={card.id}
+			card={card}
+			user={user}
+			deleteAddress={() => deleteAddress(card.id)}
+		/>
 	));
 
 	if (user.data && address.data)

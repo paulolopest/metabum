@@ -164,10 +164,16 @@ const Header = () => {
 							</div>
 						) : (
 							<div>
-								<Link onClick={onClickOutside} to="/login">
+								<Link onClick={() => setLeftNav(false)} to="/login">
 									ENTRAR
 								</Link>
-								<Link onClick={onClickOutside}>CADASTRE-SE</Link>
+								<Link
+									onClick={() => setLeftNav(false)}
+									to="/login/signup
+								"
+								>
+									CADASTRE-SE
+								</Link>
 							</div>
 						)}
 					</div>

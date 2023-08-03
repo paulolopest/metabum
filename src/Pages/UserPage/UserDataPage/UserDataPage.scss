@@ -259,8 +259,8 @@
 	min-width: 40vw;
 	min-height: 40vh;
 	width: auto;
-	padding: 1rem;
 	height: auto;
+	padding: 1rem;
 	position: absolute;
 	z-index: 20;
 	transition: 0.2s;
@@ -369,6 +369,17 @@
 
 		.udd-address {
 			width: 100%;
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.uds-modalSection {
+		margin: 1rem;
+		.uds-ms-inputs {
+			input {
+				width: 90vw;
+			}
 		}
 	}
 }

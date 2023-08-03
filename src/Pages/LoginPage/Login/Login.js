@@ -20,6 +20,7 @@ const Login = () => {
 		userLogin(email.value, password.value);
 	};
 
+	if (loading) return <Loading />;
 	return (
 		<div className="loginContainer">
 			<div className="loginBox">
