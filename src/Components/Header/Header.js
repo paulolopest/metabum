@@ -19,12 +19,14 @@ import { ReactComponent as FAQIcon } from '../../Assets/icons/contact-svgrepo-co
 import { ReactComponent as FavoritesIcon } from '../../Assets/icons/heart-svgrepo-com.svg';
 import { ReactComponent as MagnifyingGlass } from '../../Assets/icons/search-svgrepo-com.svg';
 import { ReactComponent as ProfileIcon } from '../../Assets/icons/profile-circle-svgrepo-com.svg';
+import SearchModal from '../SearchModal/SearchModal';
 
 const Header = () => {
 	const [leftNav, setLeftNav] = React.useState(false);
+	const [searchModal, setSearchModal] = React.useState(false);
 
 	const { data, login, userLogout } = React.useContext(GlobalContext);
-	const { cartBar, setCartBar, getCart } = React.useContext(CartContext);
+	const { cartBar, setCartBar } = React.useContext(CartContext);
 
 	const desktopScreen = useMedia('(max-width: 65rem)');
 	const mediumScreen = useMedia('(max-width: 53rem)');
@@ -46,101 +48,114 @@ const Header = () => {
 		if (event.target === event.currentTarget) {
 			setLeftNav(false);
 		}
+	};
 
-		document.body.classList.remove('activeBar');
+	const test = (e) => {
+		if (e.target === e.currentTarget) setSearchModal(false);
 	};
 
 	React.useEffect(() => {
-		if (leftNav || cartBar) {
+		if (leftNav || cartBar || searchModal) {
 			document.body.classList.add('loading');
 		} else {
 			document.body.classList.remove('loading');
 		}
-	}, [leftNav, cartBar]);
+	}, [leftNav, cartBar, searchModal]);
 
 	return (
-		<div className="headerContainer">
-			<div className="headerMenu">
-				<div className="hbg-menu" onClick={activeLeftBar}>
-					<Menu />
-				</div>
+		<>
+			<div className="headerContainer">
+				<div className="headerMenu">
+					<div className="hbg-menu" onClick={activeLeftBar}>
+						<Menu />
+					</div>
 
-				{mobileScreen ? (
-					<Link to="/">
-						<KabumIcon />
-					</Link>
-				) : (
-					<Link to="/">
-						{desktopScreen ? (
+					{mobileScreen ? (
+						<Link to="/">
 							<KabumIcon />
-						) : (
-							<img src={Logo} alt="logo"></img>
-						)}
-					</Link>
-				)}
-			</div>
-			<div className="searchContainer">
-				<CustomInput
-					type="text"
-					name="search"
-					className="searchInput"
-					placeHolder="Search"
-					{...search}
-				/>
-				{mobileScreen ? (
-					<button>
-						<MagnifyingGlass />
-					</button>
-				) : (
-					<button>
-						<SearchIcon />
-					</button>
-				)}
-			</div>
-			{mediumScreen ? (
-				<></>
-			) : (
-				<div className="header-LoginContainer">
-					{login ? (
-						<>
-							<img src={profileImage} alt="profile" />
-							<p>
-								Olá, {data?.name}
-								<br />
-								<Link to="/my-profile">Minha Conta</Link> |{' '}
-								<Link onClick={userLogout}>Sair</Link>
-							</p>
-						</>
+						</Link>
 					) : (
-						<>
-							<ProfileIcon />
-							<p>
-								Faça <Link to="/login">Login</Link> ou <br /> crie seu{' '}
-								<Link to="/login/signup">Cadastro</Link>
-							</p>
-						</>
+						<Link to="/">
+							{desktopScreen ? (
+								<KabumIcon />
+							) : (
+								<img src={Logo} alt="logo"></img>
+							)}
+						</Link>
 					)}
 				</div>
-			)}
-			<div className="header-IconsContainer">
-				<Link onClick={activeCartBar}>
-					<CartIcon />
-				</Link>
-				{mobileScreen ? (
+				<div className="searchContainer">
+					<div>
+						<CustomInput
+							type="text"
+							name="search"
+							className="searchInput"
+							placeHolder="Search"
+							{...search}
+						/>
+						{mobileScreen ? (
+							<button>
+								<MagnifyingGlass />
+							</button>
+						) : (
+							<button>
+								<SearchIcon />
+							</button>
+						)}
+					</div>
+					<SearchModal
+						word={search.value}
+						searchModal={searchModal}
+						setSearchModal={setSearchModal}
+					/>
+				</div>
+				{mediumScreen ? (
 					<></>
 				) : (
-					<Link>
-						<FavoritesIcon />
-					</Link>
+					<div className="header-LoginContainer">
+						{login ? (
+							<>
+								<img src={profileImage} alt="profile" />
+								<p>
+									Olá, {data?.name}
+									<br />
+									<Link to="/my-profile">Minha Conta</Link> |{' '}
+									<Link onClick={userLogout}>Sair</Link>
+								</p>
+							</>
+						) : (
+							<>
+								<ProfileIcon />
+								<p>
+									Faça <Link to="/login">Login</Link> ou <br /> crie
+									seu <Link to="/login/signup">Cadastro</Link>
+								</p>
+							</>
+						)}
+					</div>
 				)}
-				{desktopScreen ? (
-					<></>
-				) : (
-					<Link>
-						<FAQIcon />
+				<div className="header-IconsContainer">
+					<Link onClick={activeCartBar}>
+						<CartIcon />
 					</Link>
-				)}
+					{mobileScreen ? (
+						<></>
+					) : (
+						<Link>
+							<FavoritesIcon />
+						</Link>
+					)}
+					{desktopScreen ? (
+						<></>
+					) : (
+						<Link>
+							<FAQIcon />
+						</Link>
+					)}
+				</div>
 			</div>
+
+			<div onClick={test} className={searchModal ? 'fakeScreen' : ''}></div>
 
 			<div
 				onClick={onClickOutside}
@@ -203,7 +218,7 @@ const Header = () => {
 			</div>
 
 			<Cart />
-		</div>
+		</>
 	);
 };
 

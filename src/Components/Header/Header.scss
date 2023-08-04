@@ -164,25 +164,35 @@
 
 .searchContainer {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-content: center;
 	width: 45%;
+	height: 7rem;
+	justify-content: center;
+	// height: 2.5rem;
+	position: relative;
 
-	button {
+	div {
 		display: flex;
-		align-items: center;
-		border: none;
-		background-color: white;
-		border-left: none;
-		border-top-right-radius: 3px;
-		border-bottom-right-radius: 3px;
-		height: 2.2rem;
-		cursor: pointer;
-		height: 2.5rem;
 
-		svg {
+		button {
+			display: flex;
+			align-items: center;
+			border: none;
+			background-color: white;
+			border-left: none;
+			border-top-right-radius: 3px;
+			border-bottom-right-radius: 3px;
+			height: 2.2rem;
+			cursor: pointer;
+			height: 2.5rem;
 			position: relative;
-			right: -2rem;
+			right: 0;
+
+			svg {
+				position: relative;
+				right: -2rem;
+			}
 		}
 	}
 }

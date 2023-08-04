@@ -5,6 +5,7 @@
 @import '../Components/Header/Header.scss';
 @import '../Components/Cart/Cart.scss';
 @import '../Components/ProductCard/ProductCard.scss';
+@import '../Components/SearchModal/SearchModal.scss';
 
 @import '../Pages/LoginPage/Authentication.scss';
 @import '../Pages/HomePage/HomePage.scss';
@@ -36,7 +37,7 @@
 }
 
 .displayNone {
-	display: none;
+	display: none !important;
 }
 
 .alignCenter {
@@ -47,4 +48,14 @@
 
 .activeBar html {
 	overflow: hidden;
+}
+
+.fakeScreen {
+	z-index: 20;
+	width: 100%;
+	height: calc(100vh - 7rem);
+	backdrop-filter: brightness(0.5);
+	padding-top: 7rem;
+	left: 0;
+	position: absolute;
 }

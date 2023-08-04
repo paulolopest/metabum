@@ -58,8 +58,6 @@ const CartStorage = ({ children }) => {
 		getCart();
 	}, [deleteAxios, getCart]);
 
-	console.log(data);
-
 	return (
 		<CartContext.Provider
 			value={{

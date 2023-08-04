@@ -63,7 +63,7 @@ const Cart = () => {
 			onClick={onClickOutside}
 			className={cartBar ? 'cartContainer' : 'displayNone'}
 		>
-			{data?.length <= 0 ? (
+			{data?.length <= 0 || !login ? (
 				<div className="cartEmpty animeRight">
 					<div>
 						<EmptyCart />
