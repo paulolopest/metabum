@@ -14,7 +14,6 @@
 	font-size: 1.3rem;
 	font-weight: bold;
 	text-transform: uppercase;
-	color: #ff6500;
 	gap: 0 0.4rem;
 
 	svg {
@@ -121,20 +120,32 @@
 
 		.udda-title {
 			display: flex;
-			font-size: 1rem;
-			align-items: center;
-			gap: 0 0.4rem;
-			font-weight: bold;
-			text-transform: uppercase;
-			color: #ff6500;
+			justify-content: space-between;
 
-			p {
-				padding-top: 0.2rem;
+			div {
+				display: flex;
+				font-size: 1rem;
+				align-items: center;
+				gap: 0 0.4rem;
+				font-weight: bold;
+				text-transform: uppercase;
+				color: #ff6500;
+
+				p {
+					padding-top: 0.2rem;
+				}
+
+				svg {
+					height: 1.2rem;
+					width: 1.2rem;
+				}
 			}
 
-			svg {
-				height: 1.2rem;
-				width: 1.2rem;
+			span {
+				font-weight: bold;
+				text-transform: uppercase;
+				color: #ff6500;
+				cursor: pointer;
 			}
 		}
 

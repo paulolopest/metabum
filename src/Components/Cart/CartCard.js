@@ -1,5 +1,6 @@
 import React from 'react';
 import useForm from './../../Hooks/useForm';
+import useMedia from './../../Hooks/useMedia';
 import { CartContext } from '../../Context/CartContext';
 import CustomInput from './../Form/CustomInput/CustomInput';
 import CustomButton from '../Form/CustomButton/CustomButton';
@@ -7,7 +8,6 @@ import { formattedPrice, limitText } from './../../Utils/Functions';
 import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.svg';
 import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 import { ReactComponent as TrashIcon } from '../../Assets/icons/trash-3-svgrepo-com.svg';
-import useMedia from './../../Hooks/useMedia';
 
 const CartCard = ({ product }) => {
 	const { deleteProduct, editQuantity } = React.useContext(CartContext);
@@ -86,7 +86,7 @@ const CartCard = ({ product }) => {
 
 				<CustomButton className="CC-removeButton" onClick={onClickRemove}>
 					<TrashIcon />
-					Remove
+					Remover
 				</CustomButton>
 			</div>
 		</div>

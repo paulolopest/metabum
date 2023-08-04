@@ -45,6 +45,24 @@ export class UserRequest {
 		};
 	};
 
+	ADD_USER_ADDRESS = (token) => {
+		return {
+			url: `${BASE_URL}/user/address/add-address`,
+			headers: {
+				Authorization: token,
+			},
+		};
+	};
+
+	SET_USER_DEFAULT_ADDRESS = (token, zipCode) => {
+		return {
+			url: `${BASE_URL}/profile/update-address/${zipCode}`,
+			headers: {
+				Authorization: token,
+			},
+		};
+	};
+
 	DELETE_USER_ADDRESS = (token, id) => {
 		return {
 			url: `${BASE_URL}/user/address/delete/${id}`,

@@ -40,9 +40,16 @@
 		flex-direction: column;
 		justify-items: center;
 		align-items: center;
+		gap: 1rem 0;
 
 		p {
 			font-size: 1.2rem;
+			text-transform: uppercase;
+		}
+
+		svg {
+			width: 5rem;
+			height: 5rem;
 		}
 	}
 }
@@ -71,7 +78,6 @@
 
 	p {
 		font-size: 1.3rem;
-		font-weight: bold;
 	}
 
 	svg {
@@ -237,6 +243,7 @@
 @media (max-width: 1600px) {
 	.cart {
 		grid-template-rows: 10% 60% 30%;
+		width: 35vw;
 	}
 
 	.cartFooter {
@@ -250,6 +257,9 @@
 
 		&:hover {
 			.CC-removeButton {
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				gap: 0 0.3rem;
 				font-size: 0.9rem;
 
@@ -270,17 +280,20 @@
 
 @media (max-width: 1450px) {
 	.cart {
-		width: 32vw;
+		width: 40vw;
 	}
 }
 
 @media (max-width: 1200px) {
 	.cart {
-		width: 40vw;
+		width: 45vw;
 	}
 }
 
 @media (max-width: 1025px) {
+	.cart {
+		width: 50vw;
+	}
 }
 
 @media (max-width: 900px) {
@@ -288,7 +301,7 @@
 		padding: 0rem 1rem;
 	}
 	.cart {
-		width: 55vw;
+		width: 60vw;
 	}
 }
 @media (max-width: 600px) {

@@ -71,7 +71,22 @@ const useAxios = () => {
 		}
 	}, []);
 
-	return { data, error, loading, get, post, put, deleteAxios };
+	const putWithoutRes = React.useCallback(async (url, data, config) => {
+		try {
+			setError(null);
+			setLoading(true);
+
+			await axios.put(url, data, config);
+		} catch (error) {
+			setData(null);
+			setError(error.response.data);
+			setLoading(false);
+		} finally {
+			setLoading(false);
+		}
+	}, []);
+
+	return { data, error, loading, get, post, put, deleteAxios, putWithoutRes };
 };
 
 export default useAxios;

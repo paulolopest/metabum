@@ -1,4 +1,5 @@
 import React from 'react';
+import Cart from './../Cart/Cart';
 import { Link } from 'react-router-dom';
 import useForm from './../../Hooks/useForm';
 import useMedia from './../../Hooks/useMedia';
@@ -13,6 +14,7 @@ import { ReactComponent as OrderIcon } from '../../Assets/icons/truck.svg';
 import { ReactComponent as KabumIcon } from '../../Assets/icons/kabum.svg';
 import { ReactComponent as SearchIcon } from '../../Assets/icons/search.svg';
 import { ReactComponent as CartIcon } from '../../Assets/icons/cart-svgrepo-com.svg';
+import { ReactComponent as CloseIcon } from '../../Assets/icons/close-svgrepo-com.svg';
 import { ReactComponent as FAQIcon } from '../../Assets/icons/contact-svgrepo-com.svg';
 import { ReactComponent as FavoritesIcon } from '../../Assets/icons/heart-svgrepo-com.svg';
 import { ReactComponent as MagnifyingGlass } from '../../Assets/icons/search-svgrepo-com.svg';
@@ -20,8 +22,9 @@ import { ReactComponent as ProfileIcon } from '../../Assets/icons/profile-circle
 
 const Header = () => {
 	const [leftNav, setLeftNav] = React.useState(false);
+
 	const { data, login, userLogout } = React.useContext(GlobalContext);
-	const { cartBar, setCartBar } = React.useContext(CartContext);
+	const { cartBar, setCartBar, getCart } = React.useContext(CartContext);
 
 	const desktopScreen = useMedia('(max-width: 65rem)');
 	const mediumScreen = useMedia('(max-width: 53rem)');
@@ -46,6 +49,14 @@ const Header = () => {
 
 		document.body.classList.remove('activeBar');
 	};
+
+	React.useEffect(() => {
+		if (leftNav || cartBar) {
+			document.body.classList.add('loading');
+		} else {
+			document.body.classList.remove('loading');
+		}
+	}, [leftNav, cartBar]);
 
 	return (
 		<div className="headerContainer">
@@ -130,6 +141,7 @@ const Header = () => {
 					</Link>
 				)}
 			</div>
+
 			<div
 				onClick={onClickOutside}
 				className={
@@ -138,8 +150,14 @@ const Header = () => {
 			>
 				<div className={leftNav ? `left-nav animeLeft` : `displayNone`}>
 					<div className="lNav-profile">
-						<img src={profileImage} alt="profile" />
-						<p>Ninja{login ? `: ${data?.name}` : ''}</p>
+						<div>
+							<img src={profileImage} alt="profile" />
+							<p>Ninja{login ? `: ${data?.name}` : ''}</p>
+						</div>
+
+						{mobileScreen && (
+							<CloseIcon onClick={() => setLeftNav(false)} />
+						)}
 					</div>
 					<div className="lNav-Links">
 						<Link onClick={() => setLeftNav(false)} to="/my-profile">
@@ -150,11 +168,15 @@ const Header = () => {
 						</Link>
 						<div className="lNav-Links-card">
 							<OrderIcon />
-							<p>Meus pedidos</p>
+							<p>Carrinho</p>
 						</div>
 						<div className="lNav-Links-card">
 							<FavoritesIcon />
 							<p>Favoritos</p>
+						</div>
+						<div className="lNav-Links-card">
+							<FAQIcon />
+							<p>FAQ</p>
 						</div>
 					</div>
 					<div className="lNav-buttons">
@@ -179,6 +201,8 @@ const Header = () => {
 					</div>
 				</div>
 			</div>
+
+			<Cart />
 		</div>
 	);
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddressCard = ({ card, user, deleteAddress }) => {
+const AddressCard = ({ card, user, deleteAddress, setDefaultAddress }) => {
 	return (
 		<div
 			className={
@@ -18,7 +18,9 @@ const AddressCard = ({ card, user, deleteAddress }) => {
 					) : null}
 				</div>
 				<p>{card.street}</p>
-				<p>{card.complement}</p>
+				<p>
+					N°: {card.number}, {card.complement}
+				</p>
 				<p>
 					CEP: {card.zip_code} - {card.city}, {card.uf}
 				</p>
@@ -29,7 +31,9 @@ const AddressCard = ({ card, user, deleteAddress }) => {
 				</button>
 
 				{user?.data.default_address !== card.zip_code && (
-					<button style={{ color: '#ff6500' }}>Deixar como padrão</button>
+					<button onClick={setDefaultAddress} style={{ color: '#ff6500' }}>
+						Deixar como padrão
+					</button>
 				)}
 			</div>
 		</div>

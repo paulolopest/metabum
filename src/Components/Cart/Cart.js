@@ -37,18 +37,6 @@ const Cart = () => {
 		};
 	}, [setCartBar]);
 
-	React.useEffect(() => {
-		const handlePopState = (event) => {
-			setCartBar(false);
-		};
-
-		window.addEventListener('popstate', handlePopState);
-
-		return () => {
-			window.removeEventListener('popstate', handlePopState);
-		};
-	}, [setCartBar]);
-
 	const cleanCart = () => {
 		deleteCart();
 	};
@@ -79,13 +67,15 @@ const Cart = () => {
 				<div className="cartEmpty animeRight">
 					<div>
 						<EmptyCart />
-						<p>Your cart is empty</p>
+						<p>Carrinho vazio</p>
 					</div>
 				</div>
 			) : (
 				<div className="cart animeRight">
 					<div className="cartHeader">
-						<p>Cart: {data?.length} products</p>
+						<p>
+							<strong>Carrinho</strong>
+						</p>
 						{mobileScreen ? (
 							<CustomButton
 								className="mobileCloseIcon"
@@ -99,7 +89,7 @@ const Cart = () => {
 									onClick={deleteCart}
 									className={deleteOption ? '' : 'displayNone'}
 								>
-									Delete all cart
+									Excluir tudo
 								</span>
 								<DotIcon
 									onClick={() => setDeleteOption(!deleteOption)}
@@ -111,12 +101,15 @@ const Cart = () => {
 					<div className="cartFooter">
 						<div>
 							<span>
-								In cash via <strong>pix</strong>
+								Valor à vista no <strong>Pix</strong>
 							</span>
 							<p>R$ {formattedPrice(totalPrice - totalPrice / 10)}</p>
-							<span>Save: R$ {formattedPrice(totalPrice / 10)}</span>
+							<span>
+								(Economize:{' '}
+								<strong>R$ {formattedPrice(totalPrice / 10)}</strong>)
+							</span>
 						</div>
-						<CustomButton>Choose payment method</CustomButton>
+						<CustomButton>Ir para o pagamento</CustomButton>
 					</div>
 				</div>
 			)}

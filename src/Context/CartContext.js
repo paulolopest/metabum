@@ -7,7 +7,8 @@ const cartRequest = new CartRequest();
 
 const CartStorage = ({ children }) => {
 	const [cartBar, setCartBar] = React.useState(false);
-	const { data, loading, error, post, get, put, deleteAxios } = useAxios();
+	const { data, loading, error, post, get, put, deleteAxios, putWithoutRes } =
+		useAxios();
 
 	const getCart = React.useCallback(() => {
 		const token = window.localStorage.getItem('metabumtoken');
@@ -43,10 +44,10 @@ const CartStorage = ({ children }) => {
 			const token = window.localStorage.getItem('metabumtoken');
 			const { url, headers } = cartRequest.EDIT_QUANTITY(token, productId);
 
-			await put(url, body, { headers });
+			await putWithoutRes(url, body, { headers });
 			getCart();
 		},
-		[getCart, put]
+		[getCart, putWithoutRes]
 	);
 
 	const deleteCart = React.useCallback(async () => {
@@ -56,6 +57,8 @@ const CartStorage = ({ children }) => {
 		await deleteAxios(url, { headers });
 		getCart();
 	}, [deleteAxios, getCart]);
+
+	console.log(data);
 
 	return (
 		<CartContext.Provider
