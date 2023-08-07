@@ -178,6 +178,7 @@
 
 	.mobile-pc-info {
 		display: grid;
+		gap: 0 0.5rem;
 		grid-template-columns: 45% 55%;
 		height: 100%;
 		font-size: 0.85rem;
@@ -274,7 +275,7 @@
 	}
 }
 
-@media (max-width: 420px) {
+@media (max-width: 500px) {
 	.productCard {
 		gap: 0.5rem;
 		.pc-IconsContainer {

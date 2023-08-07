@@ -459,7 +459,11 @@
 	}
 }
 
-@media (max-width: 415px) {
+@media (max-width: 500px) {
+	.headerContainer {
+		align-items: center;
+	}
+
 	.left-nav {
 		width: 100vw;
 	}
@@ -467,5 +471,18 @@
 		width: 11rem;
 		height: 2rem;
 		border-right: none;
+	}
+
+	.searchContainer {
+		div {
+			button {
+				height: 2rem;
+				svg {
+					position: initial;
+					right: inherit;
+					width: 1rem;
+				}
+			}
+		}
 	}
 }

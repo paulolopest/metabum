@@ -30,7 +30,7 @@ const Header = () => {
 
 	const desktopScreen = useMedia('(max-width: 65rem)');
 	const mediumScreen = useMedia('(max-width: 53rem)');
-	const mobileScreen = useMedia('(max-width: 37rem)');
+	const mobileScreen = useMedia('(max-width: 37.5rem)');
 
 	const search = useForm('form');
 
@@ -50,7 +50,7 @@ const Header = () => {
 		}
 	};
 
-	const test = (e) => {
+	const closeModal = (e) => {
 		if (e.target === e.currentTarget) setSearchModal(false);
 	};
 
@@ -104,11 +104,13 @@ const Header = () => {
 							</button>
 						)}
 					</div>
-					<SearchModal
-						word={search.value}
-						searchModal={searchModal}
-						setSearchModal={setSearchModal}
-					/>
+					{!mobileScreen && (
+						<SearchModal
+							word={search.value}
+							searchModal={searchModal}
+							setSearchModal={setSearchModal}
+						/>
+					)}
 				</div>
 				{mediumScreen ? (
 					<></>
@@ -156,7 +158,15 @@ const Header = () => {
 				</div>
 			</div>
 
-			<div onClick={test} className={searchModal ? 'fakeScreen' : ''}></div>
+			<div onClick={closeModal} className={searchModal ? 'fakeScreen' : ''}>
+				{mobileScreen && (
+					<SearchModal
+						word={search.value}
+						searchModal={searchModal}
+						setSearchModal={setSearchModal}
+					/>
+				)}
+			</div>
 
 			<div
 				onClick={onClickOutside}

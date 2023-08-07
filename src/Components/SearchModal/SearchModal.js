@@ -2,12 +2,15 @@ import React from 'react';
 import useAxios from '../../Hooks/useAxios';
 import { ProductRequest } from './../../Requests/ProductRequest';
 import { useNavigate } from 'react-router-dom';
+import { limitText } from './../../Utils/Functions';
+import useMedia from './../../Hooks/useMedia';
 
 const SearchModal = ({ word, searchModal, setSearchModal }) => {
 	const productRequest = new ProductRequest();
 
 	const search = useAxios();
 	const navigate = useNavigate();
+	const mobileScreen = useMedia('(max-width: 37.5rem)');
 
 	React.useEffect(() => {
 		const time = setTimeout(() => {
@@ -33,7 +36,11 @@ const SearchModal = ({ word, searchModal, setSearchModal }) => {
 			key={product.id}
 		>
 			<img src={product.small_src} alt={product.name} />
-			<p>{product.name}</p>
+			{mobileScreen ? (
+				<p>{limitText(product.name, 75)}</p>
+			) : (
+				<p>{product.name}</p>
+			)}
 		</div>
 	));
 
