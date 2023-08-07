@@ -288,6 +288,10 @@
 	.cart {
 		width: 45vw;
 	}
+
+	.cartEmpty {
+		width: 40vw;
+	}
 }
 
 @media (max-width: 1025px) {
@@ -298,9 +302,11 @@
 
 @media (max-width: 900px) {
 	.cart {
+		width: 60vw;
 		padding: 0rem 1rem;
 	}
-	.cart {
+
+	.cartEmpty {
 		width: 60vw;
 	}
 }

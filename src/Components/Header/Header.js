@@ -1,6 +1,6 @@
 import React from 'react';
 import Cart from './../Cart/Cart';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useForm from './../../Hooks/useForm';
 import useMedia from './../../Hooks/useMedia';
 import { CartContext } from '../../Context/CartContext';
@@ -33,14 +33,17 @@ const Header = () => {
 	const mobileScreen = useMedia('(max-width: 37.5rem)');
 
 	const search = useForm('form');
+	const navigate = useNavigate();
 
 	const activeLeftBar = () => {
+		setSearchModal(false);
 		setLeftNav(!leftNav);
 
 		document.body.classList.add('activeBar');
 	};
 
 	const activeCartBar = () => {
+		setSearchModal(false);
 		setCartBar(!cartBar);
 	};
 
@@ -52,6 +55,11 @@ const Header = () => {
 
 	const closeModal = (e) => {
 		if (e.target === e.currentTarget) setSearchModal(false);
+	};
+
+	const handleSearch = () => {
+		setSearchModal(false);
+		navigate(`/catalog/${search.value}`);
 	};
 
 	React.useEffect(() => {
@@ -90,16 +98,16 @@ const Header = () => {
 							type="text"
 							name="search"
 							className="searchInput"
-							placeHolder="Search"
+							placeHolder="Pesquisar"
 							autoComplete="off"
 							{...search}
 						/>
 						{mobileScreen ? (
-							<button>
+							<button onClick={handleSearch}>
 								<MagnifyingGlass />
 							</button>
 						) : (
-							<button>
+							<button onClick={handleSearch}>
 								<SearchIcon />
 							</button>
 						)}
@@ -220,7 +228,7 @@ const Header = () => {
 									to="/login/signup
 								"
 								>
-									CADASTRE-SE
+									CADASTRO
 								</Link>
 							</div>
 						)}

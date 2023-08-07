@@ -47,20 +47,22 @@
 	left: 0;
 }
 .left-nav {
-	display: grid;
-	grid-template-rows: 10vh 75vh 15vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	background-color: #0060b1;
 	width: 30vw;
+	height: 100vh;
 	min-height: 100vh;
 	position: absolute;
 	z-index: 20;
 	transition: 0.2s;
 	color: white;
+	padding: 1rem;
 }
 
 .lNav-profile {
 	display: flex;
-	padding: 0 1rem;
 	align-items: center;
 	justify-content: space-between;
 
@@ -94,9 +96,10 @@
 	display: flex;
 	flex-direction: column;
 	gap: 2rem 0;
-	padding: 1.5rem 1.5rem;
 	cursor: pointer;
-	grid-row: 2/3;
+	justify-self: flex-start;
+	height: 80%;
+	padding: 3rem 0 0 0.5rem;
 
 	div {
 		display: flex;
@@ -139,7 +142,7 @@
 		align-items: center;
 
 		a {
-			padding: 1.5rem 5rem;
+			padding: 1rem 4rem;
 		}
 
 		:nth-child(-n + 2) {
@@ -278,7 +281,6 @@
 		gap: initial;
 		:nth-child(-n + 2) {
 			width: 18vw;
-			height: 3.7rem;
 			font-size: 1.5rem;
 		}
 	}
@@ -318,7 +320,6 @@
 		gap: initial;
 		:nth-child(-n + 2) {
 			width: 25vw;
-			height: 3.7rem;
 			font-size: 1.5rem;
 		}
 	}
@@ -386,15 +387,6 @@
 		}
 	}
 
-	.lNav-buttons {
-		div {
-			:nth-child(-n + 2) {
-				font-size: 1.5rem;
-				width: 50vw;
-			}
-		}
-	}
-
 	.headerContainer {
 		height: 8.5vh;
 		padding: 0 0.5rem;
@@ -459,7 +451,7 @@
 	}
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
 	.headerContainer {
 		align-items: center;
 	}
@@ -471,6 +463,25 @@
 		width: 11rem;
 		height: 2rem;
 		border-right: none;
+	}
+
+	.lNav-profile {
+		svg {
+			width: 1.8rem;
+			height: 1.8rem;
+		}
+	}
+
+	.lNav-buttons {
+		div {
+			a {
+				padding: 1.5rem 6rem;
+			}
+
+			:nth-child(2) {
+				font-size: 1.5rem;
+			}
+		}
 	}
 
 	.searchContainer {
