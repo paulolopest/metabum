@@ -13,6 +13,7 @@ const CustomInput = ({
 	className,
 	placeHolder,
 	disabled,
+	autoComplete,
 }) => {
 	return (
 		<div>
@@ -28,6 +29,7 @@ const CustomInput = ({
 				onBlur={onBlur}
 				placeholder={placeHolder}
 				disabled={disabled}
+				autoComplete={autoComplete}
 			/>
 
 			{error && <p>{error}</p>}

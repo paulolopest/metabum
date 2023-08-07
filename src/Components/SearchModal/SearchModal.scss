@@ -1,12 +1,43 @@
 .searchModalContainer {
 	display: flex;
 	flex-direction: column;
-	width: 98%;
+	width: 48.9rem;
 	height: auto;
 	background-color: white;
-	border: 1px solid black;
+	border: 1px solid #f2f2f2;
 	z-index: 500;
 	position: absolute;
 	top: 5rem;
+	border-top: none;
 	backdrop-filter: brightness(0.5);
+}
+
+.search_card {
+	display: flex;
+	align-items: center;
+	gap: 0 1rem;
+	border-bottom: 1px solid #e2e2e2;
+	padding: 0.5rem;
+	cursor: pointer;
+
+	img {
+		width: 3rem;
+		height: 3rem;
+	}
+}
+
+@media (max-width: 1600px) {
+	.searchModalContainer {
+		width: 40.8rem;
+	}
+}
+@media (max-width: 1450px) {
+	.searchModalContainer {
+		width: 35.8rem;
+	}
+}
+@media (max-width: 600px) {
+	.searchModalContainer {
+		width: 100vw;
+	}
 }

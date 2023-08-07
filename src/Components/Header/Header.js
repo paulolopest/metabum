@@ -91,6 +91,7 @@ const Header = () => {
 							name="search"
 							className="searchInput"
 							placeHolder="Search"
+							autoComplete="off"
 							{...search}
 						/>
 						{mobileScreen ? (
