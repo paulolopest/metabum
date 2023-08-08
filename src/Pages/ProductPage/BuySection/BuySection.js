@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import useMeasure from 'react-use-measure';
 import useForm from '../../../Hooks/useForm';
 import useAxios from '../../../Hooks/useAxios';
 import useMedia from './../../../Hooks/useMedia';
@@ -11,12 +12,9 @@ import CustomButton from '../../../Components/Form/CustomButton/CustomButton';
 import { ReactComponent as EtiquetteIcon } from '../../../Assets/icons/etiquette.svg';
 import { ReactComponent as CartIcon } from '../../../Assets/icons/cart-svgrepo-com.svg';
 import { ReactComponent as StarIcon } from '../../../Assets/icons/star-svgrepo-com.svg';
-import { ReactComponent as NextIcon } from '../../../Assets/icons/next-svgrepo-com.svg';
 import { ReactComponent as ShareIcon } from '../../../Assets/icons/share-svgrepo-com.svg';
 import { ReactComponent as FavoriteIcon } from '../../../Assets/icons/heart-svgrepo-com.svg';
 import { ReactComponent as AddCartIcon } from '../../../Assets/icons/cart-add-svgrepo-com.svg';
-import { ReactComponent as PreviousIcon } from '../../../Assets/icons/previous-svgrepo-com.svg';
-import useMeasure from 'react-use-measure';
 
 const BuySection = ({ productId, setProductId }) => {
 	const productRequest = new ProductRequest();
@@ -189,13 +187,13 @@ const BuySection = ({ productId, setProductId }) => {
 								)}
 							</div>
 							<div className="pp-pv-shipping">
-								<p>Check shipping and delivery time</p>
+								<p>Consultar frete e prazo de entrega</p>
 								<div>
 									<CustomInput placeholder="Insert cep" {...cep} />
 									<button>OK</button>
 								</div>
 								<a href="https://buscacepinter.correios.com.br/app/endereco/index.php?t">
-									I don't remember my zip code
+									Não lembro meu CEP
 								</a>
 							</div>
 						</div>
@@ -204,9 +202,9 @@ const BuySection = ({ productId, setProductId }) => {
 								<div className="pc-fc-price">
 									<div className="fc-p-firstDiv">
 										<p className="fc-p-firsRow">
-											Sold and delivered by:{' '}
+											Vendido e entregue por:{' '}
 											<strong>Metabum!</strong> |{' '}
-											<strong>In stock</strong>
+											<strong>Em estoque</strong>
 										</p>
 										<p className="pc-price">
 											R${' '}
@@ -215,7 +213,7 @@ const BuySection = ({ productId, setProductId }) => {
 											)}
 										</p>
 										<span>
-											Cash payment with up to 5% <strong>OFF</strong>
+											À vista no PIX com até 5% <strong>OFF</strong>
 										</span>
 									</div>
 									<div>
@@ -223,21 +221,21 @@ const BuySection = ({ productId, setProductId }) => {
 											R$ {formattedPrice(product.data.price)}
 										</strong>
 										<p>
-											In up to 10x of{' '}
+											Em até 10x de{' '}
 											<strong>
 												R${' '}
 												{formattedPrice(product.data?.price / 10)}
 											</strong>{' '}
-											with no interest on the credit card or 1x with
-											5% <strong>OFF</strong>
+											sem juros no cartão ou 1x com até 5%{' '}
+											<strong>OFF</strong>
 										</p>
-										<span>See more options of payment</span>
+										<span>Ver mais opções de pagamento</span>
 									</div>
 								</div>
 								<div className="pc-fc-buy-button">
 									<CustomButton>
 										<CartIcon />
-										Buy
+										Comprar
 									</CustomButton>
 								</div>
 							</div>
@@ -245,7 +243,7 @@ const BuySection = ({ productId, setProductId }) => {
 							{mobileScreen ? (
 								<>
 									<div className="mobile-shipping">
-										<p>Check shipping and delivery time</p>
+										<p>Consultar frete e prazo de entrega</p>
 										<div>
 											<CustomInput
 												placeholder="Insert cep"
@@ -254,14 +252,14 @@ const BuySection = ({ productId, setProductId }) => {
 											<button>OK</button>
 										</div>
 										<a href="https://buscacepinter.correios.com.br/app/endereco/index.php?t">
-											I don't remember my zip code
+											Não lembro meu CEP
 										</a>
 									</div>
 
 									<div className="mobile-buyButton">
 										<CustomButton>
 											<CartIcon />
-											Buy
+											Comprar
 										</CustomButton>
 										<CustomButton className="addCartButton">
 											<AddCartIcon />
@@ -273,10 +271,10 @@ const BuySection = ({ productId, setProductId }) => {
 							<div className="pc-secondContainer">
 								<div className="pc-sc-title">
 									<EtiquetteIcon />
-									<p>Similar products</p>
+									<p>Produtos similares</p>
 								</div>
 								<span>
-									Manufacturer: <strong>{product.data.brand}</strong>
+									Fabricante: <strong>{product.data.brand}</strong>
 								</span>
 
 								<motion.div

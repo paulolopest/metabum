@@ -2,14 +2,13 @@ import React from 'react';
 import ProtectedRoute from './ProtectedRoute';
 import CartStorage from '../Context/CartContext';
 import Header from '../Components/Header/Header';
-import UserPage from '../Pages/UserPage/UserPage';
 import HomePage from './../Pages/HomePage/HomePage';
 import GlobalStorage from '../Context/GlobalContext';
+import UserRoutes from '../Pages/UserPage/UserRoutes';
 import ProductPage from './../Pages/ProductPage/ProductPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Authentication from './../Pages/LoginPage/Authentication';
 import ProductCatalog from './../Pages/ProductCatalog/ProductCatalog';
-import UserRoutes from '../Pages/UserPage/UserRoutes';
 
 const RouterConfig = () => {
 	return (

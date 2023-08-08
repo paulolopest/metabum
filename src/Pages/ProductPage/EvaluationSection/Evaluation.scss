@@ -1,0 +1,149 @@
+.evaluationSection {
+	display: flex;
+	justify-content: center;
+	background-color: white;
+	padding-bottom: 1rem;
+}
+
+.evaluationContainer {
+	display: flex;
+	flex-direction: column;
+	padding: 3rem 0 2.5rem 0;
+	width: 81vw;
+	gap: 1.5rem 0;
+}
+
+.evaluationHeader {
+	display: flex;
+	flex-direction: column;
+}
+
+.eva-title {
+	display: flex;
+	justify-content: space-between;
+	// align-items: center;
+
+	svg {
+		width: 2.5rem;
+		height: 2.5rem;
+		cursor: pointer;
+		transition: 0.3s ease-in-out;
+	}
+
+	div {
+		display: flex;
+		gap: 0 0.5rem;
+
+		h1 {
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 1.5rem;
+			margin-bottom: 2rem;
+			color: initial;
+		}
+
+		svg {
+			width: 1.5rem;
+			height: 1.5rem;
+			fill: #ff6500;
+		}
+	}
+}
+
+.eva-average {
+	display: flex;
+	gap: 0 1rem;
+	align-items: baseline;
+
+	span {
+		font-size: 4rem;
+		font-weight: bold;
+		color: #ff6500;
+	}
+
+	h5 {
+		font-weight: 400;
+		font-size: 0.9rem;
+	}
+}
+
+.evaluationMain {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem 0;
+}
+
+.eva-Card {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #d2d2d2;
+	border-radius: 3px;
+	gap: 1rem 0;
+	padding: 1rem;
+
+	.eva-CardHeader {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem 0;
+
+		p {
+			font-weight: bold;
+			font-size: 1.1rem;
+		}
+
+		div {
+			span {
+				font-size: 0.8rem;
+			}
+			svg {
+				width: 1rem;
+				height: 1rem;
+			}
+		}
+	}
+
+	.eva-cardContent {
+		display: flex;
+		gap: 0.8rem 0;
+		flex-direction: column;
+
+		p {
+			font-size: 1.4rem;
+		}
+	}
+}
+
+@media (max-width: 1600px) {
+	.evaluationContainer {
+		width: 95vw;
+	}
+}
+
+@media (max-width: 1450px) {
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 1025px) {
+}
+
+@media (max-width: 900px) {
+	.evaluationContainer {
+		padding: 2rem 0.5rem 0 0.5rem;
+	}
+}
+@media (max-width: 600px) {
+	.evaluationContainer {
+		padding: 2rem 0.8rem 0 0.8rem;
+	}
+
+	.eva-title {
+		h1 {
+			font-size: 1.3rem;
+		}
+	}
+}
+
+@media (max-width: 400px) {
+}

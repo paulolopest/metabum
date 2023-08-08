@@ -27,7 +27,7 @@ const DescriptionSection = ({ productId }) => {
 				<div className="descriptionContainer">
 					<div>
 						<ArchiveIcon />
-						<h1>Product Description</h1>
+						<h1>Descrição do Produto</h1>
 					</div>
 
 					<div className="descriptionArray">{descriptions}</div>

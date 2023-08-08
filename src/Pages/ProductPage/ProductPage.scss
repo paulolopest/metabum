@@ -1,6 +1,7 @@
 @import './BuySection/BuySection.scss';
 @import './DescriptionSection/DescriptionSection.scss';
 @import './TechnicalInformationSection/TechnicalInfo.scss';
+@import './EvaluationSection/Evaluation.scss';
 
 .productPage {
 	display: flex;
@@ -9,4 +10,10 @@
 	height: auto;
 	background-color: #f2f3f4;
 	gap: 3.5rem 0;
+}
+
+@media (max-width: 600px) {
+	.productPage {
+		gap: 2.5rem;
+	}
 }

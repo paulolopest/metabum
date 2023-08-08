@@ -80,114 +80,116 @@ const HomePage = () => {
 	}, [bannerIndex]);
 
 	return (
-		<div
-			className="homePage-Section"
-			style={{
-				backgroundColor: banners[bannerIndex].color,
-			}}
-		>
+		<>
 			{loading && <Loading />}
-			<div className="homePage-Container">
-				<motion.div
-					ref={ref}
-					initial={{ x: direction === 'increasing' ? 20 : -20 }}
-					animate={{ x: 0 }}
-					onDragStart={handleDragStart}
-					onDrag={() => setIsDragging(true)}
-					onDragEnd={handleDragEnd}
-					drag="x"
-					dragElastic={0}
-					dragConstraints={{ right: 0, left: 0 }}
-					className="hp-banners"
-					style={{ backgroundColor: banners[bannerIndex].color }}
-				>
-					<button onClick={clickBack} className="hp-bannerNext">
-						<PreviousIcon />
-					</button>
-
-					<motion.img
+			<div
+				className="homePage-Section"
+				style={{
+					backgroundColor: banners[bannerIndex].color,
+				}}
+			>
+				<div className="homePage-Container">
+					<motion.div
+						ref={ref}
+						initial={{ x: direction === 'increasing' ? 20 : -20 }}
+						animate={{ x: 0 }}
+						onDragStart={handleDragStart}
 						onDrag={() => setIsDragging(true)}
-						onDragEnd={() => setIsDragging(false)}
-						draggable="false"
-						src={banners[bannerIndex].url}
-						alt=""
-						onClick={
-							!isDragging
-								? (e) => {
-										navigate(
-											`/catalog/:${banners[bannerIndex].word}`
-										);
-								  }
-								: null
-						}
-					/>
+						onDragEnd={handleDragEnd}
+						drag="x"
+						dragElastic={0}
+						dragConstraints={{ right: 0, left: 0 }}
+						className="hp-banners"
+						style={{ backgroundColor: banners[bannerIndex].color }}
+					>
+						<button onClick={clickBack} className="hp-bannerNext">
+							<PreviousIcon />
+						</button>
 
-					<button onClick={clickNext} className="hp-bannerPrevious">
-						<NextIcon />
-					</button>
-				</motion.div>
-
-				<div className="homePage-content">
-					<MainCarousel request={productRequest.GET_PRODUCTS().url} />
-
-					<div className="mini-banners">
-						<img
-							alt="mini banner"
-							draggable={false}
-							src={miniBanners[0].url}
-							onClick={(e) => {
-								e.preventDefault();
-								navigate(`/catalog/:${miniBanners[0].word}`);
-							}}
+						<motion.img
+							onDrag={() => setIsDragging(true)}
+							onDragEnd={() => setIsDragging(false)}
+							draggable="false"
+							src={banners[bannerIndex].url}
+							alt=""
+							onClick={
+								!isDragging
+									? (e) => {
+											navigate(
+												`/catalog/:${banners[bannerIndex].word}`
+											);
+									  }
+									: null
+							}
 						/>
-						<img
-							alt="mini banner"
-							draggable={false}
-							src={miniBanners[1].url}
-							onClick={(e) => {
-								e.preventDefault();
-								navigate(`/catalog/:${miniBanners[1].word}`);
-							}}
+
+						<button onClick={clickNext} className="hp-bannerPrevious">
+							<NextIcon />
+						</button>
+					</motion.div>
+
+					<div className="homePage-content">
+						<MainCarousel request={productRequest.GET_PRODUCTS().url} />
+
+						<div className="mini-banners">
+							<img
+								alt="mini banner"
+								draggable={false}
+								src={miniBanners[0].url}
+								onClick={(e) => {
+									e.preventDefault();
+									navigate(`/catalog/:${miniBanners[0].word}`);
+								}}
+							/>
+							<img
+								alt="mini banner"
+								draggable={false}
+								src={miniBanners[1].url}
+								onClick={(e) => {
+									e.preventDefault();
+									navigate(`/catalog/:${miniBanners[1].word}`);
+								}}
+							/>
+						</div>
+
+						<MainCarousel
+							svgIcon={<StarIcon />}
+							title={<p>Destaques ninjas</p>}
+							request={productRequest.GET_PRODUCTS().url}
+						/>
+
+						<DepartmentsSection />
+
+						<div className="mini-banners">
+							<img
+								alt="mini banner"
+								draggable={false}
+								src={miniBanners[2].url}
+								onClick={(e) => {
+									e.preventDefault();
+									navigate(`/catalog/:${miniBanners[2].word}`);
+								}}
+							/>
+							<img
+								alt="mini banner"
+								draggable={false}
+								src={miniBanners[3].url}
+								onClick={(e) => {
+									e.preventDefault();
+									navigate(`/catalog/:${miniBanners[3].word}`);
+								}}
+							/>
+						</div>
+
+						<MainCarousel
+							svgIcon={<ThunderIcon />}
+							title={<p>Acabaram de chegar</p>}
+							request={productRequest.GET_PRODUCTS().url}
 						/>
 					</div>
-
-					<MainCarousel
-						svgIcon={<StarIcon />}
-						title={<p>Destaques ninjas</p>}
-						request={productRequest.GET_PRODUCTS().url}
-					/>
-
-					<DepartmentsSection />
-
-					<div className="mini-banners">
-						<img
-							alt="mini banner"
-							draggable={false}
-							src={miniBanners[2].url}
-							onClick={(e) => {
-								e.preventDefault();
-								navigate(`/catalog/:${miniBanners[2].word}`);
-							}}
-						/>
-						<img
-							alt="mini banner"
-							draggable={false}
-							src={miniBanners[3].url}
-							onClick={(e) => {
-								e.preventDefault();
-								navigate(`/catalog/:${miniBanners[3].word}`);
-							}}
-						/>
-					</div>
-
-					<MainCarousel
-						svgIcon={<ThunderIcon />}
-						title={<p>Acabaram de chegar</p>}
-						request={productRequest.GET_PRODUCTS().url}
-					/>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

@@ -6,6 +6,7 @@
 	justify-content: center;
 	width: 100%;
 	min-height: 200vh;
+	transition: 0.1s ease-in-out;
 }
 
 .homePage-Container {
@@ -19,6 +20,7 @@
 	display: flex;
 	align-items: flex-start;
 	justify-content: center;
+	transition: 0.5 ease-in-out;
 
 	div {
 	}

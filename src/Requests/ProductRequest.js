@@ -30,6 +30,11 @@ export class ProductRequest {
 			url: `${BASE_URL}/product/description/${id}`,
 		};
 	};
+	GET_PRODUCT_EVALUATIONS = (id) => {
+		return {
+			url: `${BASE_URL}/product/evaluation/${id}`,
+		};
+	};
 
 	GET_PRODUCT_TECHNICAL_INFO = (id) => {
 		return {
