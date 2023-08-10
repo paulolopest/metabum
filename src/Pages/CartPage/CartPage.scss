@@ -1,0 +1,198 @@
+.cartPage {
+	display: flex;
+	justify-content: center;
+	min-height: 100vh;
+	background-color: #f2f3f4;
+}
+
+.cartPageSection {
+	display: flex;
+	width: 82vw;
+	padding: 1rem 0;
+}
+
+.cps-cartInfo {
+	display: flex;
+	flex-direction: column;
+	width: 75%;
+	padding: 1rem;
+	gap: 2rem 0;
+
+	.ci_address-container {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+		gap: 1.5rem 0;
+		background-color: white;
+		border-radius: 5px;
+
+		.ci_address-title {
+			display: flex;
+			align-items: center;
+			gap: 0 0.5rem;
+
+			p {
+				text-transform: uppercase;
+				font-weight: bold;
+				font-size: 1.4rem;
+			}
+		}
+
+		.ci_address-card {
+			display: flex;
+			flex-direction: column;
+			padding: 1rem 1.5rem;
+			gap: 0.7rem 0;
+			border-left: 4px solid #ff6500;
+			border-radius: 5px;
+			background-color: #f2f3f4;
+
+			.address-card-fc {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 0.7rem 0;
+			}
+
+			.address-card-sc {
+				display: flex;
+				gap: 0 0.5rem;
+				align-self: flex-end;
+
+				:nth-child(2) {
+					color: #ff6500;
+				}
+
+				button {
+					text-transform: uppercase;
+					font-weight: bold;
+					height: 2rem;
+					outline: none;
+					border: none;
+					color: #c2c2c2;
+				}
+			}
+		}
+	}
+}
+
+.cps-cartResume {
+	padding: 1rem 2rem;
+	width: 25%;
+
+	.cr_card {
+		display: flex;
+		flex-direction: column;
+		background-color: white;
+		padding: 2rem 2rem;
+		border-radius: 5px;
+		gap: 1.5rem 0;
+
+		p {
+			font-size: 0.9rem;
+		}
+
+		.crc_title {
+			display: flex;
+			align-items: center;
+			gap: 0 0.5rem;
+
+			p {
+				font-size: 1.4rem;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+		}
+
+		.crc_infoContainer {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem 0;
+
+			.crc-if-cartValue {
+				display: flex;
+				justify-content: space-between;
+				border-bottom: 1px solid #d2d2d2;
+				padding: 0 0 1rem 0;
+			}
+
+			.crc-if-shipping {
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.crc-if-longPrice {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				width: 100%;
+				gap: 1rem 0;
+				background-color: #f5f5f5;
+				padding: 0.5rem 0.2rem;
+				border-radius: 3px;
+				// margin: 0.5rem;
+
+				div {
+					display: flex;
+					justify-content: space-between;
+					width: 100%;
+					font-size: initial;
+				}
+
+				p {
+					font-size: 0.8rem;
+				}
+			}
+
+			.crc-if-discountBox {
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				gap: 0.8rem 0;
+				background-color: #e5fff1;
+				padding: 1rem 0;
+
+				p {
+					font-size: 0.9rem;
+
+					strong {
+						font-size: 0.9rem;
+					}
+				}
+
+				strong {
+					font-size: 1.7rem;
+					color: #1f9050;
+				}
+			}
+
+			.crc-if-buttons {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 1rem 0;
+
+				:nth-child(1) {
+					background-color: #ff6500;
+					color: white;
+				}
+				:nth-child(2) {
+					background-color: transparent;
+					color: #ff6500;
+					border: 1px solid #ff6500;
+				}
+
+				button {
+					width: 100%;
+					height: 3rem;
+					text-transform: uppercase;
+					font-weight: bold;
+					font-size: 1.2rem;
+					border: none;
+					outline: none;
+					border-radius: 3px;
+				}
+			}
+		}
+	}
+}

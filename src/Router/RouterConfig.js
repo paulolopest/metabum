@@ -9,6 +9,7 @@ import ProductPage from './../Pages/ProductPage/ProductPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Authentication from './../Pages/LoginPage/Authentication';
 import ProductCatalog from './../Pages/ProductCatalog/ProductCatalog';
+import CartPage from './../Pages/CartPage/CartPage';
 
 const RouterConfig = () => {
 	return (
@@ -27,6 +28,14 @@ const RouterConfig = () => {
 							element={
 								<ProtectedRoute>
 									<UserRoutes />
+								</ProtectedRoute>
+							}
+						/>
+						<Route
+							path="/cart/*"
+							element={
+								<ProtectedRoute>
+									<CartPage />
 								</ProtectedRoute>
 							}
 						/>

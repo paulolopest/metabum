@@ -45,6 +45,15 @@ export class UserRequest {
 		};
 	};
 
+	GET_USER_DEFAULT_ADDRESS = (token) => {
+		return {
+			url: `${BASE_URL}/user/default-address`,
+			headers: {
+				Authorization: token,
+			},
+		};
+	};
+
 	ADD_USER_ADDRESS = (token) => {
 		return {
 			url: `${BASE_URL}/user/address/add-address`,

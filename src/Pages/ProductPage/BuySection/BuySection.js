@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import useMeasure from 'react-use-measure';
 import useForm from '../../../Hooks/useForm';
 import useAxios from '../../../Hooks/useAxios';
+import { useNavigate } from 'react-router-dom';
 import useMedia from './../../../Hooks/useMedia';
 import Loading from '../../../Components/Loading/Loading';
 import { formattedPrice } from '../../../Utils/Functions';
@@ -21,6 +22,7 @@ const BuySection = ({ productId, setProductId }) => {
 
 	const [ref, { width }] = useMeasure();
 	const mobileScreen = useMedia('(max-width: 37rem)');
+	const navigate = useNavigate();
 
 	const [isDragging, setIsDragging] = React.useState(false);
 	const [activeImg, setActiveImg] = React.useState(null);
@@ -78,6 +80,8 @@ const BuySection = ({ productId, setProductId }) => {
 			clickBack();
 		}
 	};
+
+	const buyProduct = async () => {};
 
 	const miniIcons = images.data?.map((src) => (
 		<img
@@ -233,7 +237,7 @@ const BuySection = ({ productId, setProductId }) => {
 									</div>
 								</div>
 								<div className="pc-fc-buy-button">
-									<CustomButton>
+									<CustomButton onClick={() => navigate('/cart')}>
 										<CartIcon />
 										Comprar
 									</CustomButton>
