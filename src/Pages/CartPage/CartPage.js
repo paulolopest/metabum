@@ -1,12 +1,18 @@
 import React from 'react';
-import { formattedPrice } from './../../Utils/Functions';
-import { ReactComponent as ResumeIcon } from '../../Assets/icons/resumeIcon.svg';
-import { ReactComponent as AddressIcon } from '../../Assets/icons/address.svg';
 import useAxios from './../../Hooks/useAxios';
+import { formattedPrice } from './../../Utils/Functions';
 import { UserRequest } from '../../Requests/UserRequest';
+import { CartRequest } from './../../Requests/CartRequest';
+import { ReactComponent as BagIcon } from '../../Assets/icons/bagIcon.svg';
+import { ReactComponent as AddressIcon } from '../../Assets/icons/address.svg';
+import { ReactComponent as ResumeIcon } from '../../Assets/icons/resumeIcon.svg';
+import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.svg';
+import { ReactComponent as BackIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
+import { ReactComponent as TrashIcon } from '../../Assets/icons/trash-3-svgrepo-com.svg';
 
 const CartPage = () => {
 	const userRequest = new UserRequest();
+	const cartRequest = new CartRequest();
 
 	const address = useAxios();
 	const cart = useAxios();
@@ -20,9 +26,62 @@ const CartPage = () => {
 
 	React.useEffect(() => {
 		const token = window.localStorage.getItem('metabumtoken');
-	});
+		const { url, headers } = cartRequest.GET_PRODUCTS(token);
 
-	if (address.data)
+		cart.get(url, { headers });
+	}, []);
+
+	const productMap = cart.data?.map((product) => (
+		<div key={product.product_id} className="cip-cartProductCard">
+			<div className="cpc-firstContainer">
+				<img src={product.product_src} alt={product.product_name} />
+
+				<div className="cpc-fc-productInfo">
+					<span>{product.product_brand}</span>
+					<h3>{product.product_name}</h3>
+
+					<div>
+						<p>
+							Com desconto no pix:{' '}
+							<strong>
+								{formattedPrice(
+									product.product_price - product.product_price / 10
+								)}
+							</strong>
+						</p>
+						<p>
+							Parcelado no cartão em até 10x sem juros:{' '}
+							<strong>{formattedPrice(product.product_price)}</strong>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div className="cpc-secondContainer">
+				<div className="cpc-quantity">
+					<p>Quant.</p>
+
+					<div>
+						<BackIcon />
+						<p>{product.quantity}</p>
+						<NextIcon />
+					</div>
+
+					<button>
+						<TrashIcon />
+						Remover
+					</button>
+				</div>
+
+				<div className="cpc-endPrice">
+					<p>Preço à vista no PIX:</p>
+					<span>R$ {formattedPrice(product.product_price)}</span>
+				</div>
+			</div>
+		</div>
+	));
+
+	if (address.data && cart.data)
 		return (
 			<div className="cartPage">
 				<div className="cartPageSection">
@@ -56,21 +115,23 @@ const CartPage = () => {
 							</div>
 						</div>
 
-						<div>
-							<div>
+						<div className="ci_products-container">
+							<div className="cip-title">
 								<div>
-									<p>Icon</p>
-									<p>Produto e serviço</p>
+									<BagIcon />
+									<p>Produtos</p>
 								</div>
 
-								<button>Remover todos os produtos</button>
+								<button>
+									<TrashIcon />
+									Remover todos os produtos
+								</button>
 							</div>
 
-							<div>
-								<div>Array de produtos</div>
-							</div>
+							<div className="cip-products">{productMap}</div>
 						</div>
 					</div>
+
 					<div className="cps-cartResume">
 						<div className="cr_card">
 							<div className="crc_title">

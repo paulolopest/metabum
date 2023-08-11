@@ -70,6 +70,7 @@
 					outline: none;
 					border: none;
 					color: #c2c2c2;
+					background-color: transparent;
 				}
 			}
 		}
@@ -193,6 +194,166 @@
 					border-radius: 3px;
 				}
 			}
+		}
+	}
+}
+
+.ci_products-container {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	gap: 1.5rem 0;
+	background-color: white;
+	border-radius: 5px;
+
+	.cip-title {
+		display: flex;
+		justify-content: space-between;
+
+		div {
+			display: flex;
+			align-items: center;
+			gap: 0 0.5rem;
+
+			p {
+				text-transform: uppercase;
+				font-weight: bold;
+				font-size: 1.4rem;
+			}
+		}
+
+		button {
+			display: flex;
+			align-items: center;
+			background-color: transparent;
+			outline: none;
+			border: 1px solid rgb(231, 38, 38);
+			color: rgb(231, 38, 38);
+			height: 2rem;
+			border-radius: 3px;
+			gap: 0 0.5rem;
+			padding: 0.5rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			font-size: 0.9rem;
+
+			svg {
+				width: 1rem;
+				height: 1rem;
+			}
+		}
+	}
+
+	.cip-products {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem 0;
+
+		.cip-cartProductCard {
+			display: flex;
+			justify-content: space-between;
+			padding: 1rem;
+			// background-color: bisque;
+			border-bottom: 1px solid #f2f2f2;
+
+			.cpc-firstContainer {
+				display: flex;
+				width: 65%;
+				gap: 0 0.5rem;
+
+				img {
+					width: 8rem;
+					height: 8rem;
+				}
+
+				.cpc-fc-productInfo {
+					display: flex;
+					flex-direction: column;
+					gap: 0.8rem 0;
+
+					span {
+						color: #a1a1a1;
+						font-size: 0.9rem;
+					}
+
+					div {
+						display: flex;
+						flex-direction: column;
+						gap: 0.4rem 0;
+
+						p {
+							font-size: 0.9rem;
+							color: #a1a1a1;
+
+							strong {
+								color: black;
+							}
+						}
+					}
+				}
+			}
+
+			.cpc-secondContainer {
+				display: flex;
+				width: 35%;
+				justify-content: space-between;
+				padding-left: 1rem;
+
+				.cpc-quantity {
+					display: flex;
+					flex-direction: column;
+					gap: 1.5rem 0;
+					align-items: center;
+
+					div {
+						display: flex;
+						gap: 0 1rem;
+					}
+
+					button {
+						display: flex;
+						// align-items: baseline;
+						gap: 0 0.3rem;
+						font-size: 0.7rem;
+						background-color: transparent;
+						border: none;
+						outline: none;
+						padding: 0.5rem 1rem;
+						color: rgb(231, 38, 38);
+						font-weight: bold;
+						text-transform: uppercase;
+
+						svg {
+							width: 0.8rem;
+							height: 0.8rem;
+						}
+					}
+				}
+
+				.cpc-endPrice {
+					display: flex;
+					flex-direction: column;
+					align-items: flex-end;
+					gap: 1rem 0;
+
+					p {
+						color: #a2a2a2;
+						font-size: 0.9rem;
+					}
+
+					span {
+						font-size: 1.1rem;
+						text-transform: uppercase;
+						font-weight: bold;
+						color: #ff6500;
+					}
+				}
+			}
+		}
+
+		svg {
+			width: 1rem;
+			height: 1rem;
 		}
 	}
 }
