@@ -382,6 +382,8 @@
 	background-color: white;
 	bottom: 0;
 	box-shadow: 0 7px 1rem black;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
 
 	.mr-title {
 		display: flex;
@@ -573,10 +575,10 @@
 					width: 28%;
 					justify-content: space-between;
 					flex-direction: column;
-					gap: 1rem 0;
+					gap: 1.5rem 0;
 
 					.cpc-quantity {
-						gap: 0.5rem 0;
+						gap: 1rem 0;
 						align-self: flex-end;
 						order: 2;
 
@@ -590,8 +592,11 @@
 	}
 }
 @media (max-width: 780px) {
+	.cps-cartInfo {
+		gap: 1.5rem 0;
+	}
 	.ci_products-container {
-		padding: 0.5rem;
+		padding: 1rem 0.5rem;
 		.cip-products {
 			.cip-cartProductCard {
 				.cpc-firstContainer {
@@ -663,6 +668,17 @@
 
 	.cps-cartInfo {
 		.ci_address-container {
+			.ci_address-title {
+				p {
+					font-size: 1.2rem;
+				}
+
+				svg {
+					width: 1rem;
+					height: 1rem;
+				}
+			}
+
 			.ci_address-card {
 				padding: 0.8rem;
 				gap: 1.5rem 0;
@@ -672,6 +688,10 @@
 					display: flex;
 					justify-content: space-between;
 					align-self: flex-start;
+
+					button {
+						font-size: 0.8rem;
+					}
 				}
 			}
 		}

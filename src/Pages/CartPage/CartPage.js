@@ -11,16 +11,22 @@ import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.
 import { ReactComponent as BackIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 import { ReactComponent as UpIcon } from '../../Assets/icons/up-chevron-svgrepo-com.svg';
 import { ReactComponent as TrashIcon } from '../../Assets/icons/trash-3-svgrepo-com.svg';
+import { CartContext } from './../../Context/CartContext';
+import CustomInput from '../../Components/Form/CustomInput/CustomInput';
+import useForm from '../../Hooks/useForm';
 
 const CartPage = () => {
 	const userRequest = new UserRequest();
 	const cartRequest = new CartRequest();
 
 	const [resumeModal, setResumeModal] = React.useState(false);
+	const [editInput, setEditInput] = React.useState(false);
+
+	const cart = React.useContext(CartContext);
 
 	const address = useAxios();
-	const cart = useAxios();
 
+	const quantityInput = useForm('quantity');
 	const mediumScreen = useMedia('(max-width: 65rem');
 	const mobileScreen = useMedia('(max-width: 37rem)');
 
@@ -35,8 +41,50 @@ const CartPage = () => {
 		const token = window.localStorage.getItem('metabumtoken');
 		const { url, headers } = cartRequest.GET_PRODUCTS(token);
 
-		cart.get(url, { headers });
+		cart.getCart(url, { headers });
 	}, []);
+
+	const deleteProduct = (id) => {
+		cart.deleteProduct(id);
+	};
+
+	const cleanCart = () => {
+		cart.deleteCart();
+	};
+
+	const onClickAdd = (product) => {
+		const body = {
+			quantity: product.quantity + 1,
+		};
+		cart.editQuantity(product.product_id, body);
+	};
+
+	const onClickDecrease = (product) => {
+		if (product.quantity <= 1) {
+			return null;
+		}
+		const body = {
+			quantity: product.quantity - 1,
+		};
+		cart.editQuantity(product.product_id, body);
+	};
+
+	const handleChange = async ({ target }) => {
+		const body = {
+			quantity: target.value,
+		};
+		if (!body.quantity) {
+			return null;
+		}
+		await cart.editQuantity(target.product_id, body);
+		setEditInput(false);
+	};
+
+	let totalPrice = 0;
+	for (let i = 0; i < cart.data?.length; i++) {
+		let item = cart.data[i];
+		totalPrice += item.product_price * item.quantity;
+	}
 
 	const productMap = cart.data?.map((product) => (
 		<div key={product.product_id} className="cip-cartProductCard">
@@ -92,12 +140,12 @@ const CartPage = () => {
 					<p>Quant.</p>
 
 					<div>
-						<BackIcon />
-						<input value={1} />
-						<NextIcon />
+						<BackIcon onClick={() => onClickDecrease(product)} />
+						<span>{product.quantity}</span>
+						<NextIcon onClick={() => onClickAdd(product)} />
 					</div>
 
-					<button>
+					<button onClick={() => deleteProduct(product.product_id)}>
 						<TrashIcon />
 						Remover
 					</button>
@@ -110,8 +158,6 @@ const CartPage = () => {
 			</div>
 		</div>
 	));
-
-	console.log(resumeModal);
 
 	if (address.data && cart.data)
 		return (
@@ -154,7 +200,7 @@ const CartPage = () => {
 									<p>Produtos</p>
 								</div>
 
-								<button>
+								<button onClick={() => cleanCart()}>
 									<TrashIcon />
 									{!mobileScreen
 										? 'Remover todos os produtos'
@@ -235,7 +281,10 @@ const CartPage = () => {
 								<p>Resumo</p>
 							</div>
 
-							<div>Valor no pix: R$ {formattedPrice(1000)}</div>
+							<div>
+								Valor no pix: R${' '}
+								{formattedPrice(totalPrice - (totalPrice * 10) / 100)}
+							</div>
 						</div>
 
 						<div
@@ -246,7 +295,7 @@ const CartPage = () => {
 							<div className="mrc-prices">
 								<div className="mrc-cartValue">
 									<p>Valor dos produtos:</p>
-									<span>R$ {formattedPrice(1000)}</span>
+									<span>R$ {formattedPrice(totalPrice)}</span>
 								</div>
 
 								<div>
@@ -257,12 +306,15 @@ const CartPage = () => {
 								<div className="mrcp-finalCont">
 									<div>
 										<p>Total à prazo:</p>
-										<span>R${formattedPrice(1000)}</span>
+										<span>
+											R$
+											{formattedPrice(totalPrice)}
+										</span>
 									</div>
 									<p>
 										(em até <strong>10x</strong> de{' '}
 										<strong>
-											R$ {formattedPrice(1000)} sem juros
+											R$ {formattedPrice(totalPrice / 10)} sem juros
 										</strong>
 										)
 									</p>
@@ -272,8 +324,16 @@ const CartPage = () => {
 							<div className="mrc-finalPrice">
 								<div>
 									<p>Valor a vista no Pix</p>
-									<strong>R$ {formattedPrice(1000)}</strong>
-									<span>(Economize: R${formattedPrice(1000)})</span>
+									<strong>
+										R${' '}
+										{formattedPrice(
+											totalPrice - (totalPrice * 10) / 100
+										)}
+									</strong>
+									<span>
+										(Economize: R$
+										{formattedPrice((totalPrice * 10) / 100)})
+									</span>
 								</div>
 							</div>
 						</div>
