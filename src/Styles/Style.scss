@@ -25,13 +25,24 @@
 		transform: initial;
 	}
 }
+
 .animeRight {
 	transform: translateX(20px);
 	animation: animeLeft 0.2s forwards;
 	transition: 0.2s ease-in-out;
 }
-
 @keyframes animeRight {
+	to {
+		transform: initial;
+	}
+}
+
+.animeUp {
+	transform: translateY(20px);
+	animation: animeUp 0.2s forwards;
+	transition: 0.2s ease-in-out;
+}
+@keyframes animeUp {
 	to {
 		transform: initial;
 	}

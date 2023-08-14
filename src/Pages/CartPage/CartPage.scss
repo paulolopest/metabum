@@ -188,7 +188,11 @@
 					height: 3rem;
 					text-transform: uppercase;
 					font-weight: bold;
-					font-size: 1.2rem;
+					div {
+						p {
+							font-size: 1.2rem;
+						}
+					}
 					border: none;
 					outline: none;
 					border-radius: 3px;
@@ -253,7 +257,6 @@
 			display: flex;
 			justify-content: space-between;
 			padding: 1rem;
-			// background-color: bisque;
 			border-bottom: 1px solid #f2f2f2;
 
 			.cpc-firstContainer {
@@ -305,9 +308,23 @@
 					gap: 1.5rem 0;
 					align-items: center;
 
+					input {
+						width: 2rem;
+						border: 1px solid #d1d1d1;
+					}
+
 					div {
 						display: flex;
 						gap: 0 1rem;
+						align-items: center;
+						justify-content: space-between;
+
+						svg {
+							width: 1rem;
+							height: 1rem;
+
+							fill: #ff6500;
+						}
 					}
 
 					button {
@@ -322,11 +339,6 @@
 						color: rgb(231, 38, 38);
 						font-weight: bold;
 						text-transform: uppercase;
-
-						svg {
-							width: 0.8rem;
-							height: 0.8rem;
-						}
 					}
 				}
 
@@ -342,7 +354,7 @@
 					}
 
 					span {
-						font-size: 1.1rem;
+						font-size: 1.2rem;
 						text-transform: uppercase;
 						font-weight: bold;
 						color: #ff6500;
@@ -354,6 +366,342 @@
 		svg {
 			width: 1rem;
 			height: 1rem;
+		}
+	}
+}
+
+.mobileResume {
+	padding: 0.5rem 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem 0;
+	width: 100vw;
+	min-height: 3rem;
+	height: auto;
+	position: fixed;
+	background-color: white;
+	bottom: 0;
+	box-shadow: 0 7px 1rem black;
+
+	.mr-title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		height: 1.5rem;
+
+		div {
+			display: flex;
+			align-items: center;
+			font-size: 0.9rem;
+			font-weight: bold;
+			text-transform: uppercase;
+			gap: 0 0.5rem;
+			margin-top: auto;
+
+			svg {
+				transition: 0.5s ease-in-out;
+				width: 1rem;
+				height: 1rem;
+			}
+		}
+	}
+
+	.mr-content {
+		display: flex;
+		justify-content: space-between;
+		min-height: 10rem;
+		padding: 0.5rem;
+
+		.mrc-prices {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem 0;
+			width: 50%;
+
+			.mrc-cartValue {
+				padding-bottom: 1rem;
+				border-bottom: 1px solid #e2e2e2;
+			}
+
+			div {
+				display: flex;
+				justify-content: space-between;
+
+				p {
+					font-size: 0.8rem;
+				}
+
+				span {
+					font-weight: bold;
+				}
+			}
+
+			.mrcp-finalCont {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem 0;
+				background-color: #f2f2f2;
+				padding: 0.2rem;
+
+				p {
+					align-self: flex-end;
+					font-size: 0.8rem;
+				}
+			}
+		}
+
+		.mrc-finalPrice {
+			display: flex;
+			justify-content: flex-end;
+			width: 50%;
+
+			div {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 90%;
+				height: 80%;
+				background-color: #e5fff1;
+				color: #1f9050;
+				gap: 0.5rem 0;
+
+				p {
+					font-size: 0.8rem;
+				}
+
+				strong {
+					font-size: 1.8rem;
+				}
+
+				span {
+					font-size: 0.9rem;
+				}
+			}
+		}
+	}
+
+	.mr-icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		right: 50%;
+		width: 2rem;
+		height: 2rem;
+		transform: translateX(50%);
+		top: -0.8rem;
+		border-radius: 100%;
+		background-color: white;
+
+		svg {
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+	}
+}
+
+@media (max-width: 1600px) {
+	.cartPageSection {
+		width: 100%;
+	}
+
+	.cps-cartResume {
+		padding: 1rem;
+	}
+}
+@media (max-width: 1450px) {
+	.cps-cartInfo {
+		width: 70%;
+	}
+
+	.cps-cartResume {
+		width: 30%;
+	}
+}
+
+@media (max-width: 1200px) {
+	.cps-cartResume {
+		.cr_card {
+			.crc_infoContainer {
+				.crc-if-buttons {
+					button {
+						font-size: 1.1rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1025px) {
+	.cps-cartInfo {
+		width: 100%;
+	}
+
+	.cps-cartResume {
+		display: none;
+	}
+
+	.cip-products {
+		.cip-cartProductCard {
+			.cpc-firstContainer {
+				img {
+					width: 6rem;
+					height: 6rem;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 900px) {
+	.cps-cartInfo {
+		padding: initial;
+	}
+	.ci_products-container {
+		.cip-products {
+			.cip-cartProductCard {
+				padding: initial;
+				padding-bottom: 1rem;
+
+				.cpc-firstContainer {
+					width: 72%;
+				}
+				.cpc-secondContainer {
+					width: 28%;
+					justify-content: space-between;
+					flex-direction: column;
+					gap: 1rem 0;
+
+					.cpc-quantity {
+						gap: 0.5rem 0;
+						align-self: flex-end;
+						order: 2;
+
+						p {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 780px) {
+	.ci_products-container {
+		padding: 0.5rem;
+		.cip-products {
+			.cip-cartProductCard {
+				.cpc-firstContainer {
+					width: 75%;
+				}
+				.cpc-secondContainer {
+					width: 25%;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 650px) {
+	.ci_products-container {
+		.cip-title {
+			div {
+				p {
+					font-size: 1.2rem;
+				}
+			}
+
+			button {
+			}
+		}
+
+		.cip-products {
+			.cip-cartProductCard {
+				flex-direction: column;
+				gap: 1.5rem 0;
+				padding-bottom: 1.5rem;
+
+				.cpc-firstContainer {
+					gap: 0 1rem;
+					width: initial;
+
+					img {
+						width: 6rem;
+						height: 6rem;
+					}
+				}
+
+				.cpc-secondContainer {
+					width: initial;
+					align-self: initial;
+					padding: initial;
+					align-self: flex-start;
+					gap: 1.5rem 0;
+
+					.cpc-quantity {
+						flex-direction: row;
+						justify-content: space-between;
+						width: 95vw;
+					}
+
+					.cpc-endPrice {
+						align-items: flex-start;
+					}
+				}
+
+				.cpc-mobilePriceContainer {
+					display: flex;
+					flex-direction: column;
+					gap: 0.5rem 0;
+					font-size: 0.85rem;
+				}
+			}
+		}
+	}
+
+	.cps-cartInfo {
+		.ci_address-container {
+			.ci_address-card {
+				padding: 0.8rem;
+				gap: 1.5rem 0;
+
+				.address-card-sc {
+					width: 100%;
+					display: flex;
+					justify-content: space-between;
+					align-self: flex-start;
+				}
+			}
+		}
+	}
+
+	.mobileResume {
+		.mr-title {
+			div {
+				font-size: 0.85rem;
+			}
+		}
+
+		.mr-content {
+			flex-direction: column;
+			justify-content: initial;
+			gap: 1.5rem 0;
+
+			.mrc-prices {
+				width: 100%;
+			}
+
+			.mrc-finalPrice {
+				width: 100%;
+
+				div {
+					width: 100%;
+					height: 100%;
+					padding: 1rem 0;
+				}
+			}
 		}
 	}
 }

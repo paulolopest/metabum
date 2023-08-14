@@ -1,5 +1,6 @@
 import React from 'react';
 import useAxios from './../../Hooks/useAxios';
+import useMedia from './../../Hooks/useMedia';
 import { formattedPrice } from './../../Utils/Functions';
 import { UserRequest } from '../../Requests/UserRequest';
 import { CartRequest } from './../../Requests/CartRequest';
@@ -8,14 +9,20 @@ import { ReactComponent as AddressIcon } from '../../Assets/icons/address.svg';
 import { ReactComponent as ResumeIcon } from '../../Assets/icons/resumeIcon.svg';
 import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.svg';
 import { ReactComponent as BackIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
+import { ReactComponent as UpIcon } from '../../Assets/icons/up-chevron-svgrepo-com.svg';
 import { ReactComponent as TrashIcon } from '../../Assets/icons/trash-3-svgrepo-com.svg';
 
 const CartPage = () => {
 	const userRequest = new UserRequest();
 	const cartRequest = new CartRequest();
 
+	const [resumeModal, setResumeModal] = React.useState(false);
+
 	const address = useAxios();
 	const cart = useAxios();
+
+	const mediumScreen = useMedia('(max-width: 65rem');
+	const mobileScreen = useMedia('(max-width: 37rem)');
 
 	React.useEffect(() => {
 		const token = window.localStorage.getItem('metabumtoken');
@@ -40,22 +47,45 @@ const CartPage = () => {
 					<span>{product.product_brand}</span>
 					<h3>{product.product_name}</h3>
 
-					<div>
-						<p>
-							Com desconto no pix:{' '}
-							<strong>
-								{formattedPrice(
-									product.product_price - product.product_price / 10
-								)}
-							</strong>
-						</p>
-						<p>
-							Parcelado no cartão em até 10x sem juros:{' '}
-							<strong>{formattedPrice(product.product_price)}</strong>
-						</p>
-					</div>
+					{!mobileScreen && (
+						<div>
+							<p>
+								Com desconto no pix:{' '}
+								<strong>
+									R${' '}
+									{formattedPrice(
+										product.product_price - product.product_price / 10
+									)}
+								</strong>
+							</p>
+							<p>
+								Parcelado no cartão em até 10x sem juros:{' '}
+								<strong>
+									R$ {formattedPrice(product.product_price)}
+								</strong>
+							</p>
+						</div>
+					)}
 				</div>
 			</div>
+
+			{mobileScreen && (
+				<div className="cpc-mobilePriceContainer">
+					<p>
+						Com desconto no pix:{' '}
+						<strong>
+							R${' '}
+							{formattedPrice(
+								product.product_price - product.product_price / 10
+							)}
+						</strong>
+					</p>
+					<p>
+						Parcelado no cartão em até 10x sem juros:{' '}
+						<strong>R$ {formattedPrice(product.product_price)}</strong>
+					</p>
+				</div>
+			)}
 
 			<div className="cpc-secondContainer">
 				<div className="cpc-quantity">
@@ -63,7 +93,7 @@ const CartPage = () => {
 
 					<div>
 						<BackIcon />
-						<p>{product.quantity}</p>
+						<input value={1} />
 						<NextIcon />
 					</div>
 
@@ -80,6 +110,8 @@ const CartPage = () => {
 			</div>
 		</div>
 	));
+
+	console.log(resumeModal);
 
 	if (address.data && cart.data)
 		return (
@@ -124,7 +156,9 @@ const CartPage = () => {
 
 								<button>
 									<TrashIcon />
-									Remover todos os produtos
+									{!mobileScreen
+										? 'Remover todos os produtos'
+										: 'Remover tudo'}
 								</button>
 							</div>
 
@@ -180,6 +214,71 @@ const CartPage = () => {
 						</div>
 					</div>
 				</div>
+
+				{mediumScreen && (
+					<div
+						onClick={() => setResumeModal(!resumeModal)}
+						className="mobileResume"
+					>
+						<div className="mr-icon">
+							<UpIcon
+								style={{
+									transform: resumeModal && 'rotate(180deg)',
+									transition: 'ease-in-out 0.3s',
+								}}
+							/>
+						</div>
+
+						<div className="mr-title">
+							<div>
+								<ResumeIcon />
+								<p>Resumo</p>
+							</div>
+
+							<div>Valor no pix: R$ {formattedPrice(1000)}</div>
+						</div>
+
+						<div
+							className={
+								resumeModal ? 'mr-content animeUp' : 'displayNone'
+							}
+						>
+							<div className="mrc-prices">
+								<div className="mrc-cartValue">
+									<p>Valor dos produtos:</p>
+									<span>R$ {formattedPrice(1000)}</span>
+								</div>
+
+								<div>
+									<p>Frete</p>
+									<span>R$ {formattedPrice(10)}</span>
+								</div>
+
+								<div className="mrcp-finalCont">
+									<div>
+										<p>Total à prazo:</p>
+										<span>R${formattedPrice(1000)}</span>
+									</div>
+									<p>
+										(em até <strong>10x</strong> de{' '}
+										<strong>
+											R$ {formattedPrice(1000)} sem juros
+										</strong>
+										)
+									</p>
+								</div>
+							</div>
+
+							<div className="mrc-finalPrice">
+								<div>
+									<p>Valor a vista no Pix</p>
+									<strong>R$ {formattedPrice(1000)}</strong>
+									<span>(Economize: R${formattedPrice(1000)})</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				)}
 			</div>
 		);
 };
