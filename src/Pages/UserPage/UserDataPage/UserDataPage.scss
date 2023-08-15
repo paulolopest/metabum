@@ -386,7 +386,14 @@
 
 @media (max-width: 600px) {
 	.uds-modalSection {
-		margin: 1rem;
+		.uds-ms-title {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			width: 100%;
+			padding-top: 1rem;
+			justify-content: space-between;
+		}
 		.uds-ms-inputs {
 			input {
 				width: 90vw;

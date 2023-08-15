@@ -14,6 +14,7 @@ import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.
 import { ReactComponent as BackIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 import { ReactComponent as UpIcon } from '../../Assets/icons/up-chevron-svgrepo-com.svg';
 import { ReactComponent as TrashIcon } from '../../Assets/icons/trash-3-svgrepo-com.svg';
+import { useNavigate } from 'react-router-dom';
 
 const CartPage = () => {
 	const userRequest = new UserRequest();
@@ -29,6 +30,7 @@ const CartPage = () => {
 
 	const mediumScreen = useMedia('(max-width: 65rem');
 	const mobileScreen = useMedia('(max-width: 37rem)');
+	const navigate = useNavigate();
 
 	React.useEffect(() => {
 		const token = window.localStorage.getItem('metabumtoken');
@@ -43,6 +45,14 @@ const CartPage = () => {
 
 		cart.getCart(url, { headers });
 	}, []);
+
+	React.useEffect(() => {
+		if (resumeModal || addAddressModal || selectAddressModal) {
+			document.body.classList.add('loading');
+		} else {
+			document.body.classList.remove('loading');
+		}
+	}, [addAddressModal, resumeModal, selectAddressModal]);
 
 	const deleteProduct = (id) => {
 		cart.deleteProduct(id);
@@ -78,11 +88,17 @@ const CartPage = () => {
 	const productMap = cart.data?.map((product) => (
 		<div key={product.product_id} className="cip-cartProductCard">
 			<div className="cpc-firstContainer">
-				<img src={product.product_src} alt={product.product_name} />
+				<img
+					onClick={() => navigate(`/product/${product.product_id}`)}
+					src={product.product_src}
+					alt={product.product_name}
+				/>
 
 				<div className="cpc-fc-productInfo">
 					<span>{product.product_brand}</span>
-					<h3>{product.product_name}</h3>
+					<h3 onClick={() => navigate(`/product/${product.product_id}`)}>
+						{product.product_name}
+					</h3>
 
 					{!mobileScreen && (
 						<div>

@@ -5,9 +5,13 @@ import { UserRequest } from '../../../Requests/UserRequest';
 import CustomInput from '../../../Components/Form/CustomInput/CustomInput';
 import { ReactComponent as EmailIcon } from '../../../Assets/icons/email.svg';
 import { ReactComponent as LockIcon } from '../../../Assets/icons/lockIcon.svg';
+import { ReactComponent as CloseIcon } from '../../../Assets/icons/close-svgrepo-com.svg';
+import useMedia from '../../../Hooks/useMedia';
 
 const UserUpdateModal = ({ inputUpdate, setModal, setInputUpdate }) => {
 	let { data, put, putWithoutRes, post, error, loading } = useAxios();
+
+	const mobileScreen = useMedia('(max-width: 600px)');
 
 	const userRequest = new UserRequest();
 
@@ -207,6 +211,8 @@ const UserUpdateModal = ({ inputUpdate, setModal, setInputUpdate }) => {
 						{inputUpdate === 'address' ? 'Adicionar' : 'Alterar'}{' '}
 						{types[inputUpdate].name}
 					</p>
+
+					{mobileScreen && <CloseIcon onClick={() => setModal(false)} />}
 				</div>
 				<p>Preencha os campos abaixo para realizar a alteração</p>
 				<form

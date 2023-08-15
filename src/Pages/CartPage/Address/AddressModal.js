@@ -1,7 +1,6 @@
 import React from 'react';
 import useAxios from '../../../Hooks/useAxios';
 import { UserRequest } from '../../../Requests/UserRequest';
-import UserUpdateModal from '../../UserPage/UserDataPage/UserUpdateModal';
 import { ReactComponent as AddressIcon } from '../../../Assets/icons/address.svg';
 import { ReactComponent as CloseIcon } from '../../../Assets/icons/close-svgrepo-com.svg';
 

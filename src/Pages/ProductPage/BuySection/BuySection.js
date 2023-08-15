@@ -16,8 +16,10 @@ import { ReactComponent as StarIcon } from '../../../Assets/icons/star-svgrepo-c
 import { ReactComponent as ShareIcon } from '../../../Assets/icons/share-svgrepo-com.svg';
 import { ReactComponent as FavoriteIcon } from '../../../Assets/icons/heart-svgrepo-com.svg';
 import { ReactComponent as AddCartIcon } from '../../../Assets/icons/cart-add-svgrepo-com.svg';
+import { CartRequest } from './../../../Requests/CartRequest';
 
 const BuySection = ({ productId, setProductId }) => {
+	const cartRequest = new CartRequest();
 	const productRequest = new ProductRequest();
 
 	const [ref, { width }] = useMeasure();
@@ -34,6 +36,7 @@ const BuySection = ({ productId, setProductId }) => {
 	const product = useAxios();
 	const images = useAxios();
 	const similarP = useAxios();
+	const cart = useAxios();
 
 	const cep = useForm('');
 
@@ -81,7 +84,21 @@ const BuySection = ({ productId, setProductId }) => {
 		}
 	};
 
-	const buyProduct = async () => {};
+	const buyProduct = async (id) => {
+		const token = window.localStorage.getItem('metabumtoken');
+		const { url, headers } = cartRequest.ADD_PRODUCT(id, token);
+
+		await cart.post(url, null, { headers });
+
+		navigate('/cart');
+	};
+
+	const addCart = async (id) => {
+		const token = window.localStorage.getItem('metabumtoken');
+		const { url, headers } = cartRequest.ADD_PRODUCT(id, token);
+
+		cart.post(url, null, { headers });
+	};
 
 	const miniIcons = images.data?.map((src) => (
 		<img
@@ -237,7 +254,7 @@ const BuySection = ({ productId, setProductId }) => {
 									</div>
 								</div>
 								<div className="pc-fc-buy-button">
-									<CustomButton onClick={() => navigate('/cart')}>
+									<CustomButton>
 										<CartIcon />
 										Comprar
 									</CustomButton>
@@ -261,11 +278,16 @@ const BuySection = ({ productId, setProductId }) => {
 									</div>
 
 									<div className="mobile-buyButton">
-										<CustomButton>
+										<CustomButton
+											onClick={() => buyProduct(product.data.id)}
+										>
 											<CartIcon />
 											Comprar
 										</CustomButton>
-										<CustomButton className="addCartButton">
+										<CustomButton
+											onClick={addCart}
+											className="addCartButton"
+										>
 											<AddCartIcon />
 										</CustomButton>
 									</div>
