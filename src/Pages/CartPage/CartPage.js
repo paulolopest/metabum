@@ -1,9 +1,12 @@
 import React from 'react';
 import useAxios from './../../Hooks/useAxios';
 import useMedia from './../../Hooks/useMedia';
+import AddressModal from './Address/AddressModal';
 import { formattedPrice } from './../../Utils/Functions';
 import { UserRequest } from '../../Requests/UserRequest';
+import { CartContext } from './../../Context/CartContext';
 import { CartRequest } from './../../Requests/CartRequest';
+import UserUpdateModal from './../UserPage/UserDataPage/UserUpdateModal';
 import { ReactComponent as BagIcon } from '../../Assets/icons/bagIcon.svg';
 import { ReactComponent as AddressIcon } from '../../Assets/icons/address.svg';
 import { ReactComponent as ResumeIcon } from '../../Assets/icons/resumeIcon.svg';
@@ -11,22 +14,19 @@ import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.
 import { ReactComponent as BackIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 import { ReactComponent as UpIcon } from '../../Assets/icons/up-chevron-svgrepo-com.svg';
 import { ReactComponent as TrashIcon } from '../../Assets/icons/trash-3-svgrepo-com.svg';
-import { CartContext } from './../../Context/CartContext';
-import CustomInput from '../../Components/Form/CustomInput/CustomInput';
-import useForm from '../../Hooks/useForm';
 
 const CartPage = () => {
 	const userRequest = new UserRequest();
 	const cartRequest = new CartRequest();
 
 	const [resumeModal, setResumeModal] = React.useState(false);
-	const [editInput, setEditInput] = React.useState(false);
+	const [addAddressModal, setAddAddressModal] = React.useState(false);
+	const [selectAddressModal, setSelectAddressModal] = React.useState(false);
 
 	const cart = React.useContext(CartContext);
 
 	const address = useAxios();
 
-	const quantityInput = useForm('quantity');
 	const mediumScreen = useMedia('(max-width: 65rem');
 	const mobileScreen = useMedia('(max-width: 37rem)');
 
@@ -67,17 +67,6 @@ const CartPage = () => {
 			quantity: product.quantity - 1,
 		};
 		cart.editQuantity(product.product_id, body);
-	};
-
-	const handleChange = async ({ target }) => {
-		const body = {
-			quantity: target.value,
-		};
-		if (!body.quantity) {
-			return null;
-		}
-		await cart.editQuantity(target.product_id, body);
-		setEditInput(false);
 	};
 
 	let totalPrice = 0;
@@ -187,8 +176,12 @@ const CartPage = () => {
 								</div>
 
 								<div className="address-card-sc">
-									<button>selecionar outro</button>
-									<button>novo endereço</button>
+									<button onClick={() => setSelectAddressModal(true)}>
+										selecionar outro
+									</button>
+									<button onClick={() => setAddAddressModal(true)}>
+										novo endereço
+									</button>
 								</div>
 							</div>
 						</div>
@@ -222,7 +215,7 @@ const CartPage = () => {
 							<div className="crc_infoContainer">
 								<div className="crc-if-cartValue">
 									<p>Valor dos produtos:</p>
-									<strong>100</strong>
+									<strong>R$ {formattedPrice(totalPrice)}</strong>
 								</div>
 
 								<div className="crc-if-shipping">
@@ -233,13 +226,14 @@ const CartPage = () => {
 								<div className="crc-if-longPrice">
 									<div>
 										<p>Total a prazo:</p>
-										<strong>1000</strong>
+										<strong>R$ {formattedPrice(totalPrice)}</strong>
 									</div>
 
 									<p>
 										(em até <strong>10x</strong> de{' '}
 										<strong>
-											R$ {formattedPrice(450)} sem juros
+											R$ R$ {formattedPrice(totalPrice / 10)} sem
+											juros
 										</strong>
 										)
 									</p>
@@ -249,8 +243,15 @@ const CartPage = () => {
 									<p>
 										Valor a vista no <strong>PIX</strong>
 									</p>
-									<strong>R$ {formattedPrice(4000)}</strong>
-									<p>(Economize: R$ )</p>
+									<strong>
+										{formattedPrice(
+											totalPrice - (totalPrice * 10) / 100
+										)}
+									</strong>
+									<p>
+										(Economize: R${' '}
+										{formattedPrice((totalPrice * 10) / 100)})
+									</p>
 								</div>
 								<div className="crc-if-buttons">
 									<button>Ir para o pagamento</button>
@@ -338,6 +339,20 @@ const CartPage = () => {
 							</div>
 						</div>
 					</div>
+				)}
+
+				{addAddressModal && (
+					<UserUpdateModal
+						inputUpdate={'address'}
+						setModal={setAddAddressModal}
+						setInputUpdate={() => {
+							return null;
+						}}
+					/>
+				)}
+
+				{selectAddressModal && (
+					<AddressModal setSelectAddressModal={setSelectAddressModal} />
 				)}
 			</div>
 		);

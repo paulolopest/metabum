@@ -1,3 +1,5 @@
+@import './Address/AddressModal.scss';
+
 .cartPage {
 	display: flex;
 	justify-content: center;
@@ -322,7 +324,7 @@
 						svg {
 							width: 1rem;
 							height: 1rem;
-
+							cursor: pointer;
 							fill: #ff6500;
 						}
 					}

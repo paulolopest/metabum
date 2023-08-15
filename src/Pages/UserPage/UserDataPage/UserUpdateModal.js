@@ -7,7 +7,7 @@ import { ReactComponent as EmailIcon } from '../../../Assets/icons/email.svg';
 import { ReactComponent as LockIcon } from '../../../Assets/icons/lockIcon.svg';
 
 const UserUpdateModal = ({ inputUpdate, setModal, setInputUpdate }) => {
-	let { data, put, post, error, loading } = useAxios();
+	let { data, put, putWithoutRes, post, error, loading } = useAxios();
 
 	const userRequest = new UserRequest();
 
@@ -68,7 +68,18 @@ const UserUpdateModal = ({ inputUpdate, setModal, setInputUpdate }) => {
 
 		await post(url, body, { headers });
 
-		window.location.reload();
+		const setDefaultAddress = async (zipCode) => {
+			const { url, headers } = userRequest.SET_USER_DEFAULT_ADDRESS(
+				token,
+				zipCode
+			);
+
+			putWithoutRes(url, null, { headers });
+		};
+
+		await setDefaultAddress(body.zipCode);
+
+		// window.location.reload();
 	};
 
 	const onClickOutside = (event) => {
