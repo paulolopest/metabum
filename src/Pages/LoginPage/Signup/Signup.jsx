@@ -1,8 +1,8 @@
 import React from 'react';
 import useForm from '../../../Hooks/useForm';
-import useAxios from './../../../Hooks/useAxios';
-import Loading from './../../../Components/Loading/Loading';
-import { UserRequest } from './../../../Requests/UserRequest';
+import useAxios from '../../../Hooks/useAxios';
+import Loading from '../../../Components/Loading/Loading';
+import { UserRequest } from '../../../Requests/UserRequest';
 import { GlobalContext } from '../../../Context/GlobalContext';
 import CustomInput from '../../../Components/Form/CustomInput/CustomInput';
 import CustomButton from '../../../Components/Form/CustomButton/CustomButton';

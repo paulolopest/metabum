@@ -1,11 +1,11 @@
 import React from 'react';
 import AddressCard from './AddressCard';
 import UserModal from './UserUpdateModal';
-import useAxios from './../../../Hooks/useAxios';
-import { formatCPF } from './../../../Utils/Functions';
+import useAxios from '../../../Hooks/useAxios';
+import { formatCPF } from '../../../Utils/Functions';
 import { UserRequest } from '../../../Requests/UserRequest';
-import { GlobalContext } from './../../../Context/GlobalContext';
-import CustomInput from './../../../Components/Form/CustomInput/CustomInput';
+import { GlobalContext } from '../../../Context/GlobalContext';
+import CustomInput from '../../../Components/Form/CustomInput/CustomInput';
 import { ReactComponent as ProfileIcon } from '../../../Assets/icons/user.svg';
 import { ReactComponent as AddressIcon } from '../../../Assets/icons/address.svg';
 import { ReactComponent as DescriptionIcon } from '../../../Assets/icons/description-svgrepo-com.svg';

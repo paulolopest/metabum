@@ -1,13 +1,13 @@
 import React from 'react';
 import CartCard from './CartCard';
 import { CartContext } from '../../Context/CartContext';
-import CustomButton from './../Form/CustomButton/CustomButton';
+import CustomButton from '../Form/CustomButton/CustomButton';
 import { ReactComponent as EmptyCart } from '../../Assets/icons/cart-close-svgrepo-com.svg';
 import { ReactComponent as CloseIcon } from '../../Assets/icons/close-svgrepo-com.svg';
 import { formattedPrice } from '../../Utils/Functions';
 import { ReactComponent as DotIcon } from '../../Assets/icons/menu-dots-svgrepo-com.svg';
 import { GlobalContext } from '../../Context/GlobalContext';
-import useMedia from './../../Hooks/useMedia';
+import useMedia from '../../Hooks/useMedia';
 
 const Cart = () => {
 	const [deleteOption, setDeleteOption] = React.useState(false);

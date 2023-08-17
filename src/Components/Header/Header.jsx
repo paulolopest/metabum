@@ -1,12 +1,13 @@
 import React from 'react';
-import Cart from './../Cart/Cart';
+import Cart from '../Cart/Cart';
+import useForm from '../../Hooks/useForm';
+import useMedia from '../../Hooks/useMedia';
+import SearchModal from '../SearchModal/SearchModal';
 import { Link, useNavigate } from 'react-router-dom';
-import useForm from './../../Hooks/useForm';
-import useMedia from './../../Hooks/useMedia';
 import { CartContext } from '../../Context/CartContext';
 import Logo from '../../Assets/images/metabumbanner.png';
-import CustomInput from './../Form/CustomInput/CustomInput';
-import { GlobalContext } from './../../Context/GlobalContext';
+import CustomInput from '../Form/CustomInput/CustomInput';
+import { GlobalContext } from '../../Context/GlobalContext';
 import { ReactComponent as Menu } from '../../Assets/icons/menu.svg';
 import { ReactComponent as UserIcon } from '../../Assets/icons/user.svg';
 import profileImage from '../../Assets/images/profile_ninja-c2466b7f.png';
@@ -19,7 +20,6 @@ import { ReactComponent as FAQIcon } from '../../Assets/icons/contact-svgrepo-co
 import { ReactComponent as FavoritesIcon } from '../../Assets/icons/heart-svgrepo-com.svg';
 import { ReactComponent as MagnifyingGlass } from '../../Assets/icons/search-svgrepo-com.svg';
 import { ReactComponent as ProfileIcon } from '../../Assets/icons/profile-circle-svgrepo-com.svg';
-import SearchModal from '../SearchModal/SearchModal';
 
 const Header = () => {
 	const [leftNav, setLeftNav] = React.useState(false);
@@ -200,10 +200,12 @@ const Header = () => {
 								<p>Minha conta</p>
 							</div>
 						</Link>
-						<div className="lNav-Links-card">
-							<OrderIcon />
-							<p>Carrinho</p>
-						</div>
+						<Link onClick={() => setLeftNav(false)} to="/cart">
+							<div className="lNav-Links-card">
+								<OrderIcon />
+								<p>Carrinho</p>
+							</div>
+						</Link>
 						<div className="lNav-Links-card">
 							<FavoritesIcon />
 							<p>Favoritos</p>

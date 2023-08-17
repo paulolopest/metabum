@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactComponent as ArchiveIcon } from '../../../Assets/icons/description-svgrepo-com.svg';
 import { ProductRequest } from '../../../Requests/ProductRequest';
-import useAxios from './../../../Hooks/useAxios';
+import useAxios from '../../../Hooks/useAxios';
 
 const DescriptionSection = ({ productId }) => {
 	const productRequest = new ProductRequest();

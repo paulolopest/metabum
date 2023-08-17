@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import useAxios from '../../../Hooks/useAxios';
-import useMedia from './../../../Hooks/useMedia';
+import useMedia from '../../../Hooks/useMedia';
 import ProductCard from '../../../Components/ProductCard/ProductCard';
 import { ReactComponent as NextIcon } from '../../../Assets/icons/next-svgrepo-com.svg';
 

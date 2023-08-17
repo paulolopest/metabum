@@ -1,12 +1,12 @@
 import React from 'react';
-import useAxios from './../../Hooks/useAxios';
-import useMedia from './../../Hooks/useMedia';
+import useAxios from '../../Hooks/useAxios';
+import useMedia from '../../Hooks/useMedia';
 import AddressModal from './Address/AddressModal';
-import { formattedPrice } from './../../Utils/Functions';
+import { formattedPrice } from '../../Utils/Functions';
 import { UserRequest } from '../../Requests/UserRequest';
-import { CartContext } from './../../Context/CartContext';
-import { CartRequest } from './../../Requests/CartRequest';
-import UserUpdateModal from './../UserPage/UserDataPage/UserUpdateModal';
+import { CartContext } from '../../Context/CartContext';
+import { CartRequest } from '../../Requests/CartRequest';
+import UserUpdateModal from '../UserPage/UserDataPage/UserUpdateModal';
 import { ReactComponent as BagIcon } from '../../Assets/icons/bagIcon.svg';
 import { ReactComponent as AddressIcon } from '../../Assets/icons/address.svg';
 import { ReactComponent as ResumeIcon } from '../../Assets/icons/resumeIcon.svg';

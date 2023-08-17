@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import useMedia from './../../../Hooks/useMedia';
+import useMedia from '../../../Hooks/useMedia';
 import { departments } from '../../../Utils/Extra';
 import { ReactComponent as ListIcon } from '../../../Assets/icons/list.svg';
 import useMeasure from 'react-use-measure';

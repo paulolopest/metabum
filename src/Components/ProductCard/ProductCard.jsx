@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useMedia from '../../Hooks/useMedia';
 import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../../Context/CartContext';
 import { formattedPrice, limitText } from '../../Utils/Functions';
 import { ReactComponent as StarIcon } from '../../Assets/icons/star-svgrepo-com.svg';
 import { ReactComponent as CartIcon } from '../../Assets/icons/cart-svgrepo-com.svg';
@@ -8,8 +9,15 @@ import { ReactComponent as FavoriteIcon } from '../../Assets/icons/heart-svgrepo
 import { ReactComponent as AddCartIcon } from '../../Assets/icons/cart-add-svgrepo-com.svg';
 
 const ProductCard = ({ product, isDragging }) => {
+	const cart = useContext(CartContext);
+
 	const navigate = useNavigate();
 	const mobileScreen = useMedia('(max-width: 600px)');
+
+	const addToCart = (id) => {
+		cart.addProduct(id);
+		cart.showPopUp()
+	};
 
 	const handleClick = () => {
 		if (!isDragging) {
@@ -19,9 +27,9 @@ const ProductCard = ({ product, isDragging }) => {
 		}
 	};
 	return (
-		<>
+		<>	
 			{!mobileScreen ? (
-				<div onClick={handleClick} className="productCard">
+				<div className="productCard">
 					<div className="pc-IconsContainer">
 						<div className="ic-firstBlock">
 							<p>Restam</p>
@@ -29,28 +37,35 @@ const ProductCard = ({ product, isDragging }) => {
 							<p>UNID.</p>
 						</div>
 						<div className="ic-secondBlock">
-							<AddCartIcon />
+							<AddCartIcon onClick={() => addToCart(product.id)} />
 							<FavoriteIcon />
 						</div>
 					</div>
 
-					<img draggable={false} src={product.src} alt="product" />
+					<img
+						onClick={() => handleClick}
+						draggable={false}
+						src={product.src}
+						alt="product"
+					/>
 
-					<p className="pc-name">{limitText(product.name, 75)}</p>
+					<p onClick={() => handleClick} className="pc-name">
+						{limitText(product.name, 75)}
+					</p>
 
-					<div className="pc-price">
+					<div onClick={() => handleClick} className="pc-price">
 						<span>R$ {formattedPrice((product.price / 10) * 12)}</span>
 						<h3>R$ {formattedPrice(product.price)}</h3>
 						<p>A vista no pix</p>
 					</div>
 
-					<button className="pc-button">
+					<button onClick={() => handleClick} className="pc-button">
 						<CartIcon />
 						Comprar
 					</button>
 				</div>
 			) : (
-				<div onClick={handleClick} className="mobile-pCard">
+				<div onClick={() => handleClick} className="mobile-pCard">
 					<div className="mobile-pc-icons">
 						<div className="mbl-pc-iconsFirstContainer">
 							<div>

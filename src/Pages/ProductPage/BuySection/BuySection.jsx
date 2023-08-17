@@ -4,7 +4,7 @@ import useMeasure from 'react-use-measure';
 import useForm from '../../../Hooks/useForm';
 import useAxios from '../../../Hooks/useAxios';
 import { useNavigate } from 'react-router-dom';
-import useMedia from './../../../Hooks/useMedia';
+import useMedia from '../../../Hooks/useMedia';
 import Loading from '../../../Components/Loading/Loading';
 import { formattedPrice } from '../../../Utils/Functions';
 import { ProductRequest } from '../../../Requests/ProductRequest';
@@ -16,7 +16,7 @@ import { ReactComponent as StarIcon } from '../../../Assets/icons/star-svgrepo-c
 import { ReactComponent as ShareIcon } from '../../../Assets/icons/share-svgrepo-com.svg';
 import { ReactComponent as FavoriteIcon } from '../../../Assets/icons/heart-svgrepo-com.svg';
 import { ReactComponent as AddCartIcon } from '../../../Assets/icons/cart-add-svgrepo-com.svg';
-import { CartRequest } from './../../../Requests/CartRequest';
+import { CartRequest } from '../../../Requests/CartRequest';
 
 const BuySection = ({ productId, setProductId }) => {
 	const cartRequest = new CartRequest();

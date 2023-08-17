@@ -1,12 +1,14 @@
 import React from 'react';
 import useAxios from '../Hooks/useAxios';
-import { CartRequest } from './../Requests/CartRequest';
+import { CartRequest } from '../Requests/CartRequest';
 
 export const CartContext = React.createContext();
 const cartRequest = new CartRequest();
 
 const CartStorage = ({ children }) => {
 	const [cartBar, setCartBar] = React.useState(false);
+	const [popUp, setPopUp] = React.useState(false)
+
 	const { data, loading, error, post, get, put, deleteAxios, putWithoutRes } =
 		useAxios();
 
@@ -58,6 +60,14 @@ const CartStorage = ({ children }) => {
 		getCart();
 	}, [deleteAxios, getCart]);
 
+	const showPopUp = () => {
+		setPopUp(true)
+
+		const timeout = setTimeout(() => {
+			setPopUp(false)
+		}, 2000);
+	}
+
 	return (
 		<CartContext.Provider
 			value={{
@@ -67,6 +77,8 @@ const CartStorage = ({ children }) => {
 				editQuantity,
 				deleteCart,
 				setCartBar,
+				showPopUp,
+				popUp,
 				cartBar,
 				data,
 				loading,

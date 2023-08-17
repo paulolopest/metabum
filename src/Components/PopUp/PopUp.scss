@@ -1,0 +1,16 @@
+.popup {
+	padding: 1rem;
+	background-color: white;
+	position: fixed;
+	top: 0;
+	right: 50%;
+	transform: translateX(50%);
+	z-index: 10;
+	background-color: #55ca92;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: white;
+	font-size: 0.9rem;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}

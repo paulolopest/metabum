@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useForm from './../../../Hooks/useForm';
+import useForm from '../../../Hooks/useForm';
 import { GlobalContext } from '../../../Context/GlobalContext';
-import CustomInput from './../../../Components/Form/CustomInput/CustomInput';
+import CustomInput from '../../../Components/Form/CustomInput/CustomInput';
 import { ReactComponent as LoginIcon } from '../../../Assets/icons/loginIcon.svg';
 import { ReactComponent as FacebookIcon } from '../../../Assets/icons/facebook-svgrepo-com.svg';
 import { ReactComponent as GoogleIcon } from '../../../Assets/icons/google-178-svgrepo-com.svg';
-import Loading from './../../../Components/Loading/Loading';
+import Loading from '../../../Components/Loading/Loading';
 
 const Login = () => {
 	const email = useForm('email');

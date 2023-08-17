@@ -1,7 +1,7 @@
 import React from 'react';
-import useAxios from './../../../Hooks/useAxios';
+import useAxios from '../../../Hooks/useAxios';
 import { formatDate } from '../../../Utils/Functions';
-import { ProductRequest } from './../../../Requests/ProductRequest';
+import { ProductRequest } from '../../../Requests/ProductRequest';
 import { ReactComponent as EmptyStar } from '../../../Assets/icons/emptyStar.svg';
 import { ReactComponent as DownIcon } from '../../../Assets/icons/down-svgrepo-com.svg';
 import { ReactComponent as FullStar } from '../../../Assets/icons/star-svgrepo-com.svg';

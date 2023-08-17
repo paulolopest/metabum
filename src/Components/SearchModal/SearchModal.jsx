@@ -1,9 +1,9 @@
 import React from 'react';
 import useAxios from '../../Hooks/useAxios';
-import { ProductRequest } from './../../Requests/ProductRequest';
+import { ProductRequest } from '../../Requests/ProductRequest';
 import { useNavigate } from 'react-router-dom';
-import { limitText } from './../../Utils/Functions';
-import useMedia from './../../Hooks/useMedia';
+import { limitText } from '../../Utils/Functions';
+import useMedia from '../../Hooks/useMedia';
 
 const SearchModal = ({ word, searchModal, setSearchModal }) => {
 	const productRequest = new ProductRequest();
