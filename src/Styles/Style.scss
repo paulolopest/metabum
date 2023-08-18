@@ -3,6 +3,7 @@
 
 @import '../Components/Loading/Loading.scss';
 @import '../Components/Header/Header.scss';
+@import '../Components/Footer/Footer.scss';
 @import '../Components/Cart/Cart.scss';
 @import '../Components/ProductCard/ProductCard.scss';
 @import '../Components/SearchModal/SearchModal.scss';
@@ -44,6 +45,16 @@
 	transition: 0.2s ease-in-out;
 }
 @keyframes animeUp {
+	to {
+		transform: initial;
+	}
+}
+.animeDown {
+	transform: translateY(-20px);
+	animation: animeDown 0.2s forwards;
+	transition: 0.2s ease-in-out;
+}
+@keyframes animeDown {
 	to {
 		transform: initial;
 	}

@@ -1,10 +1,11 @@
 import React from 'react';
 import useAxios from '../../Hooks/useAxios';
 import useMedia from '../../Hooks/useMedia';
+import { useNavigate } from 'react-router-dom';
 import AddressModal from './Address/AddressModal';
 import { formattedPrice } from '../../Utils/Functions';
-import { UserRequest } from '../../Requests/UserRequest';
 import { CartContext } from '../../Context/CartContext';
+import { UserRequest } from '../../Requests/UserRequest';
 import { CartRequest } from '../../Requests/CartRequest';
 import UserUpdateModal from '../UserPage/UserDataPage/UserUpdateModal';
 import { ReactComponent as BagIcon } from '../../Assets/icons/bagIcon.svg';
@@ -14,7 +15,6 @@ import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.
 import { ReactComponent as BackIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 import { ReactComponent as UpIcon } from '../../Assets/icons/up-chevron-svgrepo-com.svg';
 import { ReactComponent as TrashIcon } from '../../Assets/icons/trash-3-svgrepo-com.svg';
-import { useNavigate } from 'react-router-dom';
 
 const CartPage = () => {
 	const userRequest = new UserRequest();

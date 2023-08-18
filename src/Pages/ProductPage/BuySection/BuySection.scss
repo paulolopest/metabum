@@ -227,27 +227,49 @@
 	justify-content: flex-end;
 	align-items: flex-end;
 
-	button {
+	div {
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: white;
-		background-color: #ff6500;
-		outline: none;
-		padding: 1rem 5rem;
-		border: none;
-		border-radius: 3px;
-		font-size: 1.3rem;
-		text-transform: uppercase;
-		font-weight: bold;
 		gap: 0 0.5rem;
 
-		svg {
-			width: 1.3rem;
-			height: 1.3rem;
+		button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			background-color: #ff6500;
+			outline: none;
+			padding: 1rem 5rem;
+			border: none;
+			border-radius: 3px;
+			font-size: 1.3rem;
+			text-transform: uppercase;
+			font-weight: bold;
+			gap: 0 0.5rem;
 
-			path {
-				fill: white;
+			svg {
+				width: 1.3rem;
+				height: 1.3rem;
+
+				path {
+					fill: white;
+				}
+			}
+		}
+
+		.addCartButton {
+			background-color: transparent;
+			border: 1px solid #ff6500;
+			padding: 1rem;
+			width: 5rem;
+
+			svg {
+				stroke: #ff6500;
+				width: 1.2rem;
+				height: 1.2rem;
+
+				path {
+					fill: #ff6500;
+				}
 			}
 		}
 	}
@@ -448,20 +470,17 @@
 	.pp-p-purchaseCallback {
 		height: 100%;
 		width: 40%;
-		// background-color: bisque;
 		justify-content: space-between;
 	}
 
 	.pc-firstContainer {
 		height: 80%;
 		flex-direction: column;
-		// background-color: red;
 		justify-content: space-between;
 		align-items: start;
 	}
 
 	.pc-secondContainer {
-		// background-color: blue;
 		padding-top: 2rem;
 		justify-content: space-between;
 
@@ -475,12 +494,10 @@
 	}
 
 	.pp-pv-shipping {
-		// background-color: red;
 	}
 
 	.sp-wrapper {
 		gap: 0 4rem;
-		// background-color: red;
 	}
 
 	.sp-card {
@@ -491,6 +508,10 @@
 			height: 6.5rem;
 			width: 6.5rem;
 		}
+	}
+
+	.pc-fc-buy-button {
+		align-self: flex-end;
 	}
 }
 @media (max-width: 1025px) {
@@ -557,6 +578,9 @@
 			font-size: 1rem;
 		}
 	}
+	.pc-fc-buy-button {
+		padding-bottom: 1rem;
+	}
 }
 
 @media (max-width: 900px) {
@@ -615,6 +639,16 @@
 
 	.pc-fc-buy-button {
 		align-self: flex-end;
+
+		div {
+			button {
+				width: 13rem;
+			}
+
+			.addCartButton {
+				width: 4rem;
+			}
+		}
 	}
 
 	.pc-secondContainer {
@@ -800,6 +834,7 @@
 	.mobile-buyButton {
 		display: flex;
 		gap: 0 0.7rem;
+		padding-top: 2rem;
 
 		button {
 			display: flex;
@@ -815,6 +850,7 @@
 			text-transform: uppercase;
 			font-weight: bold;
 			gap: 0 0.5rem;
+			width: 80%;
 
 			svg {
 				width: 1.3rem;
@@ -830,6 +866,7 @@
 			background-color: transparent;
 			border: 1px solid #ff6500;
 			padding: 1rem;
+			width: 20%;
 
 			svg {
 				stroke: #ff6500;
@@ -881,6 +918,8 @@
 	}
 
 	.mobile-buyButton {
+		div {
+		}
 		button {
 			padding: 1rem 6.25rem;
 		}

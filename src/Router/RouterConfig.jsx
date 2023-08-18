@@ -11,6 +11,7 @@ import Authentication from '../Pages/LoginPage/Authentication';
 import ProductCatalog from '../Pages/ProductCatalog/ProductCatalog';
 import CartPage from '../Pages/CartPage/CartPage';
 import PopUp from '../Components/PopUp/PopUp';
+import Footer from '../Components/Footer/Footer';
 
 const RouterConfig = () => {
 	return (
@@ -42,6 +43,7 @@ const RouterConfig = () => {
 							}
 						/>
 					</Routes>
+					<Footer/>
 				</CartStorage>
 			</GlobalStorage>
 		</BrowserRouter>

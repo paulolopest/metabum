@@ -11,7 +11,7 @@ import { GlobalContext } from '../../Context/GlobalContext';
 import { ReactComponent as Menu } from '../../Assets/icons/menu.svg';
 import { ReactComponent as UserIcon } from '../../Assets/icons/user.svg';
 import profileImage from '../../Assets/images/profile_ninja-c2466b7f.png';
-import { ReactComponent as OrderIcon } from '../../Assets/icons/truck.svg';
+import { ReactComponent as OrderIcon } from '../../Assets/icons/bag.svg';
 import { ReactComponent as KabumIcon } from '../../Assets/icons/kabum.svg';
 import { ReactComponent as SearchIcon } from '../../Assets/icons/search.svg';
 import { ReactComponent as CartIcon } from '../../Assets/icons/cart-svgrepo-com.svg';

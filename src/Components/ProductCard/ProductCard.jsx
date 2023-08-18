@@ -43,29 +43,29 @@ const ProductCard = ({ product, isDragging }) => {
 					</div>
 
 					<img
-						onClick={() => handleClick}
+						onClick={handleClick}
 						draggable={false}
 						src={product.src}
 						alt="product"
 					/>
 
-					<p onClick={() => handleClick} className="pc-name">
+					<p onClick={handleClick} className="pc-name">
 						{limitText(product.name, 75)}
 					</p>
 
-					<div onClick={() => handleClick} className="pc-price">
+					<div onClick={handleClick} className="pc-price">
 						<span>R$ {formattedPrice((product.price / 10) * 12)}</span>
 						<h3>R$ {formattedPrice(product.price)}</h3>
 						<p>A vista no pix</p>
 					</div>
 
-					<button onClick={() => handleClick} className="pc-button">
+					<button onClick={handleClick} className="pc-button">
 						<CartIcon />
 						Comprar
 					</button>
 				</div>
 			) : (
-				<div onClick={() => handleClick} className="mobile-pCard">
+				<div className="mobile-pCard">
 					<div className="mobile-pc-icons">
 						<div className="mbl-pc-iconsFirstContainer">
 							<div>
@@ -78,15 +78,15 @@ const ProductCard = ({ product, isDragging }) => {
 							<p>(1)</p>
 						</div>
 						<div className="mbl-pc-iconsSecondContainer">
-							<AddCartIcon />
+							<AddCartIcon onClick={() => addToCart(product.id)}/>
 							<FavoriteIcon />
 						</div>
 					</div>
 					<div className="mobile-pc-info">
-						<div className="mb-pcImg">
+						<div onClick={handleClick} className="mb-pcImg">
 							<img draggable={false} src={product.src} alt="product" />
 						</div>
-						<div className="mbl-pc-infoSecondContainer">
+						<div onClick={handleClick} className="mbl-pc-infoSecondContainer">
 							<p className="mbl-pc-name">
 								{limitText(product.name, 50)}
 							</p>

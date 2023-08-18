@@ -563,6 +563,10 @@
 @media (max-width: 900px) {
 	.cps-cartInfo {
 		padding: initial;
+
+		.ci_address-container {
+			padding: 0 1rem;
+		}
 	}
 	.ci_products-container {
 		.cip-products {
@@ -596,6 +600,10 @@
 @media (max-width: 780px) {
 	.cps-cartInfo {
 		gap: 1.5rem 0;
+
+		.ci_address-container {
+			padding: 0 0.5rem;
+		}
 	}
 	.ci_products-container {
 		padding: 1rem 0.5rem;

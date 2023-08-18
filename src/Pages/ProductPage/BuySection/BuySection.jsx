@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import useMeasure from 'react-use-measure';
 import useForm from '../../../Hooks/useForm';
@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import useMedia from '../../../Hooks/useMedia';
 import Loading from '../../../Components/Loading/Loading';
 import { formattedPrice } from '../../../Utils/Functions';
+import { CartRequest } from '../../../Requests/CartRequest';
 import { ProductRequest } from '../../../Requests/ProductRequest';
 import CustomInput from '../../../Components/Form/CustomInput/CustomInput';
 import CustomButton from '../../../Components/Form/CustomButton/CustomButton';
@@ -16,27 +17,26 @@ import { ReactComponent as StarIcon } from '../../../Assets/icons/star-svgrepo-c
 import { ReactComponent as ShareIcon } from '../../../Assets/icons/share-svgrepo-com.svg';
 import { ReactComponent as FavoriteIcon } from '../../../Assets/icons/heart-svgrepo-com.svg';
 import { ReactComponent as AddCartIcon } from '../../../Assets/icons/cart-add-svgrepo-com.svg';
-import { CartRequest } from '../../../Requests/CartRequest';
+import { CartContext } from './../../../Context/CartContext';
 
 const BuySection = ({ productId, setProductId }) => {
-	const cartRequest = new CartRequest();
 	const productRequest = new ProductRequest();
+
+	const cart = useContext(CartContext);
 
 	const [ref, { width }] = useMeasure();
 	const mobileScreen = useMedia('(max-width: 37rem)');
 	const navigate = useNavigate();
 
+	const [dragInitialPosition, setDragInitialPosition] = React.useState(0);
 	const [isDragging, setIsDragging] = React.useState(false);
 	const [activeImg, setActiveImg] = React.useState(null);
-
-	const [dragInitialPosition, setDragInitialPosition] = React.useState(0);
 	const [imageIndex, setImageIndex] = React.useState(0);
 	const [prev, setPrev] = React.useState(imageIndex);
 
 	const product = useAxios();
 	const images = useAxios();
 	const similarP = useAxios();
-	const cart = useAxios();
 
 	const cep = useForm('');
 
@@ -84,21 +84,17 @@ const BuySection = ({ productId, setProductId }) => {
 		}
 	};
 
-	const buyProduct = async (id) => {
-		const token = window.localStorage.getItem('metabumtoken');
-		const { url, headers } = cartRequest.ADD_PRODUCT(id, token);
-
-		await cart.post(url, null, { headers });
+	const buyProduct = async () => {
+		await cart.addProduct(productId);
 
 		navigate('/cart');
 	};
 
-	const addCart = async (id) => {
-		const token = window.localStorage.getItem('metabumtoken');
-		const { url, headers } = cartRequest.ADD_PRODUCT(id, token);
-
-		cart.post(url, null, { headers });
+	const addCart = async () => {
+		cart.addProduct(productId);
 	};
+
+	console.log(productId);
 
 	const miniIcons = images.data?.map((src) => (
 		<img
@@ -254,15 +250,39 @@ const BuySection = ({ productId, setProductId }) => {
 									</div>
 								</div>
 								<div className="pc-fc-buy-button">
-									<CustomButton>
-										<CartIcon />
-										Comprar
-									</CustomButton>
+									<div>
+										<CustomButton onClick={buyProduct} >
+											<CartIcon />
+											Comprar
+										</CustomButton>
+										<CustomButton
+											onClick={addCart}
+											className="addCartButton"
+										>
+											<AddCartIcon />
+										</CustomButton>
+									</div>
 								</div>
 							</div>
 
 							{mobileScreen ? (
+
 								<>
+									<div className="mobile-buyButton">
+										<CustomButton
+											onClick={buyProduct}
+										>
+											<CartIcon />
+											Comprar
+										</CustomButton>
+										<CustomButton
+											onClick={addCart}
+											className="addCartButton"
+										>
+											<AddCartIcon />
+										</CustomButton>
+									</div>
+
 									<div className="mobile-shipping">
 										<p>Consultar frete e prazo de entrega</p>
 										<div>
@@ -277,20 +297,7 @@ const BuySection = ({ productId, setProductId }) => {
 										</a>
 									</div>
 
-									<div className="mobile-buyButton">
-										<CustomButton
-											onClick={() => buyProduct(product.data.id)}
-										>
-											<CartIcon />
-											Comprar
-										</CustomButton>
-										<CustomButton
-											onClick={addCart}
-											className="addCartButton"
-										>
-											<AddCartIcon />
-										</CustomButton>
-									</div>
+								
 								</>
 							) : null}
 
