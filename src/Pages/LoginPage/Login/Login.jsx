@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import useForm from '../../../Hooks/useForm';
 import { GlobalContext } from '../../../Context/GlobalContext';
@@ -7,20 +7,22 @@ import { ReactComponent as LoginIcon } from '../../../Assets/icons/loginIcon.svg
 import { ReactComponent as FacebookIcon } from '../../../Assets/icons/facebook-svgrepo-com.svg';
 import { ReactComponent as GoogleIcon } from '../../../Assets/icons/google-178-svgrepo-com.svg';
 import Loading from '../../../Components/Loading/Loading';
+import { CartContext } from '../../../Context/CartContext';
 
 const Login = () => {
 	const email = useForm('email');
 	const password = useForm('password');
 
 	const { userLogin, error, loading } = React.useContext(GlobalContext);
+	const cart = useContext(CartContext);
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		userLogin(email.value, password.value);
+		await userLogin(email.value, password.value);
+		cart.getCart();
 	};
 
-	if (loading) return <Loading />;
 	return (
 		<div className="loginContainer">
 			<div className="loginBox">

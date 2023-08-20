@@ -4,9 +4,11 @@ import useMedia from '../../../Hooks/useMedia';
 import { departments } from '../../../Utils/Extra';
 import { ReactComponent as ListIcon } from '../../../Assets/icons/list.svg';
 import useMeasure from 'react-use-measure';
+import { useNavigate } from 'react-router-dom';
 
 const DepartmentsSection = () => {
 	const [isDragging, setIsDragging] = React.useState(false);
+	const navigate = useNavigate();
 
 	const [ref, { width }] = useMeasure();
 	const mediumScreen = useMedia('(max-width: 600px)');
@@ -14,7 +16,7 @@ const DepartmentsSection = () => {
 	const dpsMap = departments.map((dp, index) => (
 		<div
 			ref={ref}
-			onClick={isDragging ? null : null}
+			onClick={isDragging ? null : () => navigate(`/catalog/${dp.search}`)}
 			className="dps-card"
 			key={index}
 		>

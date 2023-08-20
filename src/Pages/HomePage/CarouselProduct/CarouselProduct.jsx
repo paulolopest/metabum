@@ -4,13 +4,15 @@ import useAxios from '../../../Hooks/useAxios';
 import useMedia from '../../../Hooks/useMedia';
 import ProductCard from '../../../Components/ProductCard/ProductCard';
 import { ReactComponent as NextIcon } from '../../../Assets/icons/next-svgrepo-com.svg';
+import { useNavigate } from 'react-router-dom';
 
-const CarouselProduct = ({ request, title, svgIcon }) => {
+const CarouselProduct = ({ request, title, svgIcon, word }) => {
 	const [isDragging, setIsDragging] = React.useState(false);
 
 	const { data, get } = useAxios();
 
 	const mobileScreen = useMedia('(max-width: 600px)');
+	const navigate = useNavigate();
 
 	React.useEffect(() => {
 		get(request);
@@ -22,7 +24,7 @@ const CarouselProduct = ({ request, title, svgIcon }) => {
 
 	if (data)
 		return (
-			<div className="mc-container animeLeft">
+			<div className="mc-container">
 				<div className="mc-carouselTitle">
 					{svgIcon}
 					{title}
@@ -40,7 +42,10 @@ const CarouselProduct = ({ request, title, svgIcon }) => {
 					{productMap}
 				</motion.div>
 
-				<button className="seeMore-button">
+				<button
+					onClick={() => navigate(`/catalog/${word}`)}
+					className="seeMore-button"
+				>
 					ver todos
 					<NextIcon />
 				</button>

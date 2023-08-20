@@ -15,6 +15,7 @@ import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.
 import { ReactComponent as BackIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 import { ReactComponent as UpIcon } from '../../Assets/icons/up-chevron-svgrepo-com.svg';
 import { ReactComponent as TrashIcon } from '../../Assets/icons/trash-3-svgrepo-com.svg';
+import Loading from '../../Components/Loading/Loading';
 
 const CartPage = () => {
 	const userRequest = new UserRequest();
@@ -164,7 +165,8 @@ const CartPage = () => {
 		</div>
 	));
 
-	if (address.data && cart.data)
+	if (cart.loading) return <Loading />;
+	if (cart.data)
 		return (
 			<div className="cartPage">
 				<div className="cartPageSection">
@@ -177,17 +179,17 @@ const CartPage = () => {
 
 							<div className="ci_address-card">
 								<div className="address-card-fc">
-									<strong>{address.data.identification}</strong>
+									<strong>{address.data?.identification}</strong>
 									<p>
-										{address.data.street}, {address.data.complement}
+										{address.data?.street}, {address.data?.complement}
 									</p>
 									<p>
-										Número: {address.data.number},{' '}
-										{address.data.reference}
+										Número: {address.data?.number},{' '}
+										{address.data?.reference}
 									</p>
 									<p>
-										CEP: {address.data.zip_code} - {address.data.city}
-										, {address.data.uf}
+										CEP: {address.data?.zip_code} -{' '}
+										{address.data?.city}, {address.data?.uf}
 									</p>
 								</div>
 
