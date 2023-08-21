@@ -5,7 +5,6 @@ import { ProductRequest } from '../../../Requests/ProductRequest';
 import { ReactComponent as EmptyStar } from '../../../Assets/icons/emptyStar.svg';
 import { ReactComponent as DownIcon } from '../../../Assets/icons/down-svgrepo-com.svg';
 import { ReactComponent as FullStar } from '../../../Assets/icons/star-svgrepo-com.svg';
-import { ReactComponent as CloseIcon } from '../../../Assets/icons/up-chevron-svgrepo-com.svg';
 
 const EvaluationSection = ({ productId }) => {
 	const productRequest = new ProductRequest();

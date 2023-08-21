@@ -60,6 +60,8 @@ const Header = () => {
 	const handleSearch = () => {
 		setSearchModal(false);
 		navigate(`/catalog/${search.value}`);
+
+		window.location.reload();
 	};
 
 	React.useEffect(() => {

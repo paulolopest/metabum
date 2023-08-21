@@ -44,12 +44,15 @@ const SearchModal = ({ word, searchModal, setSearchModal }) => {
 		</div>
 	));
 
-	if (search.data)
-		return (
-			<div className={searchModal ? 'searchModalContainer' : 'displayNone'}>
-				{searchModalMap}
-			</div>
-		);
+	if (!search.loading)
+		if (search.data)
+			return (
+				<div
+					className={searchModal ? 'searchModalContainer' : 'displayNone'}
+				>
+					{searchModalMap}
+				</div>
+			);
 };
 
 export default SearchModal;
