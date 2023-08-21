@@ -1,25 +1,30 @@
 import React from 'react';
 import ProtectedRoute from './ProtectedRoute';
+import PopUp from '../Components/PopUp/PopUp';
 import CartStorage from '../Context/CartContext';
 import Header from '../Components/Header/Header';
+import Footer from '../Components/Footer/Footer';
 import HomePage from '../Pages/HomePage/HomePage';
+import CartPage from '../Pages/CartPage/CartPage';
 import GlobalStorage from '../Context/GlobalContext';
 import UserRoutes from '../Pages/UserPage/UserRoutes';
 import ProductPage from '../Pages/ProductPage/ProductPage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Authentication from '../Pages/LoginPage/Authentication';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NotFoundPage from './../Pages/NotFoundPage/NotFoundPage';
 import ProductCatalog from '../Pages/ProductCatalog/ProductCatalog';
-import CartPage from '../Pages/CartPage/CartPage';
-import PopUp from '../Components/PopUp/PopUp';
-import Footer from '../Components/Footer/Footer';
+import CustomButton from '../Components/Form/CustomButton/CustomButton';
+import { ReactComponent as UpIcon } from '../Assets/icons/up-chevron-svgrepo-com.svg';
 
 const RouterConfig = () => {
 	return (
 		<BrowserRouter>
 			<GlobalStorage>
 				<CartStorage>
-					<PopUp/>
+					<PopUp />
+
 					<Header />
+
 					<Routes>
 						<Route path="/" element={<HomePage />} />
 						<Route path="/login/*" element={<Authentication />} />
@@ -42,8 +47,19 @@ const RouterConfig = () => {
 								</ProtectedRoute>
 							}
 						/>
+						<Route path="*" element={<NotFoundPage />} />
 					</Routes>
-					<Footer/>
+
+					<CustomButton
+						onClick={() =>
+							window.scrollTo({ top: 0, behavior: 'smooth' })
+						}
+						className="goUpButton"
+					>
+						<UpIcon />
+					</CustomButton>
+
+					<Footer />
 				</CartStorage>
 			</GlobalStorage>
 		</BrowserRouter>

@@ -273,7 +273,9 @@ const CartPage = () => {
 								</div>
 								<div className="crc-if-buttons">
 									<button>Ir para o pagamento</button>
-									<button>Continuar comprando</button>
+									<button onClick={() => navigate('/')}>
+										Continuar comprando
+									</button>
 								</div>
 							</div>
 						</div>
