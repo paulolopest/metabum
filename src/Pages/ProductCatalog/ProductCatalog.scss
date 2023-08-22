@@ -170,7 +170,7 @@
 			appearance: none;
 		}
 
-		div {
+		form {
 			display: flex;
 
 			input {
@@ -187,9 +187,12 @@
 			}
 
 			button {
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				border: none;
 				outline: none;
-				width: 2rem;
+				width: 3rem;
 				height: 3.25rem;
 				border-left: none;
 				background-color: white;
@@ -304,7 +307,8 @@
 	top: 0;
 	left: 0;
 	position: absolute;
-	padding: 2rem;
+	padding: 1.5rem 1rem;
+	overflow-y: scroll;
 
 	.pcf-header {
 		display: flex;
@@ -324,14 +328,18 @@
 			}
 		}
 
-		button {
-			width: 4rem;
-			height: 4rem;
-			color: #ff6500;
+		svg {
+			width: 1.5rem;
+			height: 1.5rem;
+			fill: #ff6500;
 			font-size: 2rem;
 			background-color: transparent;
 			outline: none;
 			border: none;
+
+			path {
+				stroke: #ff6500;
+			}
 		}
 	}
 
@@ -386,6 +394,43 @@
 	border: none;
 	outline: none;
 	border-radius: 3px;
+}
+
+.catalogEmpty {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	height: 25rem;
+
+	div {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem 0;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: calc(100vh - 7rem);
+
+		p {
+			font-size: 1.1rem;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+		button {
+			height: 3rem;
+			font-weight: bold;
+			text-transform: uppercase;
+			font-size: 1.2rem;
+			padding: 0 3rem;
+			outline: none;
+			border: none;
+			background-color: #ff6500;
+			color: white;
+			border-radius: 3px;
+		}
+	}
 }
 
 @media (max-width: 1600px) {
@@ -548,6 +593,15 @@
 		gap: 1rem 1rem;
 	}
 }
+
+@media (max-width: 900px) {
+	.catalogEmpty {
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
 @media (max-width: 850px) {
 	.pCatalog {
 		width: 100%;
@@ -585,10 +639,35 @@
 				width: 45vw;
 			}
 
-			div {
-				input {
-					width: 87vw;
+			form {
+				display: flex;
+
+				svg {
+					width: 1.5rem;
+					height: 1.5rem;
 				}
+
+				button {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 15vw;
+				}
+				input {
+					width: 82vw;
+				}
+			}
+		}
+	}
+
+	.catalogEmpty {
+		div {
+			p {
+				font-size: 1rem;
+			}
+
+			button {
+				font-size: 1rem;
 			}
 		}
 	}

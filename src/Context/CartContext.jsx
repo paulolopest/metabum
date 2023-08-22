@@ -7,18 +7,18 @@ const cartRequest = new CartRequest();
 
 const CartStorage = ({ children }) => {
 	const [cartBar, setCartBar] = React.useState(false);
-	const [popUp, setPopUp] = React.useState(false)
+	const [popUp, setPopUp] = React.useState(false);
 
 	const { data, loading, error, post, get, put, deleteAxios, putWithoutRes } =
 		useAxios();
 
 	const showPopUp = () => {
-			setPopUp(true)
-	
-			const timeout = setTimeout(() => {
-				setPopUp(false)
-			}, 2000);
-	}
+		setPopUp(true);
+
+		const timeout = setTimeout(() => {
+			setPopUp(false);
+		}, 2000);
+	};
 
 	const getCart = React.useCallback(() => {
 		const token = window.localStorage.getItem('metabumtoken');
@@ -33,7 +33,8 @@ const CartStorage = ({ children }) => {
 			const { url, headers } = cartRequest.ADD_PRODUCT(productId, token);
 
 			await post(url, null, { headers });
-			showPopUp()
+
+			showPopUp();
 			getCart();
 		},
 		[post, getCart]
@@ -68,8 +69,6 @@ const CartStorage = ({ children }) => {
 		await deleteAxios(url, { headers });
 		getCart();
 	}, [deleteAxios, getCart]);
-
-	
 
 	return (
 		<CartContext.Provider

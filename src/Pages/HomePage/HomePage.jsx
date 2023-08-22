@@ -217,6 +217,18 @@ const HomePage = () => {
 							}
 							word="games"
 						/>
+
+						<div className="mini-banners">
+							<img
+								alt="mini banner"
+								draggable={false}
+								src={miniBanners[4].url}
+								onClick={(e) => {
+									e.preventDefault();
+									navigate(`/catalog/:${miniBanners[4].word}`);
+								}}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>

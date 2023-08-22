@@ -357,6 +357,8 @@ const CartPage = () => {
 									</span>
 								</div>
 							</div>
+
+							<button>Ir para o pagamento</button>
 						</div>
 					</div>
 				)}
