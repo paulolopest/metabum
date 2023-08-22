@@ -1,9 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { UserRequest } from '../Requests/UserRequest';
 import axios from 'axios';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { UserRequest } from '../Requests/UserRequest';
 
 export const GlobalContext = React.createContext();
+
 const userRequest = new UserRequest();
 
 const GlobalStorage = ({ children }) => {
@@ -13,6 +14,11 @@ const GlobalStorage = ({ children }) => {
 	const [login, setLogin] = React.useState(null);
 
 	const navigate = useNavigate();
+	const location = useLocation();
+
+	React.useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [location]);
 
 	const userLogout = React.useCallback(async () => {
 		setData(null);

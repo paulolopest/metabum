@@ -76,14 +76,7 @@ const EvaluationSection = ({ productId }) => {
 						</div>
 
 						<div className={`eva-average`}>
-							<p>
-								<span>
-									{evaluationAverage.toFixed(2) === NaN
-										? evaluationAverage.toFixed(2)
-										: 0}
-								</span>
-								/5
-							</p>
+							<p>{evaluationAverage}</p>
 
 							<h5>({data.length} avaliações)</h5>
 						</div>

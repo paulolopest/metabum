@@ -5,11 +5,12 @@ import useMedia from '../../../Hooks/useMedia';
 import ProductCard from '../../../Components/ProductCard/ProductCard';
 import { ReactComponent as NextIcon } from '../../../Assets/icons/next-svgrepo-com.svg';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../../Components/Loading/Loading';
 
 const CarouselProduct = ({ request, title, svgIcon, word }) => {
 	const [isDragging, setIsDragging] = React.useState(false);
 
-	const { data, get } = useAxios();
+	const { data, get, loading } = useAxios();
 
 	const mobileScreen = useMedia('(max-width: 600px)');
 	const navigate = useNavigate();
@@ -22,6 +23,7 @@ const CarouselProduct = ({ request, title, svgIcon, word }) => {
 		<ProductCard key={product.id} product={product} isDragging={isDragging} />
 	));
 
+	if (loading) return <Loading />;
 	if (data)
 		return (
 			<div className="mc-container">

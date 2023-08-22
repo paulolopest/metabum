@@ -377,8 +377,12 @@
 	}
 }
 @media (max-width: 600px) {
+	.leftNav-container {
+		z-index: 500;
+	}
 	.left-nav {
 		width: 85vw;
+		z-index: 100000000;
 	}
 
 	.lNav-profile {

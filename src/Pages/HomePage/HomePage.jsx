@@ -78,7 +78,6 @@ const HomePage = () => {
 	}, [bannerIndex]);
 
 	if (loading) return <Loading />;
-	// if (data)
 	return (
 		<>
 			<div
@@ -96,7 +95,7 @@ const HomePage = () => {
 						onDrag={() => setIsDragging(true)}
 						onDragEnd={handleDragEnd}
 						drag="x"
-						dragElastic={0}
+						dragElastic={0.0}
 						dragConstraints={{ right: 0, left: 0 }}
 						className="hp-banners"
 						style={{ backgroundColor: banners[bannerIndex].color }}

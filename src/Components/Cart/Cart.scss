@@ -6,6 +6,7 @@
 	height: 100vh;
 	left: 0;
 	top: 0;
+	z-index: 500;
 }
 
 .cart {
@@ -16,7 +17,6 @@
 	width: 30vw;
 	height: 100%;
 	position: absolute;
-	z-index: 10;
 	top: 0;
 	right: 0;
 }
