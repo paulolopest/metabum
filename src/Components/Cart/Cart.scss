@@ -168,6 +168,8 @@
 	}
 
 	&:hover {
+		transition: 0.3s ease-in-out;
+
 		.CC-removeButton {
 			display: flex;
 			align-items: flex-end;
@@ -178,7 +180,7 @@
 			border: none;
 			padding: 1rem 0 0 0;
 			color: #dc5e5e;
-			transition: 0.3 ease-in-out;
+			transition: 0.3s ease-in-out;
 
 			&:hover {
 				color: red;
@@ -314,7 +316,6 @@
 	.cart {
 		width: 100vw;
 		padding: 0 1.5rem 0 1.5rem;
-		justify-content: center;
 		grid-template-rows: 10% 55% 35;
 	}
 

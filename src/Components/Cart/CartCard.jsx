@@ -1,17 +1,20 @@
 import React from 'react';
 import useForm from '../../Hooks/useForm';
 import useMedia from '../../Hooks/useMedia';
+import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../Context/CartContext';
 import CustomInput from '../Form/CustomInput/CustomInput';
 import CustomButton from '../Form/CustomButton/CustomButton';
 import { formattedPrice, limitText } from '../../Utils/Functions';
 import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.svg';
-import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 import { ReactComponent as TrashIcon } from '../../Assets/icons/trash-3-svgrepo-com.svg';
+import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 
-const CartCard = ({ product }) => {
+const CartCard = ({ product, goToProduct }) => {
 	const { deleteProduct, editQuantity } = React.useContext(CartContext);
 	const [editInput, setEditInput] = React.useState(false);
+
+	const navigate = useNavigate();
 
 	const mobileScreen = useMedia('(max-width: 37rem)');
 	const inputQuantity = useForm('');
@@ -57,9 +60,13 @@ const CartCard = ({ product }) => {
 	return (
 		<div className="cartCard">
 			{mobileScreen ? (
-				<p>{limitText(product.product_name, 45)}</p>
+				<p onClick={() => goToProduct(product.product_id)}>
+					{limitText(product.product_name, 45)}
+				</p>
 			) : (
-				<p>{limitText(product.product_name, 87)}</p>
+				<p onClick={() => goToProduct(product.product_id)}>
+					{limitText(product.product_name, 87)}
+				</p>
 			)}
 			<div>
 				<div className="CC-Info">

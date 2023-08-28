@@ -1,8 +1,8 @@
 import React from 'react';
+import useMedia from './../../Hooks/useMedia';
 import { ReactComponent as EmailIcon } from '../../Assets/icons/email-svgrepo-com.svg';
 import { ReactComponent as GithubIcon } from '../../Assets/icons/github-142-svgrepo-com.svg';
 import { ReactComponent as LinkedinIcon } from '../../Assets/icons/linkedin-svgrepo-com.svg';
-import useMedia from './../../Hooks/useMedia';
 
 const Footer = () => {
 	const mobileScreen = useMedia('(max-width: 800px)');

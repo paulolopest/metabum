@@ -94,8 +94,6 @@ const BuySection = ({ productId, setProductId }) => {
 		cart.addProduct(productId);
 	};
 
-	console.log(productId);
-
 	const miniIcons = images.data?.map((src) => (
 		<img
 			onClick={() => setActiveImg(src.big_img)}
@@ -251,7 +249,7 @@ const BuySection = ({ productId, setProductId }) => {
 								</div>
 								<div className="pc-fc-buy-button">
 									<div>
-										<CustomButton onClick={buyProduct} >
+										<CustomButton onClick={buyProduct}>
 											<CartIcon />
 											Comprar
 										</CustomButton>
@@ -266,12 +264,9 @@ const BuySection = ({ productId, setProductId }) => {
 							</div>
 
 							{mobileScreen ? (
-
 								<>
 									<div className="mobile-buyButton">
-										<CustomButton
-											onClick={buyProduct}
-										>
+										<CustomButton onClick={buyProduct}>
 											<CartIcon />
 											Comprar
 										</CustomButton>
@@ -296,8 +291,6 @@ const BuySection = ({ productId, setProductId }) => {
 											Não lembro meu CEP
 										</a>
 									</div>
-
-								
 								</>
 							) : null}
 

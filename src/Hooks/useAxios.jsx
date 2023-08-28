@@ -6,14 +6,6 @@ const useAxios = () => {
 	const [error, setError] = React.useState(null);
 	const [loading, setLoading] = React.useState(null);
 
-	React.useEffect(() => {
-		if (loading) {
-			document.body.classList.add('loading');
-		} else {
-			document.body.classList.remove('loading');
-		}
-	}, [loading]);
-
 	const get = React.useCallback(async (url, config) => {
 		let res;
 		try {

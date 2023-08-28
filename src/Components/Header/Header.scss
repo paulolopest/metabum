@@ -243,7 +243,6 @@
 	justify-content: flex-end;
 	align-items: center;
 	grid-column: 5/6;
-	// background-color: #ff6500;
 	svg {
 		fill: #ccdfef;
 		margin-right: 2rem;
@@ -345,17 +344,14 @@
 
 @media (max-width: 900px) {
 	.headerMenu {
-		// background-color: red;
 		width: 20%;
 	}
 
 	.searchContainer {
-		// background-color: bisque;
 		width: 62%;
 	}
 
 	.header-IconsContainer {
-		// background-color: #ff6500;
 		width: 18%;
 	}
 

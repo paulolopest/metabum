@@ -3,6 +3,7 @@ import useAxios from '../../Hooks/useAxios';
 import useMedia from '../../Hooks/useMedia';
 import { useNavigate } from 'react-router-dom';
 import AddressModal from './Address/AddressModal';
+import Loading from '../../Components/Loading/Loading';
 import { formattedPrice } from '../../Utils/Functions';
 import { CartContext } from '../../Context/CartContext';
 import { UserRequest } from '../../Requests/UserRequest';
@@ -15,7 +16,6 @@ import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.
 import { ReactComponent as BackIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
 import { ReactComponent as UpIcon } from '../../Assets/icons/up-chevron-svgrepo-com.svg';
 import { ReactComponent as TrashIcon } from '../../Assets/icons/trash-3-svgrepo-com.svg';
-import Loading from '../../Components/Loading/Loading';
 
 const CartPage = () => {
 	const userRequest = new UserRequest();
@@ -78,6 +78,12 @@ const CartPage = () => {
 			quantity: product.quantity - 1,
 		};
 		cart.editQuantity(product.product_id, body);
+	};
+
+	const goToPurchasePage = () => {
+		navigate('/purchase-completed');
+
+		cart.deleteCart();
 	};
 
 	let totalPrice = 0;
@@ -272,9 +278,7 @@ const CartPage = () => {
 									</p>
 								</div>
 								<div className="crc-if-buttons">
-									<button
-										onClick={() => navigate('/purchase-completed')}
-									>
+									<button onClick={goToPurchasePage}>
 										Ir para o pagamento
 									</button>
 									<button onClick={() => navigate('/')}>
@@ -362,7 +366,9 @@ const CartPage = () => {
 								</div>
 							</div>
 
-							<button>Ir para o pagamento</button>
+							<button onClick={goToPurchasePage}>
+								Ir para o pagamento
+							</button>
 						</div>
 					</div>
 				)}

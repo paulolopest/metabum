@@ -56,6 +56,11 @@ const Cart = () => {
 		navigate('/cart');
 	};
 
+	const goToProduct = (id) => {
+		setCartBar(false);
+		navigate(`/product/${id}`);
+	};
+
 	let totalPrice = 0;
 	for (let i = 0; i < data?.length; i++) {
 		let item = data[i];
@@ -63,7 +68,11 @@ const Cart = () => {
 	}
 
 	const cartMap = data?.map((product) => (
-		<CartCard key={product.product_id} product={product} />
+		<CartCard
+			key={product.product_id}
+			goToProduct={goToProduct}
+			product={product}
+		/>
 	));
 
 	if (data)
