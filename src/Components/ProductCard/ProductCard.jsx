@@ -16,7 +16,7 @@ const ProductCard = ({ product, isDragging }) => {
 
 	const addToCart = (id) => {
 		cart.addProduct(id);
-		cart.showPopUp()
+		cart.showPopUp();
 	};
 
 	const handleClick = () => {
@@ -27,7 +27,7 @@ const ProductCard = ({ product, isDragging }) => {
 		}
 	};
 	return (
-		<>	
+		<>
 			{!mobileScreen ? (
 				<div className="productCard">
 					<div className="pc-IconsContainer">
@@ -54,8 +54,10 @@ const ProductCard = ({ product, isDragging }) => {
 					</p>
 
 					<div onClick={handleClick} className="pc-price">
-						<span>R$ {formattedPrice((product.price / 10) * 12)}</span>
-						<h3>R$ {formattedPrice(product.price)}</h3>
+						<span>R$ {formattedPrice(product.price)}</span>
+						<h3>
+							R$ {formattedPrice(product.price - product.price / 10)}
+						</h3>
 						<p>A vista no pix</p>
 					</div>
 
@@ -78,7 +80,7 @@ const ProductCard = ({ product, isDragging }) => {
 							<p>(1)</p>
 						</div>
 						<div className="mbl-pc-iconsSecondContainer">
-							<AddCartIcon onClick={() => addToCart(product.id)}/>
+							<AddCartIcon onClick={() => addToCart(product.id)} />
 							<FavoriteIcon />
 						</div>
 					</div>
@@ -86,7 +88,10 @@ const ProductCard = ({ product, isDragging }) => {
 						<div onClick={handleClick} className="mb-pcImg">
 							<img draggable={false} src={product.src} alt="product" />
 						</div>
-						<div onClick={handleClick} className="mbl-pc-infoSecondContainer">
+						<div
+							onClick={handleClick}
+							className="mbl-pc-infoSecondContainer"
+						>
 							<p className="mbl-pc-name">
 								{limitText(product.name, 50)}
 							</p>

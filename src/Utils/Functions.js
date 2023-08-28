@@ -29,9 +29,9 @@ export function formatCPF(cpf) {
 export const formatDate = (date) => {
 	const data = new Date(date);
 
-	const dia = data.getUTCDate().toString().padStart(2, '0');
-	const mes = (data.getUTCMonth() + 1).toString().padStart(2, '0'); // Note que os meses em JavaScript são baseados em zero, por isso adicionamos 1.
-	const ano = data.getUTCFullYear();
+	const day = data.getUTCDate().toString().padStart(2, '0');
+	const month = (data.getUTCMonth() + 1).toString().padStart(2, '0');
+	const year = data.getUTCFullYear();
 
-	return `${dia}/${mes}/${ano}`;
+	return `${day}/${month}/${year}`;
 };

@@ -12,6 +12,7 @@ import ProductPage from '../Pages/ProductPage/ProductPage';
 import Authentication from '../Pages/LoginPage/Authentication';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NotFoundPage from './../Pages/NotFoundPage/NotFoundPage';
+import PurchasedPage from '../Pages/PurchasedPage/PurchasedPage';
 import ProductCatalog from '../Pages/ProductCatalog/ProductCatalog';
 import CustomButton from '../Components/Form/CustomButton/CustomButton';
 import { ReactComponent as UpIcon } from '../Assets/icons/up-chevron-svgrepo-com.svg';
@@ -46,6 +47,10 @@ const RouterConfig = () => {
 									<CartPage />
 								</ProtectedRoute>
 							}
+						/>
+						<Route
+							path="/purchase-completed"
+							element={<PurchasedPage />}
 						/>
 						<Route path="*" element={<NotFoundPage />} />
 					</Routes>

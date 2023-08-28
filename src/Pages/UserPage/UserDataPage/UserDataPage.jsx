@@ -116,11 +116,6 @@ const UserDataPage = () => {
 										placeHolder={user.data.email}
 										label="E-mail"
 									/>
-									<CustomInput
-										disabled
-										placeHolder={formatCPF(user.data.cpf)}
-										label="CPF"
-									/>
 								</div>
 							</div>
 							<div className="udd-address">

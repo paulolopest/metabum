@@ -38,8 +38,6 @@ const Header = () => {
 	const activeLeftBar = () => {
 		setSearchModal(false);
 		setLeftNav(!leftNav);
-
-		document.body.classList.add('activeBar');
 	};
 
 	const activeCartBar = () => {
