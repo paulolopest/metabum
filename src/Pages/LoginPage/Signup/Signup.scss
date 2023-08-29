@@ -1,10 +1,9 @@
 .signupContainer {
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	width: 100%;
-	min-height: calc(100vh - 7rem);
-	height: auto;
+	min-height: 100vh;
+	padding: 3rem 0;
 }
 
 .signupBox {
@@ -14,6 +13,7 @@
 	height: 35rem;
 	width: 25rem;
 	gap: 1.5rem 0;
+	margin: 2rem 0 8rem 0;
 
 	h1 {
 		color: #ff6500;
@@ -68,6 +68,7 @@
 			padding: 2rem 0 0 0;
 			justify-content: center;
 			align-items: flex-end;
+			text-align: center;
 
 			p {
 				padding: 1rem;
@@ -164,12 +165,12 @@
 	.signupContainer {
 		padding: 0 1rem;
 		height: auto;
-		padding-top: 5rem;
+		margin: 2.5rem 0 2rem 0;
 		// align-items: center;
 	}
 	.signupBox {
 		height: auto;
-		// padding-top: 5rem;
+
 		width: 100%;
 
 		.signupForm {

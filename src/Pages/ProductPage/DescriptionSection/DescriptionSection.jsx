@@ -1,5 +1,6 @@
 import React from 'react';
 import useAxios from '../../../Hooks/useAxios';
+import Loading from './../../../Components/Loading/Loading';
 import { ProductRequest } from '../../../Requests/ProductRequest';
 import { ReactComponent as DownIcon } from '../../../Assets/icons/down-svgrepo-com.svg';
 import { ReactComponent as ArchiveIcon } from '../../../Assets/icons/description-svgrepo-com.svg';
@@ -9,7 +10,7 @@ const DescriptionSection = ({ productId }) => {
 
 	const [closeSection, setCloseSection] = React.useState(false);
 
-	const { get, data } = useAxios();
+	const { get, data, loading } = useAxios();
 
 	React.useEffect(() => {
 		const { url } = productRequest.GET_PRODUCT_DESCRIPTION(productId);
@@ -24,6 +25,7 @@ const DescriptionSection = ({ productId }) => {
 		</div>
 	));
 
+	if (loading) return <Loading />;
 	if (data)
 		return (
 			<div className="descriptionSection">

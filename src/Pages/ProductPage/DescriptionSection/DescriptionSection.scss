@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	background-color: white;
-	min-height: 15rem;
+	min-height: auto;
 	height: auto;
 	color: rgb(86, 92, 105);
 }
@@ -10,14 +10,13 @@
 .descriptionContainer {
 	display: flex;
 	flex-direction: column;
-	padding: 0rem 0 2.5rem 0;
 	width: 81vw;
 
 	.dc-title {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 1rem 0 1.5rem 0;
+		padding: 1.5rem 0;
 
 		div {
 			display: flex;
@@ -74,12 +73,10 @@
 
 @media (max-width: 900px) {
 	.descriptionContainer {
-		padding: 2rem 0.5rem 0 0.5rem;
 	}
 }
 @media (max-width: 600px) {
 	.descriptionContainer {
-		padding: 1rem 0.8rem 0 0.8rem;
 		.dc-title {
 			padding: 1rem 0;
 			svg {
@@ -89,7 +86,7 @@
 		}
 		div {
 			h1 {
-				font-size: 1.3rem;
+				font-size: 1.2rem;
 			}
 		}
 	}

@@ -86,6 +86,11 @@ const CartPage = () => {
 		cart.deleteCart();
 	};
 
+	const handleAddAddress = () => {
+		window.scrollTo(0, 0);
+		setAddAddressModal(true);
+	};
+
 	let totalPrice = 0;
 	for (let i = 0; i < cart.data?.length; i++) {
 		let item = cart.data[i];
@@ -203,7 +208,7 @@ const CartPage = () => {
 									<button onClick={() => setSelectAddressModal(true)}>
 										selecionar outro
 									</button>
-									<button onClick={() => setAddAddressModal(true)}>
+									<button onClick={handleAddAddress}>
 										novo endereço
 									</button>
 								</div>

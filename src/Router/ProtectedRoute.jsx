@@ -1,7 +1,7 @@
 import React from 'react';
-import { GlobalContext } from '../Context/GlobalContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Loading from '../Components/Loading/Loading';
+import { GlobalContext } from '../Context/GlobalContext';
 
 const ProtectedRoute = ({ children }) => {
 	const { login, loading } = React.useContext(GlobalContext);
@@ -10,11 +10,7 @@ const ProtectedRoute = ({ children }) => {
 
 	if (loading) return <Loading />;
 
-	if (!login) {
-		navigate('/login');
-	} else {
-		return children;
-	}
+	return login ? children : () => navigate('/login');
 };
 
 export default ProtectedRoute;

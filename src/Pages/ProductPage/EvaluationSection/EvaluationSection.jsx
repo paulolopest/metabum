@@ -1,6 +1,7 @@
 import React from 'react';
 import useAxios from '../../../Hooks/useAxios';
 import { formatDate } from '../../../Utils/Functions';
+import Loading from '../../../Components/Loading/Loading';
 import { ProductRequest } from '../../../Requests/ProductRequest';
 import { ReactComponent as EmptyStar } from '../../../Assets/icons/emptyStar.svg';
 import { ReactComponent as DownIcon } from '../../../Assets/icons/down-svgrepo-com.svg';
@@ -11,7 +12,7 @@ const EvaluationSection = ({ productId }) => {
 
 	const [closeSection, setCloseSection] = React.useState(false);
 
-	const { get, data, post } = useAxios();
+	const { get, data, post, loading } = useAxios();
 
 	React.useEffect(() => {
 		const { url } = productRequest.GET_PRODUCT_EVALUATIONS(productId);
@@ -50,14 +51,15 @@ const EvaluationSection = ({ productId }) => {
 				<span>
 					<strong>Prós:</strong> {eva.pros}
 				</span>
+				<p>{eva.description}</p>
 				<span>
 					<strong>Contras:</strong> {eva.cons}
 				</span>
-				<p>{eva.description}</p>
 			</div>
 		</div>
 	));
 
+	if (loading) return <Loading />;
 	if (data)
 		return (
 			<div className="evaluationSection">
@@ -71,7 +73,9 @@ const EvaluationSection = ({ productId }) => {
 
 							<DownIcon
 								onClick={() => setCloseSection(!closeSection)}
-								style={{ transform: closeSection && 'rotate(180deg)' }}
+								style={{
+									transform: closeSection && 'rotate(180deg)',
+								}}
 							/>
 						</div>
 

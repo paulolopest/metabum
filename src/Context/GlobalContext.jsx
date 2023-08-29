@@ -21,10 +21,10 @@ const GlobalStorage = ({ children }) => {
 	}, [location]);
 
 	const userLogout = React.useCallback(async () => {
+		setLogin(false);
 		setData(null);
 		setError(null);
 		setLoading(false);
-		setLogin(false);
 
 		window.localStorage.removeItem('metabumtoken');
 

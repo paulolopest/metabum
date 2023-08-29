@@ -279,6 +279,7 @@
 	background-color: white;
 	border-radius: 5px;
 	gap: 1rem 0;
+	z-index: 1000;
 
 	.uds-ms-title {
 		display: flex;
@@ -394,6 +395,7 @@
 			width: 100%;
 			padding-top: 1rem;
 			justify-content: space-between;
+			padding: 1000;
 		}
 		.uds-ms-inputs {
 			input {
