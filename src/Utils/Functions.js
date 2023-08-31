@@ -12,7 +12,7 @@ export const formattedPrice = (price) => {
 		maximumFractionDigits: 2,
 	});
 
-	return formatted.replace('00', '99');
+	return formatted.replace(',00', ',99');
 };
 
 export function formatCPF(cpf) {

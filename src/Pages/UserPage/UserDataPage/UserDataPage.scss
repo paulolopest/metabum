@@ -261,6 +261,7 @@
 	overflow-y: hidden;
 	top: 0;
 	right: 0;
+	z-index: 1000;
 }
 
 .uds-modalSection {
@@ -280,6 +281,7 @@
 	border-radius: 5px;
 	gap: 1rem 0;
 	z-index: 1000;
+	top: 0;
 
 	.uds-ms-title {
 		display: flex;

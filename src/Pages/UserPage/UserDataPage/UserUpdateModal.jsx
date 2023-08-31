@@ -1,12 +1,12 @@
 import React from 'react';
 import useForm from '../../../Hooks/useForm';
 import useAxios from '../../../Hooks/useAxios';
+import useMedia from '../../../Hooks/useMedia';
 import { UserRequest } from '../../../Requests/UserRequest';
 import CustomInput from '../../../Components/Form/CustomInput/CustomInput';
 import { ReactComponent as EmailIcon } from '../../../Assets/icons/email.svg';
 import { ReactComponent as LockIcon } from '../../../Assets/icons/lockIcon.svg';
 import { ReactComponent as CloseIcon } from '../../../Assets/icons/close-svgrepo-com.svg';
-import useMedia from '../../../Hooks/useMedia';
 
 const UserUpdateModal = ({ inputUpdate, setModal, setInputUpdate }) => {
 	let { data, put, putWithoutRes, post, error, loading } = useAxios();
@@ -83,7 +83,7 @@ const UserUpdateModal = ({ inputUpdate, setModal, setInputUpdate }) => {
 
 		await setDefaultAddress(body.zipCode);
 
-		// window.location.reload();
+		window.location.reload();
 	};
 
 	const onClickOutside = (event) => {
@@ -149,7 +149,7 @@ const UserUpdateModal = ({ inputUpdate, setModal, setInputUpdate }) => {
 				<>
 					<CustomInput
 						name="zipCode"
-						type="zipCode"
+						type="number"
 						placeHolder="CEP"
 						{...zipCode}
 					/>

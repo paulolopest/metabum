@@ -11,6 +11,7 @@ import { ReactComponent as NextIcon } from '../../Assets/icons/next-svgrepo-com.
 import { ReactComponent as StarIcon } from '../../Assets/icons/star-svgrepo-com.svg';
 import { ReactComponent as ThunderIcon } from '../../Assets/icons/thunder-svgrepo-com.svg';
 import { ReactComponent as PreviousIcon } from '../../Assets/icons/previous-svgrepo-com.svg';
+import useMedia from '../../Hooks/useMedia';
 
 const HomePage = () => {
 	const [dragInitialPosition, setDragInitialPosition] = React.useState(0);
@@ -19,6 +20,7 @@ const HomePage = () => {
 	const [prev, setPrev] = React.useState(bannerIndex);
 	const [loading, setLoading] = React.useState(true);
 
+	const mobileScreen = useMedia('(max-width: 37rem)');
 	const navigate = useNavigate();
 	const [ref, { height }] = useMeasure();
 	let direction = bannerIndex > prev ? 'increasing' : 'decreasing';
@@ -66,7 +68,6 @@ const HomePage = () => {
 		} else {
 			document.body.classList.remove('loading');
 		}
-		window.scrollTo(0, 0);
 		setTimeout(() => setLoading(false), 1000);
 	}, [loading]);
 
@@ -228,6 +229,18 @@ const HomePage = () => {
 									navigate(`/catalog/:${miniBanners[4].word}`);
 								}}
 							/>
+
+							{!mobileScreen && (
+								<img
+									alt="mini banner"
+									draggable={false}
+									src={miniBanners[6].url}
+									onClick={(e) => {
+										e.preventDefault();
+										navigate(`/catalog/:${miniBanners[6].word}`);
+									}}
+								/>
+							)}
 						</div>
 					</div>
 				</div>

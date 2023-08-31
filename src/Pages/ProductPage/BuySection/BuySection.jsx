@@ -121,7 +121,7 @@ const BuySection = ({ productId, setProductId }) => {
 			<motion.div>
 				<img src={product.src} alt="similar product" />
 			</motion.div>
-			<p>R$ {formattedPrice(product.price)}</p>
+			<p>R$ {formattedPrice(product.price - product.price / 10)}</p>
 		</li>
 	));
 
@@ -194,7 +194,10 @@ const BuySection = ({ productId, setProductId }) => {
 										>
 											<img
 												draggable={false}
-												src={images?.data[imageIndex]?.big_img}
+												src={
+													images?.data[imageIndex.length - 1]
+														?.big_img
+												}
 												alt="product"
 											/>
 										</motion.div>
@@ -222,13 +225,13 @@ const BuySection = ({ productId, setProductId }) => {
 											<strong>Em estoque</strong>
 										</p>
 										<p className="pc-price">
-											R${' '}
+											R$ R${' '}
 											{formattedPrice(
-												(product.data.price / 10) * 9.5
+												product.data.price - product.data.price / 10
 											)}
 										</p>
 										<span>
-											À vista no PIX com até 5% <strong>OFF</strong>
+											À vista no PIX com até <strong>10% OFF</strong>
 										</span>
 									</div>
 									<div>

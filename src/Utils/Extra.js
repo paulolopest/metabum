@@ -42,6 +42,10 @@ export const miniBanners = [
 		word: 'branco',
 	},
 	{
+		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1353.jpg&w=750&h=198&q=100',
+		word: 'nintendo',
+	},
+	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1214.jpg&w=750&h=198&q=100',
 		word: 'monitores',
 	},
@@ -54,8 +58,8 @@ export const miniBanners = [
 		word: 'placa-de-video',
 	},
 	{
-		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1208.jpg&w=1920&h=198&q=100',
-		word: 'computador',
+		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1222.jpg&w=750&h=198&q=100',
+		word: 'notebook',
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1201.jpg&w=1920&h=198&q=100',

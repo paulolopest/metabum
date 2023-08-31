@@ -170,7 +170,12 @@ const CartPage = () => {
 
 				<div className="cpc-endPrice">
 					<p>Preço à vista no PIX:</p>
-					<span>R$ {formattedPrice(product.product_price)}</span>
+					<span>
+						R${' '}
+						{formattedPrice(
+							product.product_price - product.product_price / 10
+						)}
+					</span>
 				</div>
 			</div>
 		</div>
@@ -190,18 +195,27 @@ const CartPage = () => {
 
 							<div className="ci_address-card">
 								<div className="address-card-fc">
-									<strong>{address.data?.identification}</strong>
-									<p>
-										{address.data?.street}, {address.data?.complement}
-									</p>
-									<p>
-										Número: {address.data?.number},{' '}
-										{address.data?.reference}
-									</p>
-									<p>
-										CEP: {address.data?.zip_code} -{' '}
-										{address.data?.city}, {address.data?.uf}
-									</p>
+									{address?.data ? (
+										<>
+											<strong>{address.data?.identification}</strong>
+											<p>
+												{address.data?.street},{' '}
+												{address.data?.complement}
+											</p>
+											<p>
+												Número: {address.data?.number},{' '}
+												{address.data?.reference}
+											</p>
+											<p>
+												CEP: {address.data?.zip_code} -{' '}
+												{address.data?.city}, {address.data?.uf}
+											</p>
+										</>
+									) : (
+										<h1 style={{ textTransform: 'uppercase' }}>
+											Nenhum endereço cadastrado
+										</h1>
+									)}
 								</div>
 
 								<div className="address-card-sc">
