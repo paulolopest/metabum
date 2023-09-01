@@ -65,7 +65,7 @@ export class UserRequest {
 
 	SET_USER_DEFAULT_ADDRESS = (token, zipCode) => {
 		return {
-			url: `${BASE_URL}/profile/update-address/${zipCode}`,
+			url: `${BASE_URL}/profile/set-default-address/${zipCode || `0`}`,
 			headers: {
 				Authorization: token,
 			},

@@ -9,7 +9,7 @@ import { ReactComponent as LockIcon } from '../../../Assets/icons/lockIcon.svg';
 import { ReactComponent as CloseIcon } from '../../../Assets/icons/close-svgrepo-com.svg';
 
 const UserUpdateModal = ({ inputUpdate, setModal, setInputUpdate }) => {
-	let { data, put, putWithoutRes, post, error, loading } = useAxios();
+	let { data, put, putWithoutRes, postWithRes, error, loading } = useAxios();
 
 	const mobileScreen = useMedia('(max-width: 600px)');
 
@@ -70,7 +70,7 @@ const UserUpdateModal = ({ inputUpdate, setModal, setInputUpdate }) => {
 
 		const { url, headers } = userRequest.ADD_USER_ADDRESS(token);
 
-		await post(url, body, { headers });
+		await postWithRes(url, body, { headers });
 
 		const setDefaultAddress = async (zipCode) => {
 			const { url, headers } = userRequest.SET_USER_DEFAULT_ADDRESS(
@@ -82,8 +82,6 @@ const UserUpdateModal = ({ inputUpdate, setModal, setInputUpdate }) => {
 		};
 
 		await setDefaultAddress(body.zipCode);
-
-		window.location.reload();
 	};
 
 	const onClickOutside = (event) => {
@@ -201,6 +199,9 @@ const UserUpdateModal = ({ inputUpdate, setModal, setInputUpdate }) => {
 			function: () => addAddress(),
 		},
 	};
+
+	console.log(`Data: ${data}`);
+	console.log(`Error: ${error}`);
 
 	return (
 		<div onClick={onClickOutside} className="uds-modalContainer">

@@ -15,9 +15,9 @@ const useAxios = () => {
 			res = await axios.get(url, config);
 
 			setData(res.data);
-		} catch (error) {
+		} catch (e) {
 			setData(null);
-			setError(error.response.data);
+			setError(e.response.data);
 			setLoading(false);
 		} finally {
 			setLoading(false);
@@ -30,14 +30,35 @@ const useAxios = () => {
 			setLoading(true);
 
 			await axios.post(url, body, config);
-		} catch (error) {
+		} catch (err) {
 			setData(null);
-			setError(error.response.data);
+			setError(err.response.data);
 			setLoading(false);
 		} finally {
 			setLoading(false);
 		}
 	}, []);
+	const postWithRes = React.useCallback(
+		async (url, body, config) => {
+			try {
+				setError(null);
+				setLoading(true);
+
+				let res = await axios.post(url, body, config);
+
+				setData(res.data);
+			} catch (e) {
+				setData(null);
+				console.log(error);
+				setError(e.response.data);
+				console.log(error);
+				setLoading(false);
+			} finally {
+				setLoading(false);
+			}
+		},
+		[error]
+	);
 
 	const deleteAxios = React.useCallback(async (url, config) => {
 		try {
@@ -45,9 +66,9 @@ const useAxios = () => {
 			setLoading(true);
 
 			await axios.delete(url, config);
-		} catch (error) {
+		} catch (err) {
 			setData(null);
-			setError(error.response.data);
+			setError(err.response.data);
 			setLoading(false);
 		} finally {
 			setLoading(false);
@@ -62,9 +83,9 @@ const useAxios = () => {
 			let res = await axios.put(url, data, config);
 
 			setData(res.data);
-		} catch (error) {
+		} catch (err) {
 			setData(null);
-			setError(error.response.data);
+			setError(err.response.data);
 			setLoading(false);
 		} finally {
 			setLoading(false);
@@ -77,16 +98,26 @@ const useAxios = () => {
 			setLoading(true);
 
 			await axios.put(url, data, config);
-		} catch (error) {
+		} catch (err) {
 			setData(null);
-			setError(error.response.data);
+			setError(err.response.data);
 			setLoading(false);
 		} finally {
 			setLoading(false);
 		}
 	}, []);
 
-	return { data, error, loading, get, post, put, deleteAxios, putWithoutRes };
+	return {
+		data,
+		error,
+		loading,
+		get,
+		post,
+		put,
+		deleteAxios,
+		putWithoutRes,
+		postWithRes,
+	};
 };
 
 export default useAxios;

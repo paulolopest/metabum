@@ -105,7 +105,7 @@ const ProductCard = ({ product, isDragging }) => {
 						</div>
 					</div>
 					<div className="mbl-pc-buyButton">
-						<button>
+						<button onClick={handleClick}>
 							<CartIcon />
 							Comprar
 						</button>

@@ -13,6 +13,8 @@ const GlobalStorage = ({ children }) => {
 	const [error, setError] = React.useState(null);
 	const [login, setLogin] = React.useState(null);
 
+	console.log(login);
+
 	const navigate = useNavigate();
 	const location = useLocation();
 
@@ -21,14 +23,12 @@ const GlobalStorage = ({ children }) => {
 	}, [location]);
 
 	const userLogout = React.useCallback(async () => {
-		setLogin(false);
 		setData(null);
 		setError(null);
 		setLoading(false);
 
 		window.localStorage.removeItem('metabumtoken');
-
-		navigate('/login');
+		setLogin(false);
 	}, [navigate]);
 
 	const token = window.localStorage.getItem('metabumtoken');

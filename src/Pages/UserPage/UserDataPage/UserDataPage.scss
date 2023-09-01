@@ -118,6 +118,7 @@
 		padding: 1rem;
 		gap: 1.3rem 0;
 		background-color: white;
+		padding-bottom: 2rem;
 
 		.udda-title {
 			display: flex;
@@ -371,7 +372,7 @@
 }
 @media (max-width: 900px) {
 	.userDataContainer {
-		width: 90vw;
+		width: 100%;
 	}
 
 	.ud-data {
@@ -389,6 +390,24 @@
 }
 
 @media (max-width: 600px) {
+	.userDataSection {
+		justify-content: initial;
+		padding: initial;
+	}
+
+	.userDataContainer {
+		gap: 0;
+
+		.ud-title {
+			padding-top: 0;
+			padding: 1.5rem 1rem;
+		}
+		.ud-data {
+			.udd-address {
+				padding: 1rem 0.5rem 3rem 0.5rem;
+			}
+		}
+	}
 	.uds-modalSection {
 		.uds-ms-title {
 			display: flex;

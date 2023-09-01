@@ -211,6 +211,7 @@
 	gap: 1.5rem 0;
 	background-color: white;
 	border-radius: 5px;
+	z-index: 1000;
 
 	.cip-title {
 		display: flex;
@@ -386,7 +387,7 @@
 	box-shadow: 0 7px 1rem black;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
-	z-index: 500;
+	z-index: 1500;
 
 	.mr-title {
 		display: flex;
@@ -577,7 +578,7 @@
 		padding: initial;
 
 		.ci_address-container {
-			padding: 0 1rem;
+			padding: 1rem;
 		}
 	}
 	.ci_products-container {
@@ -614,7 +615,7 @@
 		gap: 1.5rem 0;
 
 		.ci_address-container {
-			padding: 0 0.5rem;
+			padding: 1rem 0.5rem;
 		}
 	}
 	.ci_products-container {
@@ -636,11 +637,13 @@
 		.cip-title {
 			div {
 				p {
-					font-size: 1.2rem;
+					font-size: 1.1rem;
 				}
 			}
 
 			button {
+				height: 1.5rem;
+				font-size: 0.7rem;
 			}
 		}
 
@@ -692,7 +695,7 @@
 		.ci_address-container {
 			.ci_address-title {
 				p {
-					font-size: 1.2rem;
+					font-size: 1.1rem;
 				}
 
 				svg {
@@ -705,6 +708,12 @@
 				padding: 0.8rem;
 				gap: 1.5rem 0;
 
+				.address-card-fc {
+					p {
+						font-size: 0.8rem;
+					}
+				}
+
 				.address-card-sc {
 					width: 100%;
 					display: flex;
@@ -712,7 +721,7 @@
 					align-self: flex-start;
 
 					button {
-						font-size: 0.8rem;
+						font-size: 0.7rem;
 					}
 				}
 			}

@@ -94,6 +94,8 @@ const BuySection = ({ productId, setProductId }) => {
 		cart.addProduct(productId);
 	};
 
+	console.log(images?.data);
+
 	const miniIcons = images.data?.map((src) => (
 		<img
 			onClick={() => setActiveImg(src.big_img)}
@@ -128,7 +130,7 @@ const BuySection = ({ productId, setProductId }) => {
 	if (product?.loading || images?.loading || similarP?.loading)
 		return <Loading />;
 
-	if (product?.data)
+	if (product?.data || images?.data || similarP?.data)
 		return (
 			<div className="productPresentationContainer">
 				<div className="productPresentation">
@@ -194,10 +196,7 @@ const BuySection = ({ productId, setProductId }) => {
 										>
 											<img
 												draggable={false}
-												src={
-													images?.data[imageIndex.length - 1]
-														?.big_img
-												}
+												src={images.data[imageIndex].big_img}
 												alt="product"
 											/>
 										</motion.div>

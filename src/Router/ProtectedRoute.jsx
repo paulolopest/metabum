@@ -1,16 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Loading from '../Components/Loading/Loading';
+import { Navigate } from 'react-router-dom';
 import { GlobalContext } from '../Context/GlobalContext';
 
 const ProtectedRoute = ({ children }) => {
-	const { login, loading } = React.useContext(GlobalContext);
+	const { login } = React.useContext(GlobalContext);
 
-	const navigate = useNavigate();
-
-	if (loading) return <Loading />;
-
-	return login ? children : () => navigate('/login');
+	return login ? children : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;
