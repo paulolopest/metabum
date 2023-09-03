@@ -94,8 +94,6 @@ const BuySection = ({ productId, setProductId }) => {
 		cart.addProduct(productId);
 	};
 
-	console.log(images?.data);
-
 	const miniIcons = images.data?.map((src) => (
 		<img
 			onClick={() => setActiveImg(src.big_img)}

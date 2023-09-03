@@ -70,7 +70,7 @@ export const miniBanners = [
 export const departments = [
 	{
 		name: 'Hardware',
-		image: 'https://www.kabum.com.br/core/_next/image?url=https://static.kabum.com.br/conteudo/categorias/HARDWARE_1685619950.png&w=384&h=280&q=70',
+		image: 'https://www.kabum.com.br/core/_next/image?url=https://static.kabum.com.br/conteudo/categorias/HARDWARE_1693489225.png&w=384&h=280&q=70',
 		search: 'hardware',
 	},
 	{

@@ -258,11 +258,10 @@
 	backdrop-filter: brightness(0.5);
 	display: flex;
 	position: absolute;
-	z-index: 10;
 	overflow-y: hidden;
 	top: 0;
 	right: 0;
-	z-index: 1000;
+	z-index: 105;
 }
 
 .uds-modalSection {
@@ -275,13 +274,11 @@
 	width: auto;
 	height: auto;
 	padding: 1rem;
-	position: absolute;
-	z-index: 20;
 	transition: 0.2s;
 	background-color: white;
 	border-radius: 5px;
 	gap: 1rem 0;
-	z-index: 1000;
+	z-index: 105;
 	top: 0;
 
 	.uds-ms-title {
@@ -409,6 +406,11 @@
 		}
 	}
 	.uds-modalSection {
+		display: flex;
+		align-items: center;
+		padding: 0 0.5rem 1.5rem 0.5rem;
+		gap: 0.5rem 0;
+
 		.uds-ms-title {
 			display: flex;
 			flex-direction: row;
@@ -420,7 +422,7 @@
 		}
 		.uds-ms-inputs {
 			input {
-				width: 90vw;
+				width: 96vw;
 			}
 		}
 	}

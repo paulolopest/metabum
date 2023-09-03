@@ -146,9 +146,15 @@ const Header = () => {
 					</div>
 				)}
 				<div className="header-IconsContainer">
-					<Link onClick={activeCartBar}>
-						<CartIcon />
-					</Link>
+					{login ? (
+						<Link onClick={activeCartBar}>
+							<CartIcon />
+						</Link>
+					) : (
+						<Link to="/login">
+							<CartIcon />
+						</Link>
+					)}
 					{mobileScreen ? (
 						<></>
 					) : (

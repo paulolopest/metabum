@@ -49,9 +49,7 @@ const useAxios = () => {
 				setData(res.data);
 			} catch (e) {
 				setData(null);
-				console.log(error);
 				setError(e.response.data);
-				console.log(error);
 				setLoading(false);
 			} finally {
 				setLoading(false);

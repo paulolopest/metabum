@@ -200,9 +200,6 @@ const UserUpdateModal = ({ inputUpdate, setModal, setInputUpdate }) => {
 		},
 	};
 
-	console.log(`Data: ${data}`);
-	console.log(`Error: ${error}`);
-
 	return (
 		<div onClick={onClickOutside} className="uds-modalContainer">
 			<div className="uds-modalSection">

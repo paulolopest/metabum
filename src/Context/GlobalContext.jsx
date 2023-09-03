@@ -13,8 +13,6 @@ const GlobalStorage = ({ children }) => {
 	const [error, setError] = React.useState(null);
 	const [login, setLogin] = React.useState(null);
 
-	console.log(login);
-
 	const navigate = useNavigate();
 	const location = useLocation();
 
