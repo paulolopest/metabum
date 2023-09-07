@@ -63,7 +63,7 @@ export const miniBanners = [
 	},
 	{
 		url: 'https://www.kabum.com.br/core/_next/image?url=https://themes.kabum.com.br/conteudo/ads/splashline/1201.jpg&w=1920&h=198&q=100',
-		word: 'hardwares',
+		word: 'hardware',
 	},
 ];
 

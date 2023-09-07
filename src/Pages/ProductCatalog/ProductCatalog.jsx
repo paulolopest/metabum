@@ -38,6 +38,7 @@ const ProductCatalog = () => {
 			activeBrand,
 			activeDepartment,
 			orderBy,
+			'price',
 			pageLimit
 		);
 		get(url);
@@ -99,6 +100,7 @@ const ProductCatalog = () => {
 				activeBrand,
 				activeDepartment,
 				orderBy,
+				'price',
 				pageLimit
 			);
 			get(url);

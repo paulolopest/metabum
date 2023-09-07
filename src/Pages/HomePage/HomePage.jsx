@@ -135,6 +135,8 @@ const HomePage = () => {
 									'',
 									'',
 									'',
+									'desc',
+									'price',
 									20
 								).url
 							}
@@ -170,7 +172,9 @@ const HomePage = () => {
 									'hardware',
 									'',
 									'',
-									'',
+									'hardware',
+									'asc',
+									'price',
 									20
 								).url
 							}
@@ -183,8 +187,15 @@ const HomePage = () => {
 							svgIcon={<ThunderIcon />}
 							title={<p>Faça seu jogo</p>}
 							request={
-								productRequest.SEARCH_PRODUCTS('games', '', '', '', 20)
-									.url
+								productRequest.SEARCH_PRODUCTS(
+									'games',
+									'',
+									'',
+									'',
+									'desc',
+									'price',
+									20
+								).url
 							}
 							word="games"
 						/>
@@ -213,9 +224,7 @@ const HomePage = () => {
 						<MainCarousel
 							svgIcon={<ThunderIcon />}
 							title={<p>Acabaram de chegar</p>}
-							request={
-								productRequest.GET_PRODUCTS('', '', '', '', 20).url
-							}
+							request={productRequest.GET_PRODUCTS(20, 'desc').url}
 							word=""
 						/>
 

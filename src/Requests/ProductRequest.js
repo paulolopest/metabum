@@ -1,9 +1,9 @@
 const BASE_URL = 'https://back-metabum.vercel.app';
 
 export class ProductRequest {
-	GET_PRODUCTS = () => {
+	GET_PRODUCTS = (limit, orderBy) => {
 		return {
-			url: `${BASE_URL}/products`,
+			url: `${BASE_URL}/products?limit=${limit}&orderBy=${orderBy}`,
 		};
 	};
 
@@ -44,7 +44,7 @@ export class ProductRequest {
 
 	SEARCH_PRODUCTS = (word, name, brand, department, order, by, limit) => {
 		return {
-			url: `${BASE_URL}/products/search/${word}?brand=${brand}&department=${department}&order=${order}&by=${by}limit=${limit}&name=${name}`,
+			url: `${BASE_URL}/products/search/${word}?brand=${brand}&department=${department}&order=${order}&by=${by}&limit=${limit}&name=${name}`,
 		};
 	};
 }
