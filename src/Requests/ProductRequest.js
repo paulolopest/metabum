@@ -42,9 +42,9 @@ export class ProductRequest {
 		};
 	};
 
-	SEARCH_PRODUCTS = (word, name, brand, department, orderBy, limit) => {
+	SEARCH_PRODUCTS = (word, name, brand, department, order, by, limit) => {
 		return {
-			url: `${BASE_URL}/products/search/${word}?brand=${brand}&department=${department}&orderBy=${orderBy}&limit=${limit}&name=${name}`,
+			url: `${BASE_URL}/products/search/${word}?brand=${brand}&department=${department}&order=${order}&by=${by}limit=${limit}&name=${name}`,
 		};
 	};
 }

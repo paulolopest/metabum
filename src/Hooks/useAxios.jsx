@@ -15,9 +15,9 @@ const useAxios = () => {
 			res = await axios.get(url, config);
 
 			setData(res.data);
-		} catch (e) {
+		} catch (err) {
 			setData(null);
-			setError(e.response.data);
+			setError(err.response.data);
 			setLoading(false);
 		} finally {
 			setLoading(false);
@@ -38,25 +38,23 @@ const useAxios = () => {
 			setLoading(false);
 		}
 	}, []);
-	const postWithRes = React.useCallback(
-		async (url, body, config) => {
-			try {
-				setError(null);
-				setLoading(true);
 
-				let res = await axios.post(url, body, config);
+	const postWithRes = React.useCallback(async (url, body, config) => {
+		try {
+			setError(null);
+			setLoading(true);
 
-				setData(res.data);
-			} catch (e) {
-				setData(null);
-				setError(e.response.data);
-				setLoading(false);
-			} finally {
-				setLoading(false);
-			}
-		},
-		[error]
-	);
+			let res = await axios.post(url, body, config);
+
+			setData(res.data);
+		} catch (e) {
+			setData(null);
+			setError(e.response.data);
+			setLoading(false);
+		} finally {
+			setLoading(false);
+		}
+	}, []);
 
 	const deleteAxios = React.useCallback(async (url, config) => {
 		try {

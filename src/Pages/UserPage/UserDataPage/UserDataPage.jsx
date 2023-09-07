@@ -17,7 +17,7 @@ const UserDataPage = () => {
 	const [modal, setModal] = React.useState(false);
 	const [inputUpdate, setInputUpdate] = React.useState('');
 
-	const { data, get, deleteAxios, put, putWithoutRes } = useAxios();
+	const { data, get, deleteAxios, putWithoutRes } = useAxios();
 
 	React.useEffect(() => {
 		const token = window.localStorage.getItem('metabumtoken');

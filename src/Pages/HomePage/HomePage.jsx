@@ -164,7 +164,7 @@ const HomePage = () => {
 
 						<MainCarousel
 							svgIcon={<StarIcon />}
-							title={<p>Destaques ninjas</p>}
+							title={<p>melhores upgrades</p>}
 							request={
 								productRequest.SEARCH_PRODUCTS(
 									'hardware',
@@ -212,11 +212,11 @@ const HomePage = () => {
 
 						<MainCarousel
 							svgIcon={<ThunderIcon />}
-							title={<p>Faça seu jogo</p>}
+							title={<p>Acabaram de chegar</p>}
 							request={
-								productRequest.GET_PRODUCTS('games', '', '', '', 20).url
+								productRequest.GET_PRODUCTS('', '', '', '', 20).url
 							}
-							word="games"
+							word=""
 						/>
 
 						<div className="mini-banners">
