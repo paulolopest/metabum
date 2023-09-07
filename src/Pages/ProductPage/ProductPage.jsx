@@ -10,6 +10,10 @@ const ProductPage = () => {
 
 	const [productId, setProductId] = React.useState(id);
 
+	React.useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [productId]);
+
 	return (
 		<div className="productPage">
 			<BuySection productId={productId} setProductId={setProductId} />
