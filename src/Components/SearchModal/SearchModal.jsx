@@ -14,7 +14,15 @@ const SearchModal = ({ word, searchModal, setSearchModal }) => {
 
 	React.useEffect(() => {
 		const time = setTimeout(() => {
-			const { url } = productRequest.SEARCH_PRODUCTS(word, '', '', '', 5);
+			const { url } = productRequest.SEARCH_PRODUCTS(
+				word,
+				'',
+				'',
+				'',
+				'asc',
+				'name',
+				5
+			);
 
 			if (word) setSearchModal(true);
 
