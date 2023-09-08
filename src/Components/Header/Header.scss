@@ -41,7 +41,7 @@
 	backdrop-filter: brightness(0.5);
 	display: flex;
 	position: absolute;
-	z-index: 50;
+	z-index: 500;
 	overflow-y: hidden;
 	top: 0;
 	left: 0;
@@ -55,7 +55,7 @@
 	height: 100vh;
 	min-height: 100vh;
 	position: absolute;
-	z-index: 50;
+	z-index: 500;
 	transition: 0.2s;
 	color: white;
 	padding: 1rem;

@@ -22,7 +22,7 @@ const TechnicalInfoSection = ({ productId }) => {
 
 		return Object.entries(techInfoObj).map(([key, value]) => (
 			<p key={key}>
-				<strong style={{ color: 'black' }}>-</strong> {key}: {value}
+				- {key}: {value}
 			</p>
 		));
 	};

@@ -26,6 +26,8 @@ const EvaluationSection = ({ productId }) => {
 	});
 	let evaluationAverage = evaluationSum / data?.length;
 
+	console.log(evaluationAverage);
+
 	const starContainer = (rating) => {
 		let stars = [];
 
@@ -80,7 +82,9 @@ const EvaluationSection = ({ productId }) => {
 						</div>
 
 						<div className={`eva-average`}>
-							<p>{evaluationAverage}</p>
+							<p>
+								<span>{evaluationAverage}</span>/5
+							</p>
 
 							<h5>({data.length} avaliações)</h5>
 						</div>
